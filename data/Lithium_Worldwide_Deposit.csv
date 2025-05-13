@@ -1,0 +1,99 @@
+DEPOSIT_NAME,CRITICAL_MINERAL,DEPOSIT_TYPE,LATITUDE,LONGITUDE,COUNTRY,LOC_DETAIL
+Clayton Valley ,Lithium,Li Basin Brines,37.77616498,-117.5681488,United States of America,Nevada
+Searles Lake,Lithium,Li Basin Brines,35.73621549,-117.3312313,United States of America,California
+Salton Sea,Lithium,Li Basin Brines,33.36377657,-115.8691608,United States of America,California
+Zhabuye Lake,Lithium,Li Basin Brines,31.42594176,84.05186252,Tibet,
+Taijanier Lake,Lithium,Li Basin Brines,37.49795779,93.9395491,China,Qaidam
+Dead Sea,Lithium,Li Basin Brines,31.41646214,35.42691848,Israel,
+DXC,Lithium,Li Basin Brines,31.58123258,86.74799774,Tibet,
+Salar de Uyuni,Lithium,Li Basin Brines,-20.20128,-67.41002824,Bolivia,Altiplano
+Salar de Atacama,Lithium,Li Basin Brines,-23.48123862,-68.31466994,Chile,Altiplano
+Salar de Hombre Muerto,Lithium,Li Basin Brines,-25.39060335,-67.10806079,Argentina,Puna
+Salar del Rincon,Lithium,Li Basin Brines,-24.10371425,-67.10582432,Argentina,
+Salar de Cuachari and Salar de Olaroz,Lithium,Li Basin Brines,-23.47116962,-66.74182928,Argentina,
+Salar de Llullaillaco,Lithium,Li Basin Brines,-24.79710002,-68.30127252,Argentina,
+Salar de Copaisa,Lithium,Li Basin Brines,-19.22171769,-68.09007579,Bolivia,
+Salar de Pastos Grandes,Lithium,Li Basin Brines,-21.65237617,-67.78119983,Bolivia,
+Salar de Maricunga,Lithium,Li Basin Brines,-26.93604532,-69.06936404,Chile,
+Great Salt Lake,Lithium,Li Basin Brines,41.25310526,-112.7050636,United States of America,Utah
+Salar de Surire,Lithium,Li Basin Brines,-18.83740384,-69.00534518,Chile,
+Orrvik,Lithium,Pegmatite,64.2,20.76916,Sweden,
+Haapaluoma,Lithium,Pegmatite,63.50833,22.9825,Finland,
+Ullava (Länttä),Lithium; Beryllium,Pegmatite,63.42555,23.70611,Finland,
+Seinajoki,Lithium,Pegmatite,62.77944,22.81555,Finland,
+Little Nahanni,Lithium,Pegmatite,62.2,-128.833,Canada,NWT
+Borkenas-Orust,Lithium,Pegmatite,58.16944,11.67888,Sweden,
+Lipovy Log,Lithium,Pegmatite,57.56667,61.31667,Russia,Central Urals
+Leinster,Lithium,Pegmatite,52.785306,-6.537423,Ireland,
+Favourable Lake,Lithium,Pegmatite,52.598329,-93.378785,Canada,Ontario
+Whabouchi,Lithium,Pegmatite,51.683252,-75.84583,Canada,Quebec
+Orlovka,Lithium,Pegmatite,51.057178,114.834199,Russia,Transbaikalia
+Root,Lithium,Pegmatite,50.8,-91.7,Canada,Ontario
+Malkhan,Lithium,Pegmatite,50.6515,109.879833,Russia,Transbaikalia
+Greer,Lithium,Pegmatite,50.344,-95.317,Canada,Manitoba
+Big Whopper,Lithium,Pegmatite,50.25,-94.06,Canada,Ontario
+Gullwing Lake,Lithium,Pegmatite,49.86333,-92.53111,Canada,
+Mavis,Lithium,Pegmatite,49.821377,-92.656329,Canada,Ontario
+Oldrich,Lithium,Pegmatite,49.42083,16.00277,Czech Republic,
+Lacorne,Lithium,Pegmatite,48.41083,-77.80817,Canada,Quebec
+Altai,Lithium,Pegmatite,47.189923,88.812579,China,NW
+Koralpe,Lithium,Pegmatite,46.867398,14.931632,Austria,
+Brissago,Lithium,Pegmatite,46.00417,8.70889,Italy,
+Chedeville,Lithium,Pegmatite,45.97916,1.38611,France,
+Animikie,Lithium,Pegmatite,45.85056,-88.35278,United States of America,Wisconsin
+Brazil Lake,Lithium,Pegmatite,44.00917,-65.99667,Canada,Nova Scotia
+Palermo,Lithium; Beryllium,Be Type Rare-Metal Pegmatite,43.75138,-71.88959,United States of America,New Hampshire
+Beryl Mountain,Lithium,Pegmatite,43.18107,-72.2942,United States of America,New Hampshire
+Black Mountain,Lithium,Pegmatite,42.76805,-107.44208,United States of America,Wyoming
+Elba,Lithium,Pegmatite,42.751201,10.205034,Italy,
+Clark,Lithium,Pegmatite,42.419505,-72.872585,United States of America,Massachusetts
+Covas de Barroso,Lithium,Pegmatite,41.6347,-7.783847,Portugal,
+Anderson,Lithium,Pegmatite,41.592232,-72.591638,United States of America,Connecticut
+Crystal Mountain,Lithium; Beryllium,Pegmatite,40.54639,-105.37333,United States of America,Colorado
+Quartz Cr,Lithium,Pegmatite,38.54167,-106.62556,United States of America,Colorado
+Talbuzanak,Lithium,Pegmatite,37.202,70.56,Afghanistan,
+Eshkashim,Lithium,Pegmatite,36.455,71.606,Afghanistan,
+Pachighram,Lithium,Pegmatite,35.528,71,Afghanistan,
+Kantiway,Lithium,Pegmatite,35.436,70.772,Afghanistan,
+Panjsher,Lithium,Pegmatite,35.333,69.333,Afghanistan,
+Marid,Lithium,Pegmatite,35.233,71.333,Afghanistan,
+Kings Mountain,Lithium; Beryllium,Be Type Rare-Metal Pegmatite,35.220183,-81.354317,United States of America,North Carolina
+Nilaw-Kolum,Lithium,Pegmatite,35.208,70.354,Afghanistan,
+Kurghal,Lithium,Pegmatite,35.068,70.306,Afghanistan,
+Parun,Lithium,Pegmatite,34.909,70.871,Afghanistan,
+Alinghar,Lithium,Pegmatite,34.878,70.28,Afghanistan,
+Darra-i-Pech,Lithium,Pegmatite,34.672,70.782,Afghanistan,
+Darrahe-Nur,Lithium,Pegmatite,34.617,70.75,Afghanistan,
+Shahidan,Lithium,Pegmatite,34.525,69.904,Afghanistan,
+Surkh-Rod,Lithium,Pegmatite,34.435,70.256,Afghanistan,
+Taghawlor,Lithium,Pegmatite,33.708,66.325,Afghanistan,
+Guanpo,Lithium,Pegmatite,33.7,110.8,China,
+San Diego,Lithium,Pegmatite,33.211727,-116.798272,United States of America,California
+McAllister,Lithium,Pegmatite,32.885179,-86.248043,United States of America,Alabama
+Nanping,Lithium; Niobium and Tantalum,Li-Cs-Ta type pegmatite,26.67,118.1,China,
+Maoantan,Lithium,Pegmatite,26.2,111.8,China,
+Khnefissat,Lithium,Pegmatite,20.793888,-15.570556,Mauritania,
+Igbeti,Lithium,Pegmatite,8.31666,3.025,Nigeria,
+Kokobin,Lithium,Pegmatite,6,-1,Ghana,
+Bijyojyo,Lithium,Pegmatite,-1.99194,29.61694,Rwanda,
+Ruhembe,Lithium,Pegmatite,-2.76083,29.30805,Burundi,
+Kivuvu,Lithium,Pegmatite,-2.834061,29.530003,Burundi,
+Mamoes,Lithium,Pegmatite,-6.918441,-36.723513,Brazil,Minas Gerais
+Alto Ligonha,Lithium,Pegmatite,-15.737382,38.253732,Mozambique,
+Urucum Pegmatite,Lithium,Pegmatite,-19.02305,-41.46,Brazil,
+Betafo,Lithium,Pegmatite,-19.91667,46.5333,Madagascar,
+Tabba,Lithium,Pegmatite,-20.6666,118.92306,Australia,
+Rubicon,Lithium,Pegmatite,-22.10306,15.99389,Namibia,
+Union,Lithium,Pegmatite,-24.116999,30.894021,South Africa,
+Niobe,Lithium,Pegmatite,-27.70722,117.26694,Australia,
+Homestead,Lithium,Pegmatite,-28.769078,18.495696,Namibia,
+Edon,Lithium,Pegmatite,-29.30722,117.68333,Australia,
+Marion,Lithium,Pegmatite,-31.07805,121.46666,Australia,
+Tantalite,Lithium,Pegmatite,-31.09722,121.07528,Australia,
+Bald,Lithium,Pegmatite,-31.51555,122.17944,Australia,
+Deans,Lithium,Pegmatite,-32.30694,121.785,Australia,
+Las Cuevas,Lithium,Pegmatite,-32.38611,-65.70694,Argentina,
+San Luis,Lithium,Pegmatite,-32.98333,-65.98333,Argentina,
+Cattlin,Lithium,Pegmatite,-33.56388,120.03972,Australia,
+Meldon,Lithium; Beryllium,Pegmatite,50.7144627,-4.030153128,England,
+Podlesi,Lithium,Pegmatite,50.421821,12.789615,Czech Republic,

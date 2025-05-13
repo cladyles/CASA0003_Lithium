@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Cyberpunk Sankey – Lithium Exports 2024</title>
+  <link rel="stylesheet" href="css/section5.css" />
+  <canvas id="bgParticles"></canvas>
+  <link rel="stylesheet" href="css/bgParticles.css" />
+</head>
+<body>
+  <!-- 左侧面板 -->
+  <div class="left-panel-wrapper">
+    <!-- 顶部标题 -->
+    <div id="intro-top">
+      <h1>Lithium Export countries(24)</h1>
+      <h2>What is the trade situation of major mineral-producing countries?</h2>
+      <p>
+        The countries receiving the largest inflows will drive future processing and trade.
+      </p>
+    </div>
+
+    <!-- 控制面板 -->
+    <div id="control-panel">
+      <div class="control-item">
+        <label for="threshold">Min Flow Value:</label>
+        <input type="range" id="threshold" min="0" max="15000000" step="100000" value="0" />
+        <span id="threshold-value">0</span>
+      </div>
+      <div class="control-item">
+        <label for="country-select">Highlight Country:</label>
+        <select id="country-select">
+          <option value="">All</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- 汇总信息 -->
+    <div id="summary">
+      <h4>Summary</h4>
+      <ul>
+        <li id="total-export">Total Export: –</li>
+        <li id="top-flow">Top Flow: –</li>
+        <li id="top-sources">Top Sources: –</li>
+        <li id="top-destinations">Top Destinations: –</li>
+      </ul>
+    </div>
+
+    <!-- 底部说明 -->
+    <div id="intro-bottom">
+      <h3></h3>
+      <p></p>
+    </div>
+  </div>
+
+  <!-- 桑基图 -->
+  <div id="chart"></div>
+
+  <!-- ECharts 脚本 -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <script src="js/section5.js"></script>
+  <script src="js/bgParticles.js"></script>
+</body>
+</html>

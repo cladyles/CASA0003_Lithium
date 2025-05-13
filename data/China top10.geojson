@@ -1,0 +1,125 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "brand_en": "CATL",
+        "brand_cn": "宁德时代CATL",
+        "company": "Contemporary Amperex Technology Co., Limited (CATL)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [119.5419, 26.6650]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "brand_en": "BYD Battery",
+        "brand_cn": "弗迪电池",
+        "company": "BYD Company Limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.0545, 22.5312]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "brand_en": "CITIC Group",
+        "brand_cn": "中创新航",
+        "company": "CITIC New Materials Development Co., Ltd."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [116.4074, 39.9042]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "brand_en": "Gotion High-tech",
+        "brand_cn": "国轩高科",
+        "company": "Gotion High-tech Co., Ltd."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [117.2857, 31.8612]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "brand_en": "EVE Energy",
+        "brand_cn": "亿纬EVE",
+        "company": "EVE Energy Co., Ltd."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.3781, 23.0910]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "brand_en": "Sunwoda",
+        "brand_cn": "欣旺达SUNWODA",
+        "company": "Sunwoda Electronic Co., Ltd."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.0259, 22.5422]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "brand_en": "Svolt Energy",
+        "brand_cn": "蜂巢能源SVOLT",
+        "company": "Taikang Energy Technology Co., Ltd."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [119.9743, 31.8281]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "brand_en": "Farasis Energy",
+        "brand_cn": "孚能科技Farasis",
+        "company": "Yazhen Fine Technology Co., Ltd."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.9300, 25.8200]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "brand_en": "Envision AESC",
+        "brand_cn": "远景动力",
+        "company": "Envision Energy Limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4737, 31.2304]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "brand_en": "Hithium",
+        "brand_cn": "海辰储能",
+        "company": "Xiamen Hithium Energy Storage Technology Co., Ltd."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [118.0894, 24.4798]
+      }
+    }
+  ]
+}

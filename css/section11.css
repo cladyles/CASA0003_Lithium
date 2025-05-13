@@ -1,0 +1,158 @@
+/* ========================================================
+   One‑screen layout: every section fits exactly 1 viewport
+   ======================================================== */
+html, body {
+  height: 100%;
+  background-color: #010101;
+  margin: 0;
+}
+
+/* ---------- Site‑wide background image (lowest layer) ---------- */
+
+
+
+/* ------- About & Contact sections ------- */
+.about-section {
+  /* Always stay within the viewport */
+  height: 100vh;                       /* 100% of screen height */
+  box-sizing: border-box;              /* include padding in height calc */
+
+  /* Adaptive padding: 40‑120 px depending on screen height */
+  padding: clamp(40px, 10vh, 120px) 64px;
+
+  /* Flexbox centring */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;             /* vertical centre */
+  align-items: center;                 /* horizontal centre */
+  text-align: center;
+
+  overflow: hidden;                    /* hide overflow if any */
+}
+
+/* ------- Intro block ------- */
+.intro {
+  max-width: 800px;
+  margin: 24px auto 100px;
+  text-align: center;
+  color: antiquewhite;
+  font-family: 'Gill Sans', sans-serif;
+  line-height: 1.1;
+}
+
+.intro h3 {
+  margin: 0 0 12px;
+  font-size: 50px;
+  font-weight: 700;
+  font-weight: bold;
+}
+
+.intro p {
+  margin: 0;
+  font-size: 20px;
+  font-weight: lighter;
+  line-height: 1.1;
+  color: #d0d0d0;
+}
+
+
+/* ------- Team grid (row of 4 avatars) ------- */
+.team-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;                     /* wrap on tiny screens */
+  gap: 48px;
+}
+
+/* ------- Team‑member card ------- */
+.team-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Circular avatar (200 × 200) ------- */
+.avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;                       /* if you wrap <img> inside */
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1a1a;
+  border: 0.5px solid #0e090948;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-bottom: 24px;
+  object-fit: cover;                   /* works if <img class="avatar"> */
+}
+
+/* Nested <img> variant */
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Text under avatar */
+.team-member h3 {
+  font-size: 1.25rem;
+  font-family: 'Gill Sans', sans-serif;
+  font-weight: 600;
+  color:antiquewhite;
+  margin: 0 0 8px;
+}
+.team-member p {
+  color: rgba(250, 235, 215, 0.523);
+  font-family: 'Gill Sans',  sans-serif;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* ======= Button group & buttons ======= */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 100px;
+  flex-wrap: wrap; /* smaller screens can wrap */
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #ffffff;
+  color: #1a1a1a;
+  font-weight: 600;
+  border-radius: 24px;
+  text-decoration: none;
+  font-family: 'Gill Sans', sans-serif;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background: rgba(246, 221, 187, 0.933);        /* 金黄色 hover */
+  color: #1a1a1a;
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* ------- Mobile tweaks ------- */
+@media (max-width: 480px) {
+  .avatar {
+    width: 150px;
+    height: 150px;
+  }
+  .team-grid {
+    gap: 32px;
+  }
+  .btn {
+    padding: 10px 20px;
+    border-radius: 20px;
+  }
+}
+

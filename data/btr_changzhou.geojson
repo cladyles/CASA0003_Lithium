@@ -1,0 +1,19 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "company": "常州贝特瑞(江苏)新能源材料有限公司 (BTR New Materials)",
+        "address": "江苏省常州市金坛区233国道与汇福路交叉口西300米"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.61,
+          31.75
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tesla",
+        "country": "USA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0312,
+          37.332
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Volkswagen Group",
+        "country": "Germany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.7865,
+          52.4227
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "BYD",
+        "country": "China"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0579,
+          22.5431
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "General Motors",
+        "country": "USA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0458,
+          42.3314
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stellantis",
+        "country": "Netherlands"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.8994,
+          52.3792
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hyundai Motor Company",
+        "country": "South Korea"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.978,
+          37.5665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "BMW Group",
+        "country": "Germany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.582,
+          48.1351
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nissan Motor Corporation",
+        "country": "Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.638,
+          35.4437
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Daimler AG",
+        "country": "Germany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1829,
+          48.7758
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "SAIC Motor Corporation",
+        "country": "China"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737,
+          31.2304
+        ]
+      }
+    }
+  ]
+}

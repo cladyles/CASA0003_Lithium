@@ -1,0 +1,19 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "company": "华友钴业 (Huayou Cobalt)",
+        "address": "浙江省衢州市衢江区廿新路20号3幢5楼"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          118.88,
+          28.97
+        ]
+      }
+    }
+  ]
+}

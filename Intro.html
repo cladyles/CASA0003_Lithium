@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lithium Flow</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{width:100%;height:100%;overflow:hidden;background:#000}
+    #webgl{display:block;width:100vw;height:100vh}
+
+    #title{position:absolute;top:60px;left:50%;transform:translateX(-50%);
+           color:rgb(255, 255, 255);font:6rem/1.1 sans-serif;text-shadow:0 0 10px rgba(234, 234, 234, 0.7);z-index:10;pointer-events:none}
+    #enterBtn{position:absolute;top:75%;left:50%;transform:translate(-50%,-50%);
+              padding:1rem 2rem;font-size:1.2rem;background:#fff;border:none;cursor:pointer;z-index:10}
+    #enterBtn:disabled{opacity:.5;cursor:default}
+
+    #overlay{position:fixed;inset:0;background:#000;display:flex;flex-direction:column;
+             align-items:center;justify-content:center;opacity:0;transition:opacity .8s;
+             color:#fff;font:2rem/1.4 sans-serif;z-index:20;pointer-events:none}
+    #overlay.show{opacity:1}
+    #menu{position:fixed;inset:0;display:none;align-items:center;justify-content:center;
+          color:#fff;font:3rem sans-serif;z-index:30}
+  </style>
+
+  <script type="importmap">
+  {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js"}}
+  </script>
+</head>
+<body>
+  <div id="title">Lithium Flow</div>
+  <canvas id="webgl"></canvas>
+  <button id="enterBtn" disabled>Enter</button>
+
+  <div id="overlay"><div>Presented by Lithium Lab</div><div>&mdash; FLOW SEQUENCE&nbsp;01 &mdash;</div></div>
+  <div id="menu">SECOND PAGE / MENU</div>
+
+  <script type="module">
+    import * as THREE             from 'three';
+    import { GLTFLoader }         from 'https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/loaders/GLTFLoader.js';
+    import { MeshSurfaceSampler } from 'https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/math/MeshSurfaceSampler.js';
+
+    /* renderer / scene / camera */
+    const renderer=new THREE.WebGLRenderer({canvas:document.querySelector('#webgl'),antialias:true});
+    renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(devicePixelRatio);
+    const scene =new THREE.Scene();
+    const camera=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,0.1,2000);
+    addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
+
+    /* shader */
+    const uniforms={uProgress:{value:0},uScatter:{value:0},uSize:{value:3},uColor:{value:new THREE.Color(0x00ffff)},uAlpha:{value:1}};
+    const material=new THREE.ShaderMaterial({
+      uniforms,
+      vertexShader:`attribute vec3 initialPos,targetPos,scatterDir;
+        uniform float uProgress,uScatter,uSize;
+        void main(){
+          vec3 p=mix(initialPos,targetPos,uProgress)+scatterDir*uScatter*40.0;
+          gl_PointSize=uSize;
+          gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.0);
+        }`,
+      fragmentShader:`uniform vec3 uColor;uniform float uAlpha;
+        void main(){if(length(gl_PointCoord-0.5)>0.5)discard;gl_FragColor=vec4(uColor,uAlpha);}`,
+      transparent:true,depthWrite:false
+    });
+
+    /* timing */
+    const FLY=2, BOOM=2.5, overlayDelay=1500, overlayDur=5000;
+    let tFly=null,tBoom=null,overlayShown=false,fadeStart=null,ready=false,booming=false;
+
+    const overlay=document.getElementById('overlay');
+    const menu   =document.getElementById('menu');
+
+    /* group for hover-scale */
+    const group=new THREE.Group();scene.add(group);
+    let targetScale=new THREE.Vector3(1,1,1);
+
+    /* LOAD model & particles */
+    new GLTFLoader().load('./images/battery/scene.gltf', gltf=>{
+      gltf.scene.updateMatrixWorld(true);
+
+      const bbox=new THREE.Box3().setFromObject(gltf.scene);
+      const center=bbox.getCenter(new THREE.Vector3());
+      const extent=bbox.getSize(new THREE.Vector3()).length();
+      const RANGE=extent*2;
+
+      const N=15000,init=new Float32Array(N*3),targ=new Float32Array(N*3),dir=new Float32Array(N*3);
+      const samplers=[],areas=[];let areaSum=0,tmp=new THREE.Vector3();
+      gltf.scene.traverse(m=>{
+        if(m.isMesh){
+          samplers.push({sampler:new MeshSurfaceSampler(m).build(),matrix:m.matrixWorld});
+          const a=m.geometry.boundingSphere?4*Math.PI*Math.pow(m.geometry.boundingSphere.radius,2):1;
+          areas.push(a);areaSum+=a;
+        }
+      });
+
+      let idx=0;
+      samplers.forEach(({sampler,matrix},i)=>{
+        const take=Math.round(N*areas[i]/areaSum);
+        for(let k=0;k<take&&idx<N;k++,idx++){
+          sampler.sample(tmp); tmp.applyMatrix4(matrix);
+          targ.set([tmp.x,tmp.y,tmp.z],idx*3);
+          init.set([(Math.random()*2-1)*RANGE,(Math.random()*2-1)*RANGE,(Math.random()*2-1)*RANGE],idx*3);
+          tmp.set(Math.random()*2-1,Math.random()*2-1,Math.random()*2-1).normalize();
+          dir.set([tmp.x,tmp.y,tmp.z],idx*3);
+        }
+      });
+
+      const geo=new THREE.BufferGeometry();
+      geo.setAttribute('position',new THREE.BufferAttribute(init,3));
+      geo.setAttribute('initialPos',new THREE.BufferAttribute(init,3));
+      geo.setAttribute('targetPos', new THREE.BufferAttribute(targ,3));
+      geo.setAttribute('scatterDir',new THREE.BufferAttribute(dir ,3));
+      group.add(new THREE.Points(geo,material));
+
+      /* 初始相机 & 斜放 */
+      camera.position.set(center.x+extent*0.4,center.y+extent*0.25,center.z+extent*1.8);
+      camera.lookAt(center);
+      group.rotation.set(-0.3,0.27,0.25);
+
+      /* 保存供渲染时使用 */
+      window._C=center;window._E=extent;
+      tFly=performance.now();
+    });
+
+    /* hover scale */
+    renderer.domElement.addEventListener('pointermove',e=>{
+      if(!ready||booming)return;
+      const nx=(e.clientX/innerWidth)*2-1;   // [-1,1]
+      const ny=-(e.clientY/innerHeight)*2+1;
+      const amp=0.05;
+      targetScale.set(1+nx*amp,1+ny*amp,1+Math.abs(nx)*amp*0.5);
+    });
+    renderer.domElement.addEventListener('pointerleave',()=>{targetScale.set(1,1,1);});
+
+    /* Enter */
+    document.getElementById('enterBtn').onclick=e=>{
+      if(ready&&!booming){booming=true;tBoom=performance.now();e.target.style.display='none';}
+    };
+
+    /* render loop */
+    function render(now){
+      requestAnimationFrame(render);
+
+      /* 飞入进度 */
+      if(tFly){
+        const p=Math.min((now-tFly)/1000/FLY,1);
+        uniforms.uProgress.value=p;
+        if(!ready&&p===1){ready=true;document.getElementById('enterBtn').disabled=false;}
+      }
+
+      /* hover scale 过渡 */
+      group.scale.lerp(targetScale,0.08);
+
+      /* 爆散 & 相机直线俯冲 */
+      if(booming){
+        const q=Math.min((now-tBoom)/1000/BOOM,1);
+        uniforms.uScatter.value=q;
+
+        if(window._C){
+          const c=window._C,e=window._E;
+          const startZ=e*3.2,endZ=-e*2.5;
+          const startY=c.y+e*0.25,endY=c.y-e*0.8;
+          camera.position.set(c.x,THREE.MathUtils.lerp(startY,endY,q),THREE.MathUtils.lerp(startZ,endZ,q));
+          camera.lookAt(c);
+        }
+
+        /* 1.5 s 后展示字幕 */
+        if(!overlayShown && now-tBoom>overlayDelay){
+          overlayShown=true;
+          overlay.classList.add('show');
+          setTimeout(()=>overlay.classList.remove('show'),overlayDur);
+          setTimeout(()=>menu.style.display='flex',overlayDur+500);
+        }
+
+        if(q===1 && !fadeStart){fadeStart=now;}
+      }
+
+      if(fadeStart){
+        const f=Math.min((now-fadeStart)/1200,1);
+        uniforms.uAlpha.value=1-f;if(f===1)material.visible=false;
+      }
+
+      renderer.render(scene,camera);
+    }
+    requestAnimationFrame(render);
+  </script>
+</body>
+</html>
+

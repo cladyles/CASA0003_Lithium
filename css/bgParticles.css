@@ -1,0 +1,16 @@
+/* 粒子背景 Canvas 样式 */
+#bgParticles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 确保主要内容在粒子之上 */
+body, .section, .content, .container {
+  position: relative;
+  z-index: 2;
+}

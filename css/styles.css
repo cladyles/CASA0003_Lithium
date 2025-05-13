@@ -1,0 +1,441 @@
+/* 全局色板+后续备注其用途 */
+:root {
+  --clr1: #ec6242;
+  --clr2: #61d4ea;
+  --clr3: #f2e475;
+  --clr4: #90c95c;
+  --clr5: #63a454;
+  --clr6: #285f4d;
+  --clr7: #f5c142;
+  --clr8: #f0715e;
+  --clr9: #5462f8;
+  --clr10: #47454e;
+  --bg: #000000;
+}
+
+/* 全局设置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: #fff;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+.sections-container {
+  height: 100%;
+}
+.section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+  overflow: hidden;
+}
+
+/* ——— Section1 ——— */
+.bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.overlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.overlay h1 {
+  /* 白色标题，15% 处 */
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 4rem;
+  color: #fff;
+}
+#enterBtn {
+  /* 白色按钮，正中 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  cursor: pointer;
+}
+#enterBtn:hover {
+  background: #fff;
+  color: var(--bg);
+}
+
+/* ——— Section2 四等分选择页 ——— */
+.grid-4 {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template: 1fr / repeat(4, 1fr);
+}
+.grid-4 .grid-item {
+  position: relative;              /* 为 ::before 做定位基准 */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 2rem;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* 四张背景图 */
+.grid-4 .grid-item:nth-child(1) { background-image: url('../images/section2_1.jpg'); }
+.grid-4 .grid-item:nth-child(2) { background-image: url('../images/section2_2.jpg'); }
+.grid-4 .grid-item:nth-child(3) { background-image: url('../images/section2_3.jpg'); }
+.grid-4 .grid-item:nth-child(4) { background-image: url('../images/section2_4.jpg'); }
+
+/* 半透明黑色叠层，默认隐藏 */
+.grid-4 .grid-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* 文字置顶 */
+.grid-4 .grid-item .item-title {
+  position: relative;
+  z-index: 1;
+}
+
+/* 悬停效果：放大、阴影、叠层变浅 */
+.grid-4 .grid-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+.grid-4 .grid-item:hover::before {
+  opacity: 1;
+  background: rgba(0,0,0,0.2);
+}
+
+/* ——— 第三页到第十二页内容页公共设置 ——— */
+.content-section .page-title {
+  position: absolute;
+  top: 65px;    /* 导航（40px）+下间距（25px） */
+  left: 20px;
+  font-size: 1.5rem;
+  color: var(#fff);
+}
+.map-container {
+  position: absolute;
+  top: 80px;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+}
+.page-footer {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--clr10);
+}
+.back-home {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* ——— 第三页开始的顶部导航 ——— */
+nav#globalNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  /* 去掉内部 flex 对 nav-center 的影响 */
+  display: block;
+}
+
+/* ——— 选项 ——— */
+nav#globalNav .nav-main {
+  position: absolute;
+  top: 50%;
+  left: 1.5rem;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav#globalNav .nav-main > li {
+  position: relative;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1rem;
+}
+nav#globalNav .nav-main > li:hover .sub-menu {
+  display: block;
+}
+/* 二级菜单 */
+nav#globalNav .sub-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #000000;
+  list-style: none;
+  margin: 0;
+  padding: 0.8rem 0;
+}
+nav#globalNav .sub-menu li {
+  padding: 0.8rem 1rem;
+  white-space: nowrap;
+  color: var(#fff);
+  cursor: pointer;
+}
+
+/* ——— 居中项目名 ——— */
+nav#globalNav .nav-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  color: var(#fff);
+  white-space: nowrap;
+}
+
+/* ——— 右侧 Home 图标 ——— */
+nav#globalNav .nav-home {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: var(#fff);
+  cursor: pointer;
+}
+
+/* ——— 隐藏状态 ——— */
+nav#globalNav.hidden {
+  display: none;
+}
+
+/* ——— 从这里开始根据分工各自设置各自页面的额外样式 ——— */
+/* ——— 第三页 ——— */
+.history-layout {
+  display: flex;
+  gap: 30px;
+  padding: 120px 20px 10px;
+  height: calc(140vh - 120px); /* 留出标题+导航空间 */
+}
+
+.history-text {
+  flex: 2;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* 摘要引用块 */
+.history-abstract {
+  margin: 0 0 20px;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 4px solid var(#fff);
+  color: #fff;
+  line-height: 1.6;
+  text-indent: 2em;
+  border-radius: 4px;
+}
+
+/* 普通段落 */
+.history-text p {
+  margin-bottom: 16px;
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* 列表样式 */
+.history-list {
+  margin-left: 1.5em;
+  color: #fff;
+  line-height: 1.6;
+}
+.history-list li {
+  margin-bottom: 8px;
+}
+
+/* 右侧地图区域 */
+.history-map {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.history-map .history-subtitle {
+  margin: 0 0 8px;
+  color: var(#fff);
+  font-size: 1rem;
+}
+
+.distribution-map {
+  flex: 1;
+  background: #111;
+  border: 1px solid #444;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ——— 第四页 ——— */
+/* ——— 第五页 ——— */
+/* ——— 第六页 ——— */
+.ev-diagram-container {
+  position: absolute;
+  top: 120px;   
+  left: 75%;
+  transform: translateX(-50%);
+  width: 800px;
+  max-width: 90vw;
+}
+
+.ev-diagram-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 蓝色发光圆点（热点）通用样式 */
+.ev-hotspot {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-radius: 40%;
+  background: radial-gradient(circle, #f2e475 40%, transparent 70%);
+  box-shadow: 0 0 15px #f2e375;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.ev-hotspot:hover {
+  transform: scale(1.2);
+}
+
+/* 各热点的精确定位（根据图片微调） */
+.ev-hotspot.battery {
+  top: 300px;  /* 电池中间 */
+  left: 260px;
+}
+
+.ev-hotspot.motor {
+  top: 340px;  /* 发电机位置 */
+  left: 140px;
+}
+
+.ev-hotspot.charger {
+  top: 310px;  /* 充电桩位置 */
+  left: 700px;
+}
+
+/* 信息面板 */
+.ev-info-box {
+  position: fixed;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+  width: 300px;
+  background: rgba(27,29,34,0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid #00bfff;
+  box-shadow: 0 0 30px #00bfff;
+  border-radius: 3px;
+  padding: 20px;
+  display: none;
+  color: #e0e6f3;
+  z-index: 100;
+}
+
+.ev-info-box h3 {
+  margin-top: 0;
+  color: #00d0ff;
+}
+
+.ev-info-box p {
+  line-height: 1.4;
+  font-size: 0.95rem;
+}
+
+/* 关闭按钮 */
+.ev-info-box .close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: #00bfff;
+  cursor: pointer;
+  text-shadow: 0 0 4px #00bfff;
+}
+
+/* ——— 第七页 ——— */
+#section7 .future-container {
+  position: absolute;
+  top: 120px;             /* 导航（40px）＋标题下边距（20px） */
+  bottom: 10px;          /* 底部留白 */
+  left: 20px;
+  right: 20px;
+  padding: 20px;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.6);  /* 半透明底色，可选 */
+  border-radius: 8px;
+}
+/* ——— 第八页 ——— */
+#fullmap2-container {
+  position: absolute;
+  top: 80px;    /* 导航高度(60px) + 标题下边距(20px) */
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+}
+/* ——— 第九页 ——— */
+#section9 .future-content {
+  position: absolute;
+  top: 120px;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  padding: 20px;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+}
+
+/* ——— Section 10: About & Contact ——— */
+#section10 .page-footer {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  padding: 10px 0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #fff;
+}

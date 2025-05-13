@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Lithium Trade Map
+  </title>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7">
+  </script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js">
+  </script>
+  <link href="css/fullmap2.4.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <!-- sidebar -->
+  <div id="sidebar">
+   <div class="sidebar-content">
+    <!-- 1.title -->
+    <div class="turnover-box">
+     <h2>
+      Li-ion BATTERIES TRADE FLOW
+     </h2>
+    </div>
+    <!-- 2.Export/Import -->
+    <div id="mode-toggle">
+     <button class="active" id="exportBtn">
+      EXPORT
+     </button>
+     <button class="import" id="importBtn">
+      IMPORT
+     </button>
+    </div>
+    <!--  3.year+country title  -->
+    <h1>
+     <span id="year-title">
+      2023
+     </span>
+     <span class="dropdown-arrow" id="year-arrow">
+     </span>
+     <span id="country-title">
+      World
+     </span>
+     <span class="dropdown-arrow" id="country-arrow">
+     </span>
+    </h1>
+    <!-- 4. year+country memu -->
+    <div class="dropdown-menu" id="year-menu">
+    </div>
+    <div class="dropdown-menu" id="country-menu">
+    </div>
+    <!-- 5.numerical display -->
+    <div class="export" id="trade-value">
+     Loading...
+    </div>
+    <!--  2023  Value & Quantity -->
+    <div id="country-stats" style="margin-top:10px; font-size:14px; line-height:1.4;">
+     Click on a country to see 2023 Value &amp; Quantity
+    </div>
+    <!-- 6.bar graph+play button -->
+    <div id="bar-chart-container" style="position: relative;">
+     <svg height="100" id="bar-chart" width="300">
+     </svg>
+     <button id="play-button">
+      ▶
+     </button>
+    </div>
+    <!-- 7.text -->
+    <div class="info-block">
+     <p>
+      <strong>
+       Data Coverage Notice
+      </strong>
+      <br/>
+      This visualization combines two datasets:
+      <br/>
+      •
+      <strong>
+       2007-2024
+      </strong>
+      Aggregate trade values:all countries
+      <br/>
+      •
+      <strong>
+       2012-2023
+      </strong>
+      Bilateral flows:country-to-country
+      <br/>
+     </p>
+     <div id="more-content" style="display:none;">
+      <p>
+       •The ‘World’ view summarises total global trade, with trade values displayed in US dollars. By selecting
+       <span class="play-button-export">
+        ▶
+       </span>
+       or
+       <span class="play-button-import">
+        ▶
+       </span>
+       , the change in total global trade over the period 2007-2024 can be observed through
+       <span class="circle-icon export">
+       </span>
+       (export) or
+       <span class="circle-icon import">
+       </span>
+       (import) on the map.
+       <br/>
+       <p>
+        •Selecting an individual country shows its specific trading partners and the direction of flows. If no direction of flow is shown for some countries, it means that there is no trade flow for that country. Due to limitations in data availability in previous years, Bilateral flows are shown only for the period 2012-2023.
+        <br/>
+       </p>
+       <p>
+        •Data sources include the United Nations Commodity Trade Statistics Database and government trade statistics.
+       </p>
+      </p>
+     </div>
+     <a href="javascript:void(0)" onclick="toggleReadMore()" style="color:#66ccff; cursor:pointer;">
+      Read more...
+     </a>
+    </div>
+    <div class="info-block">
+     <p>
+      <strong>
+       Global Lithium Trade Overview
+      </strong>
+      <br/>
+      Lithium-ion batteries are a core component of electric vehicles, portable electronics and grid energy storage. This map visualises the bilateral trade flows of lithium-ion batteries (HS 8507) and key components between countries over the period 2007-2024.
+     </p>
+    </div>
+   </div>
+   <!-- 8.data -->
+   <div>
+    <p style="font-size:12px;">
+     Data from
+     <a href="https://github.com/ximengchang-ucl/CASA0003-Group1" style="color:#66ccff;">
+      GitHub
+     </a>
+    </p>
+   </div>
+  </div>
+  <!-- 9. Sidebar slide toggle button -->
+  <button aria-label="Toggle sidebar" id="sidebar-toggle">
+   «
+  </button>
+  <!-- 10. Map containers and legends -->
+  <div id="map">
+  </div>
+  <div class="legend">
+   <div>
+    <span class="export">
+    </span>
+    Exports
+   </div>
+   <div>
+    <span class="import">
+    </span>
+    Imports
+   </div>
+  </div>
+  <!-- Zoom In/Out & Chile Button Controls -->
+  <div class="export" id="zoom-controls">
+  
+   <button id="china-btn">
+    🇨🇳
+   </button>
+   <!-- Zoom In/Out -->
+   <button id="zoom-in">
+    ＋
+   </button>
+   <button id="zoom-out">
+    −
+   </button>
+  </div>
+  <script src="js/fullmap2.4.js">
+  </script>
+ </body>
+</html>

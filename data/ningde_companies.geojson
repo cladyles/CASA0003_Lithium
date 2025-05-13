@@ -1,0 +1,1 @@
+{"type": "FeatureCollection", "features": [{"type": "Feature", "properties": {"company": "CATL", "type": "battery"}, "geometry": {"type": "Point", "coordinates": [119.55, 26.65]}}, {"type": "Feature", "properties": {"company": "ATL", "type": "battery"}, "geometry": {"type": "Point", "coordinates": [119.56, 26.66]}}]}

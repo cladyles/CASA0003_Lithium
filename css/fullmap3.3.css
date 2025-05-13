@@ -1,0 +1,379 @@
+/* —— 基本布局 —— */
+body {
+  margin: 0;               /* 清除浏览器默认的外边距 */
+  padding: 0;              /* 清除浏览器默认的内边距 */
+  font-family:'Gill Sans', sans-serif;; /* 设置全局字体为 Arial，若无则使用系统无衬线字体 */
+  background: #111;        /* 页面背景色设为深灰（近黑） */
+  color: #eee;             /* 文本颜色设为浅灰 */
+  position: relative;      /* 将 body 设为定位上下文，以便内部绝对定位元素参照 */
+  height: 100vh;           /* 高度占满整个视口高度 */
+  overflow: hidden;        /* 隐藏超出 body 范围的内容，禁止滚动条 */
+}
+
+/* —— 地图全屏 —— */
+#map {
+  position: absolute;      /* 绝对定位，使其脱离文档流 */
+  top: 0;                  /* 上边缘贴合父容器（body）顶部 */
+  bottom: 0;               /* 下边缘贴合父容器底部 */
+  width: 100%;             /* 宽度占满父容器 */
+  z-index: 1;              /* 设置堆叠顺序为 1，处于较低层 */
+}
+
+/* —— 赛博朋克风 · 信息面板 —— */
+.info-panel {
+  position: absolute;
+  top: 150px;
+  right: 20px;
+  width: 340px;
+  padding: 24px;
+  background: rgba(10, 5, 25, 0.9);
+  color: #e0f8ff;
+  font-family: Arial, sans-serif;
+  z-index: 3;
+
+  /* 布局 */
+  display: flex;
+  flex-direction: column;
+
+  /* 高度限制 + 滚动 */
+  height: auto;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+
+  /* 赛博朋克霓虹边框 */
+  border: 2px solid transparent;
+border-image:
+  linear-gradient(120deg,
+    rgba(180, 180, 180, 0.5),
+    rgba(200, 200, 200, 0.5),
+    rgba(180, 180, 180, 0.5)
+  ) 1;
+border-radius: 8px;
+
+/* 内外柔光 */
+box-shadow:
+  inset 0 0 8px rgba(100, 100, 100, 0.1),
+  inset 0 0 4px rgba(150, 150, 150, 0.1),
+  0 0 12px rgba(100, 100, 100, 0.2),
+  0 0 18px rgba(150, 150, 150, 0.2);
+
+  /* 背景噪点效果 */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Ccircle cx='2' cy='2' r='1' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E"),
+    linear-gradient(135deg, #0a0519 0%, #12072d 100%);
+  background-blend-mode: overlay;
+}
+
+/* 霓虹滚动条 */
+.info-panel::-webkit-scrollbar {
+  width: 8px;
+}
+.info-panel::-webkit-scrollbar-track {
+  background: rgba(10, 5, 25, 0.7);
+}
+.info-panel::-webkit-scrollbar-thumb {
+background: linear-gradient(
+  180deg,
+  rgba(110, 130, 150, 1),
+  rgba(95, 115, 135, 1),
+  rgba(80, 100, 120, 1)
+);
+  border-radius: 4px;
+  box-shadow: inset 0 0 4px rgba(255,255,255,0.2);
+}
+
+/* 标题霓虹下划线 */
+.info-panel h2 {
+  margin: 0 0 16px;
+  font-weight: 700;
+  font-size: 1.6em;
+  color: #ff66ff;
+  position: relative;
+}
+.info-panel h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, #ff00ff, #00ffff);
+  box-shadow: 0 0 1px #00ffff, 0 0 10px #ff00ff;
+}
+
+/* 段落文字高亮 */
+.info-panel p {
+  margin: 0 0 16px;
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 1.6;
+  color: #fff;
+  text-shadow: 0 0 4px rgba(0,255,255,0.3), 0 0 2px rgba(255,0,255,0.3);
+}
+
+/* —— 可视化容器内部子项 —— */
+
+
+/* 各图表高度保持不变（可视需要微调） */
+#line-chart { height: 0px; }
+#panelChart { height: 300px; }
+#provinceImportChart,
+#provinceExportChart { height: 240px; }
+#extractionViz { height: 400px; }
+#changzhouViz { height: 300px; }
+#fujianViz    { height: 450px; }
+#globalViz    { height: 450px; }
+
+
+/* —— 辅助说明面板 —— */
+/* —— 辅助说明面板 —— */
+#secondaryPanel {
+  position: fixed;            /* 固定在视口 */
+  bottom: 150px;              /* 离底部留出 100px（可按需调节） */
+  left: 30px;                 /* 距左侧 30px */
+  width: 280px;               /* 原宽度 280px */
+  padding: 18px 24px 18px 36px;/* 原 12/16/12/24 ×1.5 */
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.425em;         /* 原 0.95em ×1.5 */
+  line-height: 1.4;
+  border-radius: 6px;         /* 原 4px ×1.5 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  z-index: 4;
+
+  /* 去掉所有 border / outline */
+  border: none;
+  outline: none;
+
+  /* 整体放大 1.5 倍 */
+  transform: scale(1。0);
+  transform-origin: left bottom; 
+  overflow: hidden;
+}
+
+/* 左侧白条也同步放大 */
+#secondaryPanel::before {
+  content: '';
+  position: absolute;
+  top: 18px;                  /* 原 12px ×1.5 */
+  bottom: 18px;               /* 原 12px ×1.5 */
+  left: 12px;                 /* 原 8px ×1.5 */
+  width: 6px;                 /* 原 4px ×1.5 */
+  background: #fff;
+  border-radius: 3px;         /* 原 2px ×1.5 */
+  box-shadow:
+    0 0 9px #fff,            /* 原 6px ×1.5 */
+    0 0 18px rgba(255,255,255,0.6); /* 原 12px ×1.5 */
+}
+
+/* —— 按钮 —— */
+.glow-btn {
+  position: absolute;       /* 绝对定位 */
+  bottom: 20px;             /* 距底 20px */
+  padding: 10px 20px;       /* 上下内边距 10px，左右 20px */
+  background: #11111164;  /* 透明背景 */
+  color: #ffffff;          /* 文字颜色亮青 */
+  font-size: 14px;          /* 字号 14px */
+  font-weight: bold;        /* 字重粗体 */           /* 无边框 */
+  cursor: pointer;          /* 鼠标指针为手型 */
+  overflow: hidden;         /* 隐藏溢出 */
+  z-index: 5;               /* 堆叠最高 */
+}
+#prevBtn { left: 30px; }    /* “上一”按钮靠左 30px */
+#nextBtn { right: 30px; }   /* “下一”按钮靠右 30px */
+.glow-btn::before,
+.glow-btn::after {
+  content: '';              /* 伪元素用于边框动画 */
+  position: absolute;       /* 绝对定位 */
+  width: 20px;              /* 初始宽度 20px */
+  height: 20px;             /* 初始高度 20px */
+  border: 2px solid #a9a9a9;/* 边框为亮青 */
+  transition: all 0.8s ease-out; /* 过渡动画 */
+}
+.glow-btn::before {
+  top: 0; left: 0;          /* 定位在左上角 */
+  border-right: none;       /* 仅保留左和上边框 */
+  border-bottom: none;
+}
+.glow-btn::after {
+  bottom: 0; right: 0;      /* 定位在右下角 */
+  border-left: none;        /* 仅保留右和下边框 */
+  border-top: none;
+}
+.glow-btn.active::before,
+.glow-btn.active::after {
+  top: 0; left: 0;          /* 扩展到全覆盖 */
+  width: 100%; height: 100%;
+  border: 2px solid #aaaaaa;/* 全边框亮青 */
+}
+@keyframes fillGlow {
+  to {
+    background: #6C7D9A;     /* 背景填充为亮青 */
+    box-shadow:            /* 发光效果 */
+      0 0 20px #6C7D9A,
+      0 0 40px rgba(0,175,255,0.6);
+    color: #000;            /* 文字变黑 */
+    text-shadow: 0 0 8px rgba(255,255,255,0.7); /* 白色文字阴影 */
+  }
+}
+.glow-btn.active {
+  animation: fillGlow 0.4s 0.6s forwards ease-in; /* 激活时播放发光动画 */
+}
+
+/* —— 场景顶部标签 —— */
+.scene-label {
+  position: absolute;       /* 绝对定位 */
+  top: 50%;                 /* 垂直居中 */
+  left: 10%;                /* 水平距左 10% */
+  transform: translateY(-50%); /* 垂直偏移自身高度一半，实现真正居中 */
+  color: #fff;              /* 白色文字 */
+  font-size: 2.2rem;        /* 大号字体 */
+  font-weight: bold;        /* 加粗 */
+  background: rgba(0,0,0,0.6); /* 半透明黑背景 */
+  padding: 12px 20px;       /* 内边距 */
+  border-radius: 4px;       /* 圆角 */
+  pointer-events: none;     /* 鼠标事件穿透 */
+  z-index: 4;               /* 堆叠层级 */
+  opacity: 0;               /* 默认透明，需 JS 控制显示 */
+  transition: opacity 1.0s ease; /* 淡入淡出效果 */
+}
+
+/* —— 主标题 —— */
+#mainTitle {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 4;
+  color: #e0f7fa;
+  font-size: 1.9rem;
+  font-weight: 600;
+  padding: 14px 30px;
+  background: rgba(10,10,30,0.6);
+  font-family: 'Gill Sans', sans-serif;
+  border-radius: 30px 10px 30px 10px; /* 不对称圆角 */
+  border: 2px solid rgba(224,247,250,0.4);
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.5),
+    inset 0 0 8px rgba(224,247,250,0.2);
+  overflow: hidden;
+}
+#mainTitle::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -50%;
+  width: 50%; height: 100%;
+  background: rgba(224,247,250,0.15);
+  transform: skewX(-30deg);
+  animation: shimmer s ease-in-out infinite; /* 闪光动画 */
+}
+@keyframes shimmer {
+  to { left: 100%; }       /* 闪光从左到右 */
+}
+
+/* —— 弹窗 —— */
+.mapboxgl-popup {
+  max-width: 280px;        /* 最大宽度 280px */
+  font: 0.9em/1.3 Gill Sans, sans-serif; /* 弹窗字体及行高 */
+}
+
+/* —— 等宽字体 —— */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+  /* 从 Google Fonts 引入 Space Mono 单宽字体 */
+
+/* —— Extraction Viz —— */
+#extractionViz {
+  padding: 16px;
+  font-family: 'Gill Sans', sans-serif;
+}
+#extractionViz h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #eee;
+  white-space: nowrap;        /* 禁止换行 */
+  overflow: hidden;           /* 超出隐藏 */
+  text-overflow: ellipsis;    /* 显示省略号 */
+  margin-bottom: 12px;
+}
+.leach-sim label {
+  display: block;
+  margin: 6px 0;
+  font-size: 0.9em;
+  color: #ccc;
+}
+.leach-sim input[type="range"] {
+  width: 100%;
+  margin: 4px 0 8px;
+  accent-color: #00CC96;      /* 滑块配色 */
+}
+.rate-line {
+  margin-top: 8px;
+  font-size: 0.95em;
+  color: #eee;
+}
+.rate-line #rate {
+  font-weight: bold;
+  color: #00CC96;
+}
+
+/* —— 雷达图 —— */
+.leach-radar canvas {
+  width: 100% !important;     /* 画布宽度强制铺满 */
+  height: auto !important;
+  display: block;
+  margin: 0 auto;
+}
+.leach-radar .chartjs-legend text {
+  white-space: nowrap !important;
+  font-size: 12px !important;
+  fill: #fff !important;
+}
+.leach-radar .copyright {
+  text-align: center;
+  margin-top: 12px;
+  color: #777;
+  font-size: 0.8rem;
+}
+
+/* —— Changzhou Viz —— */
+#changzhouViz {
+  padding: 16px;
+  font-family: 'Space Mono', monospace;
+}
+#cz-sunburst {
+  background: #111;
+  border-radius: 6px;
+}
+
+/* —— 手写图例 —— */
+.cz-legend {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin: 12px 0;
+  font-size: 0.9rem;
+  color: #eee;
+}
+.cz-legend > div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cz-legend span {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+}
+.cz-legend span:nth-child(1) { background: #90c95c; }
+.cz-legend span:nth-child(2) { background: #63a454; }
+.cz-legend span:nth-child(3) { background: #285f4d; }
+
+/* —— Fujian Sankey & Global Viz —— */
+#fujianViz,
+#globalViz {
+  padding: 16px;
+  font-family: 'Gill Sans', sans-serif;
+  background: #111;
+  border-radius: 6px;
+  box-sizing: border-box;
+}

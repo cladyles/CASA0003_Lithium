@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Three.js WebGPU Particle Mouse Tracking</title>
+  <style>
+    body { margin:0; overflow:hidden; background:#14171a; }
+    #info { position:absolute; top:10px; left:10px; color:#fff; font-family:sans-serif; z-index:10; }
+  </style>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="info">
+    Move your mouse to spawn particles
+  </div>
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import WebGPU from 'three/addons/capabilities/WebGPU.js';
+    import {
+      Fn, storage, float, vec2, vec3,
+      deltaTime, time, uniform, instanceIndex,
+      hash, sin, cos, PI2, pcurve, max, min,
+      hue, color, pass
+    } from 'three/addons/tsl/display/BloomNode.js';
+    // Note: adjust imports if needed for your local three.tsl setup
+
+    let camera, scene, renderer, controls, timer, light;
+    let updateParticles, spawnParticles;
+    let getInstanceColor;
+
+    const nbParticles = Math.pow(2,13);
+    const screenPointer = new THREE.Vector2();
+    const scenePointer  = new THREE.Vector3();
+    const raycastPlane  = new THREE.Plane(new THREE.Vector3(0,0,1), 0);
+    const raycaster     = new THREE.Raycaster();
+
+    const timeScale        = uniform(1.0);
+    const particleLifetime = uniform(0.5);
+    const particleSize     = uniform(1.0);
+    const linksWidth       = uniform(0.005);
+
+    const colorOffset      = uniform(0.0);
+    const colorVariance    = uniform(2.0);
+    const colorRotationSpeed = uniform(1.0);
+
+    const spawnIndex       = uniform(0);
+    const nbToSpawn        = uniform(5);
+    const spawnPosition    = uniform(vec3(0.0));
+    const previousSpawnPosition = uniform(vec3(0.0));
+
+    init();
+
+    function init() {
+      if (!WebGPU.isAvailable()) {
+        document.body.appendChild(WebGPU.getErrorMessage());
+        return;
+      }
+      camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 200);
+      camera.position.set(0,0,10);
+      scene = new THREE.Scene();
+
+      renderer = new THREE.WebGPURenderer({ antialias:true });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setClearColor(0x14171a);
+      renderer.setAnimationLoop(animate);
+      document.body.appendChild(renderer.domElement);
+
+      // Mouse tracking
+      window.addEventListener('pointermove', onPointerMove);
+
+      // TSL color function
+      getInstanceColor = Fn(([i]) => hue(color(0x0000ff), colorOffset.add(hash(i.toFloat()).mul(colorVariance))));
+
+      // Particle storage
+      const particlePositions  = storage(new THREE.StorageInstancedBufferAttribute(nbParticles,4), 'vec4', nbParticles);
+      const particleVelocities = storage(new THREE.StorageInstancedBufferAttribute(nbParticles,4), 'vec4', nbParticles);
+      renderer.computeAsync(
+        Fn(() => {
+          particlePositions.element(instanceIndex).xyz.assign(vec3(10000));
+          particlePositions.element(instanceIndex).w.assign(-1.0);
+        })().compute(nbParticles)
+      );
+
+      // Instanced mesh
+      const quadSize = 0.05;
+      const geom = new THREE.PlaneGeometry(quadSize, quadSize);
+      const mat  = new THREE.SpriteNodeMaterial();
+      mat.blending = THREE.AdditiveBlending;
+      mat.depthWrite = false;
+      mat.positionNode = particlePositions.toAttribute();
+      mat.scaleNode    = vec2(particleSize);
+      mat.rotationNode = atan(particleVelocities.toAttribute().y, particleVelocities.toAttribute().x);
+      mat.colorNode    = Fn(() => {
+        const life = particlePositions.toAttribute().w;
+        const mLife = pcurve(life.oneMinus(),8,1);
+        const pulse = pcurve(sin(hash(instanceIndex).mul(PI2)).mul(0.5).add(0.5),0.25,0.25).mul(10).add(1);
+        return getInstanceColor(instanceIndex).mul(pulse.mul(mLife));
+      })();
+      mat.opacityNode = Fn(() => particlePositions.toAttribute().w);
+
+      const mesh = new THREE.InstancedMesh(geom, mat, nbParticles);
+      mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+      mesh.frustumCulled = false;
+      scene.add(mesh);
+
+      // Update compute nodes
+      updateParticles = Fn(() => {
+        const pos = particlePositions.element(instanceIndex).xyz;
+        const life= particlePositions.element(instanceIndex).w;
+        const vel = particleVelocities.element(instanceIndex).xyz;
+        const dt  = deltaTime.mul(timeScale).mul(0.1);
+        If(life.greaterThan(0), ()=>{
+          vel.addAssign(vec3(0).mul(dt)); // Example, no turbulence
+          pos.addAssign(vel.mul(dt));
+          life.subAssign(dt.div(particleLifetime));
+        });
+      })().compute(nbParticles);
+
+      spawnParticles = Fn(() => {
+        const idx = spawnIndex.add(instanceIndex).mod(nbParticles).toInt();
+        const p = particlePositions.element(idx);
+        p.xyz.assign(spawnPosition);
+        p.w.assign(1);
+      })().compute(nbToSpawn.value);
+
+      controls = new OrbitControls(camera, renderer.domElement);
+      window.addEventListener('resize', onWindowResize);
+    }
+
+    function onPointerMove(e) {
+      screenPointer.x = (e.clientX / window.innerWidth)*2 - 1;
+      screenPointer.y = -(e.clientY / window.innerHeight)*2 + 1;
+    }
+
+    function updatePointer() {
+      raycaster.setFromCamera(screenPointer, camera);
+      raycaster.ray.intersectPlane(raycastPlane, scenePointer);
+      // Smooth or direct
+      spawnPosition.value.lerp(scenePointer, 0.1);
+    }
+
+    function animate() {
+      updatePointer();
+      renderer.compute(updateParticles);
+      renderer.compute(spawnParticles);
+      renderer.render(scene, camera);
+    }
+
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+  </script>
+</body>
+</html>

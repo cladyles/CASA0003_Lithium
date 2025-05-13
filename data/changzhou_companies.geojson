@@ -1,0 +1,1 @@
+{"type": "FeatureCollection", "features": [{"type": "Feature", "properties": {"company": "Lithium Source", "type": "cathode"}, "geometry": {"type": "Point", "coordinates": [119.59, 31.74]}}, {"type": "Feature", "properties": {"company": "BTR New Materials", "type": "high-nickel"}, "geometry": {"type": "Point", "coordinates": [119.61, 31.75]}}]}

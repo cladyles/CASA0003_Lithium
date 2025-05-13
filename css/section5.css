@@ -1,0 +1,119 @@
+/* 全局采用 border-box，方便 width/padding 计算一致 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 130px 64px;       /* 上下留 120px，左右留 64px */
+  background: #0d0d0d;
+  color: #fff;
+  font-family: 'Gill Sans', sans-serif;
+  overflow: hidden;
+  display: flex;
+}
+
+/* 左侧面板容器：包含所有非图表内容 */
+.left-panel-wrapper {
+  width: 420px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 6;
+}
+
+/* 顶部说明文字 */
+#intro-top {
+  background: rgba();
+  border-radius: 12px;
+  box-shadow: 0 0 px rgba(255,20,147,0.6);
+  padding: px;
+}
+#intro-top h1 {
+  margin: 0;
+  font-size: 50px;           /* 放大到 60px */
+  color: #FFF;
+  line-height: 1.0;
+}
+#intro-top h2 {
+  margin: 20px 0;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: #00FFE1;
+  text-shadow: 0 0 1px #00FFE1;
+}
+#intro-top p {
+  margin: 0;
+  font-size: 20px;
+  font-weight: lighter;
+  color: #DDD;
+  line-height: 1.1;
+}
+
+/* 控制面板 */
+#control-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.control-item {
+  background: rgba(15,15,15,0.3);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 20px;
+  box-shadow: 0 0 12px rgba(0,255,239,0.4);
+}
+.control-item label {
+  display: block;
+  color: #AAA;
+  margin-bottom: 6px;
+}
+.control-item input,
+.control-item select {
+  width: 100%;
+  background: #00ffe11c;
+  border: none;
+  color: #fff;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+/* 汇总卡片 */
+#summary {
+  background: rgba(15,15,15,0.05);
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 0 25px rgba(0,255,255,0.5);
+  padding: 18px;
+  font-size: 20px;
+}
+#summary h4 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: #00FFE1;
+  text-shadow: 0 0 6px #00FFE1;
+}
+#summary ul {
+  margin: 0;
+  padding-left: 20px;
+}
+#summary li {
+  margin: 5px 0;
+  color: #EEE;
+}
+
+
+ /* 桑基图 chart */
+ #chart {
+   flex-grow: 1;
+   position: relative;
+  /* 上/下外边距 20px，左侧留 20px，右侧 0 */
+   margin: 60px 0 10px 20px;
+   background: rgba(0, 0, 0, 0.5);
+   border-radius: 12px;
+   z-index: 5;
+ }

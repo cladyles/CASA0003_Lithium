@@ -1,0 +1,364 @@
+
+        body {
+           margin: 0;
+           font-family: sans-serifc;
+           background: #111;
+           color: white;
+       }
+       /* map container */
+       #map {
+           position: absolute;
+           top: 0;
+           bottom: 0;
+           width: 100%;
+       }
+       /* sliding sidebar */
+       #sidebar {
+           position: absolute;
+           top: -20px;
+           left: 0;
+           background: rgba(0, 0, 0, 0.85);
+           width: 360px;
+           height: calc(100%+20px);
+           padding: 20px;
+           border-top-right-radius: 20px;
+           border-bottom-right-radius: 20px;
+           z-index: 10;
+           display: flex;
+           flex-direction: column;
+           justify-content: space-between;
+       }
+
+
+       h1 {
+           font-size: 22px;
+           margin: 0 0 10px 0;
+           position: relative;
+       }
+
+
+       #trade-value {
+           font-size: 26px;
+           font-weight: bold;
+           margin-bottom: 5px;
+           padding: 10px;
+           border-radius: 10px;
+       }
+
+
+       #trade-value.export {
+           color: orange;
+           border: 2px solid orange;
+       }
+
+
+       #trade-value.import {
+           color: #3498db;
+           border: 2px solid #3498db;
+       }
+
+
+       select,
+       button {
+           margin-top: 3px;
+           width: 100%;
+           padding: 6px;
+           border: none;
+           border-radius: 8px;
+       }
+
+
+       .info-block {
+           background: #1e1e1e;
+           padding: 12px;
+           border-radius: 10px;
+           margin-bottom: 10px;
+           font-size: 13px;
+           line-height: 1.5em;
+       }
+
+
+       .legend {
+           position: absolute;
+           right: 20px;
+           bottom: 20px;
+           background: rgba(0, 0, 0, 0.7);
+           padding: 10px;
+           border-radius: 20px;
+           font-size: 13px;
+       }
+
+
+       .legend span {
+           display: inline-block;
+           width: 12px;
+           height: 12px;
+           border-radius: 50%;
+           margin-right: 6px;
+       }
+
+
+       .legend .export {
+           background: orange;
+       }
+
+
+       .legend .import {
+           background: #3498db;
+       }
+
+
+       .circle {
+           width: 10px;
+           height: 10px;
+           border-radius: 50%;
+           border: 2px solid;
+           background: transparent;
+           pointer-events: none;
+       }
+
+
+       #mode-toggle {
+           display: flex;
+           border-radius: 20px;
+           overflow: hidden;
+           margin-bottom: 20px;
+       }
+
+
+       #mode-toggle button {
+           flex: 1;
+           padding: 10px;
+           border: none;
+           background: #222;
+           color: #888;
+           font-weight: bold;
+           cursor: pointer;
+       }
+
+
+       #mode-toggle button.active {
+           background: #000;
+           color: orange;
+       }
+
+
+       #mode-toggle button.import.active {
+           color: #3498db;
+       }
+
+
+       #bar-chart-container {
+           position: relative;
+           width: 100%;
+           height: 120px;
+           margin-top: 10px;
+       }
+
+
+       #bar-chart {
+           width: 100%;
+           height: 100%;
+       }
+
+
+       #play-button {
+           position: absolute;
+           top: 10px;
+           right: 0;
+           width: 50px;
+           height: 50px;
+           border-radius: 50%;
+           border: none;
+           background: orange;
+           color: white;
+           font-size: 25px;
+           font-weight: bold;
+           cursor: pointer;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           padding:5 5 20px;
+           text-align: center;
+           box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+           transition: background 0.3s;
+       }
+
+
+       #play-button.import {
+           background: #3498db;
+       }
+
+
+       /* Drop-down arrow style */
+       .dropdown-arrow {
+           display: inline-block;
+           margin: 0 5px;
+           width: 0;
+           height: 0;
+           border-left: 5px solid transparent;
+           border-right: 5px solid transparent;
+           border-top: 5px solid white;
+           cursor: pointer;
+       }
+
+
+      /* Customised drop-down menu styles */
+       .dropdown-menu {
+           display: none;
+           position: absolute;
+           background-color: black;
+           min-width: 120px;
+           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+           z-index: 1;
+           border-radius: 8px;
+           overflow: hidden;
+           animation: slideDown 0.3s ease-out;
+           max-height: 200px;
+           overflow-y: auto;
+       }
+
+
+       @keyframes slideDown {
+           from {
+               opacity: 0;
+               transform: translateY(-10px);
+           }
+           to {
+               opacity: 1;
+               transform: translateY(0);
+           }
+       }
+
+
+       .dropdown-menu a {
+           color: white;
+           padding: 10px 20px;
+           text-decoration: none;
+           display: block;
+       }
+
+
+       .dropdown-menu a:hover {
+           background-color: #333;
+       }
+
+
+       /* -- Beautify year/country drop-down menu scroll bar -- */
+       .dropdown-menu::-webkit-scrollbar {
+           width: 6px;
+       }
+
+
+       .dropdown-menu::-webkit-scrollbar-track {
+           background: transparent;
+       }
+
+
+       .dropdown-menu::-webkit-scrollbar-thumb {
+           background-color: rgba(255, 255, 255, 0.2);
+           border-radius: 6px;
+           border: 1px solid transparent;
+           background-clip: content-box;
+       }
+
+
+       .dropdown-menu::-webkit-scrollbar-thumb:hover {
+           background-color: rgba(255, 255, 255, 0.4);
+       }
+
+
+       /* Adjust drop-down menu position */
+       #year-menu {
+           top: 30px;
+           left: 80px;
+           z-index: 1000;
+       }
+
+
+       #country-menu {
+           top: 25px;
+           left: 120px;
+       }
+      
+       /* -- New Lithium turnover panel style -- */
+       #sidebar .turnover-box {
+           background: #1e1e1e;
+           padding: 15px;
+           border-radius: 10px;
+           margin: 0 0 20px;    
+           text-align: center;  
+       }
+      
+       #sidebar .turnover-box h2 {
+           margin: 0;
+           font-size: 18px;
+           font-weight: bold;
+           color: #fff;
+       }
+      
+       /* -- collapsible sidebar -- */
+       #sidebar {
+           position: absolute;
+           top: 0; left: 0; bottom: 0;
+           width: 350px;             
+           padding: 20px;
+           background: rgba(0,0,0,0.85);
+           color: white;
+           overflow-y: auto;
+           box-shadow: 2px 0 8px rgba(0,0,0,0.5);
+           transform: translateX(0);
+           transition: transform 0.3s ease;
+           z-index: 10;
+       }
+      
+       #sidebar.collapsed {
+           transform: translateX(-100%);
+       }
+
+
+       /* -- Beautify sidebar scrollbar -- */
+       #sidebar::-webkit-scrollbar {
+           width: 8px;
+       }
+      
+       #sidebar::-webkit-scrollbar-track {
+           background: transparent;
+       }
+
+
+       #sidebar::-webkit-scrollbar-thumb {
+           background-color: rgba(255, 255, 255, 0.2); 
+           border-radius: 10px;
+           border: 2px solid transparent;
+           background-clip: content-box;
+       }
+
+
+       #sidebar::-webkit-scrollbar-thumb:hover {
+           background-color: rgba(255, 255, 255, 0.4); 
+       }
+      
+       /* -- slide-out/slide-in buttons -- */
+       #sidebar-toggle {
+           position: absolute;
+           top: 20px;
+           left: 30px;                
+           width: 24px; height: 48px;
+           background: rgba(255,255,255,0.1);
+           border: none;
+           color: white;
+           font-size: 24px;
+           cursor: pointer;
+           transition: left 0.3s ease, transform 0.3s ease;
+           z-index: 11;
+       }
+      
+       #sidebar.collapsed + #sidebar-toggle {
+           left: 0;
+       }
+      
+       #sidebar-toggle.collapsed {
+           transform: rotate(180deg);
+        }
+  

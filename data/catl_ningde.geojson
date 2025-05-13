@@ -1,0 +1,19 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "company": "宁德时代新能源科技股份有限公司科技大楼 (CATL)",
+        "address": "宁德市蕉城区漳港路2号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.55,
+          26.65
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+﻿ranking,brand_name,name,company_name,loc_province,2024_annual_capacity(GWh),market_share,key_customer
+1,CATL,宁德时代CATL,"Contemporary Amperex Technology Co., Limited (CATL)",Fujian,>400,0.4,"Tesla, NIO, Li Auto, BMW, VW"
+2,BYD Battery,弗迪电池,BYD Company Limited,Guangdong,>300,0.25,"BYD vehicles, Toyota, Hyundai, Kia"
+3,CITIC Group,中创新航,"CITIC New Materials Development Co., Ltd.",Jiangsu,≈150,0.08,"XPeng, GAC, Geely, Honda"
+4,Gotion High-tech,国轩高科,"Gotion High-tech Co., Ltd.",Anhui,≈120,0.06,"VW, NIO, Chery, Leapmotor"
+5,EVE Energy,亿纬EVE,"EVE Energy Co., Ltd.",Guangdong,≈100,0.05,"BMW, Daimler, Xiaomi Auto"
+6,Sunwoda,欣旺达SUNWODA,"Sunwoda Electronic Co., Ltd.",Guangdong,≈80,0.04,"Geely, Renault, Nissan"
+7,Svolt Energy,蜂巢能源SVOLT,"Taikang Energy Technology Co., Ltd.",Jiangsu,≈60,0.03,"Great Wall, Ora, Seres"
+8,Farasis Energy,孚能科技Farasis,"Yazhen Fine Technology Co., Ltd.",Jiangxi,≈40,0.02,"Mercedes-Benz, Geely, BAIC"
+9,Envision AESC,远景动力,Envision Energy Limited,Shanghai,≈35,0.02,"Nissan, Renault, Lexus"
+10,Hithium,海辰储能,"Xiamen Hithium Energy Storage Technology Co., Ltd.",Fujian,≈25,0.01,"Commercial EVs, Energy Storage"
+,,,,,,,
+Source： https://m.chinabgao.com/top/brand/83651.html,,,,,,,
+"Unit: The capacity of power batteries is usually measured in GWh (gigawatt-hours), with 1 GWh ≈ the battery demand for 20,000 electric vehicles.",,,,,,,

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Lithium Trade Map
+  </title>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7">
+  </script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js">
+  </script>
+  <link href="css/fullmap1.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <!-- sidebar -->
+  <div id="sidebar">
+   <div class="sidebar-content">
+    <!-- 1.title -->
+    <div class="turnover-box">
+     <h2>
+      LITHIUM TURNOVER
+     </h2>
+    </div>
+    <!-- 2.Export/Import -->
+    <div id="mode-toggle">
+     <button class="active" id="exportBtn">
+      EXPORT
+     </button>
+     <button class="import" id="importBtn">
+      IMPORT
+     </button>
+    </div>
+    <!--  3.year+country title  -->
+    <h1>
+     <span id="year-title">
+      2023
+     </span>
+     <span class="dropdown-arrow" id="year-arrow">
+     </span>
+     <span id="country-title">
+      World
+     </span>
+     <span class="dropdown-arrow" id="country-arrow">
+     </span>
+    </h1>
+    <!-- 4. year+country memu -->
+    <div class="dropdown-menu" id="year-menu">
+    </div>
+    <div class="dropdown-menu" id="country-menu">
+    </div>
+    <!-- 5.numerical display -->
+    <div class="export" id="trade-value">
+     Loading...
+    </div>
+    <!-- 6.bar graph+play button -->
+    <div id="bar-chart-container" style="position: relative;">
+     <svg height="100" id="bar-chart" width="300">
+     </svg>
+     <button id="play-button">
+      ▶
+     </button>
+    </div>
+    <!-- 7.text -->
+    <div class="info-block">
+     <p>
+      <strong>
+       Global Lithium Trade Overview
+      </strong>
+      <br/>
+      Lithium is a critical mineral powering the clean energy revolution, primarily used in batteries for electric vehicles and renewable energy storage. This interactive map visualizes international lithium trade flows between major producing and consuming countries from 2007 to 2023.
+     </p>
+    </div>
+    <div class="info-block">
+     <p>
+      <strong>
+       Key Insights
+      </strong>
+      <br/>
+      The visualization highlights dominant lithium exporters like Australia and Chile, while major importers include China, South Korea, and industrialized economies. Trade volumes have surged since 2015, reflecting growing demand for battery technologies.
+     </p>
+    </div>
+    <div class="info-block">
+     <p>
+      <strong>
+       Data Notes
+      </strong>
+      <br/>
+      Trade values are shown in USD and represent reported bilateral transactions. Some minor discrepancies may occur due to reporting differences between countries. The "World" view aggregates total global trade, while selecting individual countries reveals their specific trade partners.
+     </p>
+    </div>
+    <div class="info-block">
+     <p>
+      <strong>
+       Data Coverage Notice
+      </strong>
+      <br/>
+      This visualization combines two datasets:
+      <br/>
+      •
+      <span style="color:orange">
+       Aggregate trade values
+      </span>
+      (2007-2024, all countries)
+      <br/>
+      •
+      <span style="color:#3498db">
+       Bilateral flows
+      </span>
+      (2012-2023, country-to-country)
+      <br/>
+      •
+      <span style="color:#ec6242">
+       Bilateral flows
+      </span>
+      (2007-2024, Missing total value；2012-2023，partial country-to-country)
+      <br/>
+      The red markers indicate countries that do not report total trade values but have bilateral trade relations in our part of the dataset. This discrepancy typically occurs in the following cases: 1. Partial reporting: the country reports on individual trading partners but does not provide complete annual totals. 2. Aggregated data: bilateral records exist for specific partners, but the combined totals are missing or unpublished. Due to limitations in data availability in previous years, Connecting Lines (Trade Relations) only shows data from 2012 onwards. values for 2024 are projections, with no detailed information on partners.
+     </p>
+    </div>
+   </div>
+   <!-- 8.data -->
+   <div>
+    <p style="font-size:12px;">
+     Data from
+     <a href="https://github.com/ximengchang-ucl/CASA0003-Group1" style="color:#66ccff;">
+      GitHub
+     </a>
+    </p>
+   </div>
+  </div>
+  <!-- 9. Sidebar slide toggle button -->
+  <button aria-label="Toggle sidebar" id="sidebar-toggle">
+   «
+  </button>
+  <!-- 10. Map containers and legends -->
+  <div id="map">
+  </div>
+  <div class="legend">
+   <div>
+    <span class="export">
+    </span>
+    Exports
+   </div>
+   <div>
+    <span class="import">
+    </span>
+    Imports
+   </div>
+  </div>
+  <script src="js/fullmap1.js">
+  </script>
+ </body>
+</html>

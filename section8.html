@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EV Sales Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="css/section8.css" />
+  <canvas id="bgParticles"></canvas>
+  <link rel="stylesheet" href="css/bgParticles.css" />
+</head>
+<body>
+  <div class="layout">
+    <!-- 左侧，去掉 nav-left -->
+    <div class="left-panel">
+      <h1 class="project-title">Annual Global EV Sales (2010-2023) </h1>
+      <div id="controls" class="controls">
+        <button data-range="2010-2014">2010–2014</button>
+        <button data-range="2015-2019">2015–2019</button>
+        <button data-range="2020-2024">2020–2023</button>
+        <button data-range="2010-2024" class="active">All</button>
+      </div>
+      <div class="chart-full">
+        <canvas id="combinedChart"></canvas>
+      </div>
+    </div>
+
+    <!-- 右侧翻转卡 -->
+    <div class="right-panel">
+      <div class="flip-card">
+        <div class="flip-inner">
+          <!-- Front -->
+          <div class="flip-front content-box">
+            <h2 class="graph-title">Top EV Sales Countries</h2>
+        
+            <p class="desc">
+  1.&nbsp;J-shaped Growth: EV sales rose from ~10⁴ units in 2010–2014 to >10⁷ units by 2023.<br><br>
+
+  2.&nbsp;China-Led Market: China supplies >50 % of global EVs since 2018, with the US and EU as key secondary markets.<br><br>
+
+  3.&nbsp;Policy-Chain Synergy: Coordinated subsidies, infrastructure and battery capacity support 20–30 % annual growth.<br><br>
+
+  4.&nbsp;Cost Parity: Battery pack costs fell >80 % since 2010, bringing many BEVs to total-cost-of-ownership parity with ICE cars by 2023.<br><br>
+
+  5.&nbsp;Charging Roll-out: Public chargers grew from <0.1 M in 2015 to >3 M in 2023; regions with dense fast-charger networks saw adoption rates ~1.5× higher.<br><br>
+
+  6.&nbsp;Model Proliferation: Global EV variants jumped from <10 in 2010 to >200 in 2023, with luxury EVs (>$70 k) making up ~20 % of sales.
+</p>
+
+            <button id="readMore" class="read-more">Read More</button>
+          </div>
+          <!-- Back -->
+          <div class="flip-back content-box">
+            <h3 class="sub-title">A blooming of EV sales in China</h3>
+            <p class="back-text">
+              China’s electric-vehicle surge isn’t the result of one silver bullet but of a tight weave of policy, scale, supply-chain muscle and relentless competition.  
+              The strands reinforce each other, so the market keeps accelerating even after some purchase subsidies have ended.
+            </p>
+
+             <p class="back-text">
+              A fully integrated, low-cost battery &amp; parts supply chain has been the key driver of this boom.  
+              There is also a home market vast enough to fund rapid iteration.  
+              Furthermore, more and more tech firms are joining the industry, and this hyper-competitive innovation loop keeps boosting EV development.
+             </p>
+
+            <button id="goBack" class="back-button">◀ Last Page</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/section8.js"></script>
+  <script src="js/bgParticles.js"></script>
+</body>
+</html>

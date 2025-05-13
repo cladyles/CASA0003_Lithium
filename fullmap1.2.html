@@ -1,0 +1,57 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lithium & Global Resources Map — d3 + GitHub CSV</title>
+
+  <!-- Mapbox GL JS -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.js" defer></script>
+
+  <!-- 你的全局 style.css（保留）-->
+  <link rel="stylesheet" href="css/fullmap1.2.css" />
+
+  <!-- d3 -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7" defer></script>
+
+
+</head>
+<body>
+
+  <div id="sidebar">
+    <div class="sidebar-box"> 
+    <h1>Lithium & Global Resources Distribution</h1>
+
+    <div id="buttons">
+      <button id="lithium-btn" class="btn-lithium">Lithium Deposits</button>
+      <button id="global-btn" class="btn-global">Critical Mineral Deposits</button>
+      
+    </div>
+
+    <div class="info-box">
+      <p>Lithium is found only in hard-rock deposits or salares, 
+    and today about 90 percent of global output is confined to Australia, Chile, China, and Argentina. </p> 
+    <p>Australia, the largest producer, mined over 40 percent of the world’s lithium from hard-rock spodumene in 2023, 
+    while vast salares in Argentina, Bolivia, and Chile supply most of South America’s output. China, active in both hard-rock and salar extraction, refines the bulk of Australia’s spodumene into battery-grade lithium 
+    and thus wields dominant influence over the global supply chain.</p>
+    </div>
+
+    <button id="chile-btn" class="sidebar-btn">Lithium Triangle</button>
+    
+    </div>
+  </div>
+    
+
+  <div id="map"></div>
+
+  <div id="legend" class="legend"></div>
+
+  <script src="js/fullmap1.2.js"></script>
+  
+
+  
+
+  </body>
+  </html>
+
+  
+  

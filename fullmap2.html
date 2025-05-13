@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>South America – China – Developed Countries Lithium Element Automotive Industry Chain</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
+
+  <!-- Mapbox 样式 -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.11.1/mapbox-gl.css" rel="stylesheet"/>
+
+  <!-- 自定义样式 -->
+  <link rel="stylesheet" href="css/fullmap2.css" />
+</head>
+<body>
+
+  <!-- 地图容器 -->
+  <div id="map"></div>
+
+  <!-- 页面主标题 -->
+  <h1 id="mainTitle">South America – China – Developed Countries Lithium Element Automotive Industry Chain</h1>
+
+  <!-- 其他内容继续保留... -->
+
+  <!-- 场景标签 -->
+  <div id="sceneLabel" class="scene-label"></div>
+
+  <!-- 信息面板 -->
+  <div id="infoPanel" class="info-panel">
+    <h2 id="infoTitle">Welcome</h2>
+    <p id="infoText">Click “Next →” to start the journey.</p>
+
+    <!-- 图表和可视化内容 -->
+    <canvas id="panelChart"></canvas>
+    <canvas id="provinceImportChart"></canvas>
+    <canvas id="provinceExportChart"></canvas>
+    <div id="d3viz"></div>
+    <div id="line-chart"></div>
+
+    <!-- 步骤图片（如宁德时代图） -->
+    <img 
+      id="stepImage"
+      src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" 
+      alt="Step Image"
+      style="width: 100%; margin-top: 12px; border-radius: 6px; display: none;" 
+    />
+  </div>
+
+  <!-- 辅助说明面板 -->
+  <div id="secondaryPanel">Secondary explanation will appear here.</div>
+
+  <!-- 操作按钮 -->
+  <button id="prevBtn" class="btn">← Previous</button>
+  <button id="nextBtn" class="btn">Next →</button>
+
+  <!-- JS 脚本库 -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.11.1/mapbox-gl.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min"></script>
+
+  <!-- 主脚本 -->
+  <script src="js/fullmap2.js"></script>
+</body>
+</html>

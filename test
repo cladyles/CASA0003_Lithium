@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Three.js WebGPU Particle Mouse Tracking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { margin:0; overflow:hidden; background:#14171a; }
+    #info { position:absolute; top:10px; left:10px; color:#fff; font-family:sans-serif; z-index:10; }
+  </style>
+
+  <!-- 一定要放在最上面 -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="info">Move your mouse to spawn particles</div>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls }     from 'three/addons/controls/OrbitControls.js';
+    import WebGPU                from 'three/addons/capabilities/WebGPU.js';
+    import {
+      Fn, storage, atan, float, vec2, vec3,
+      deltaTime, uniform, instanceIndex,
+      hash, sin, pcurve, hue, color
+    } from 'three/addons/tsl/display/BloomNode.js';
+
+    let camera, scene, renderer;
+    const nbParticles = 1 << 13;
+    const pointer = new THREE.Vector2();
+    const worldPt = new THREE.Vector3();
+    const rayPlane = new THREE.Plane(new THREE.Vector3(0,0,1), 0);
+    const ray = new THREE.Raycaster();
+
+    // Uniforms
+    const spawnPos   = uniform(vec3(0));
+    const spawnIndex = uniform(0);
+    const spawnCount = uniform(5);
+    const colorOff   = uniform(0);
+    const colorVar   = uniform(2);
+
+    init();
+    function init() {
+      if (!WebGPU.isAvailable()) {
+        document.body.appendChild(WebGPU.getErrorMessage());
+        return;
+      }
+
+      camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 200);
+      camera.position.set(0,0,10);
+      scene = new THREE.Scene();
+
+      renderer = new THREE.WebGPURenderer({ antialias:true });
+      renderer.setSize(innerWidth, innerHeight);
+      renderer.setAnimationLoop(animate);
+      document.body.appendChild(renderer.domElement);
+
+      // 鼠标追踪
+      window.addEventListener('pointermove', e => {
+        pointer.x = (e.clientX / innerWidth ) * 2 - 1;
+        pointer.y = -(e.clientY / innerHeight) * 2 + 1;
+      });
+
+      // 颜色函数
+      const getColor = Fn(([i]) =>
+        hue(color(0x0000ff), colorOff.add(hash(i.toFloat()).mul(colorVar)))
+      );
+
+      // 存储缓冲区
+      const posBuf = storage(new THREE.StorageInstancedBufferAttribute(nbParticles, 4), 'vec4', nbParticles);
+      const velBuf = storage(new THREE.StorageInstancedBufferAttribute(nbParticles, 4), 'vec4', nbParticles);
+
+      // 初始化：全部“死掉”
+      renderer.computeAsync(
+        Fn(() => {
+          posBuf.element(instanceIndex).xyz.assign(vec3(10000));
+          posBuf.element(instanceIndex).w.assign(-1);
+        })().compute(nbParticles)
+      );
+
+      // 粒子材质
+      const quad = new THREE.PlaneGeometry(0.05,0.05);
+      const mat  = new THREE.SpriteNodeMaterial();
+      mat.blending    = THREE.AdditiveBlending;
+      mat.depthWrite  = false;
+      mat.positionNode= posBuf.toAttribute();
+      mat.scaleNode   = vec2(uniform(1.0));
+      mat.rotationNode= atan(velBuf.toAttribute().y, velBuf.toAttribute().x);
+      mat.colorNode   = Fn(() => {
+        const life = posBuf.toAttribute().w;
+        const curve = pcurve(life.oneMinus(), 8, 1);
+        return getColor(instanceIndex).mul(curve);
+      })();
+      mat.opacityNode = Fn(() => posBuf.toAttribute().w)();
+
+      const mesh = new THREE.InstancedMesh(quad, mat, nbParticles);
+      mesh.frustumCulled = false;
+      scene.add(mesh);
+
+      // 更新逻辑
+      const updateParticles = Fn(() => {
+        const p = posBuf.element(instanceIndex).xyz;
+        const l = posBuf.element(instanceIndex).w;
+        const v = velBuf.element(instanceIndex).xyz;
+        const dt = deltaTime.mul(0.1);
+        If(l.greaterThan(0), () => {
+          p.addAssign(v.mul(dt));
+          l.subAssign(dt);
+        });
+      })().compute(nbParticles);
+
+      // 产生逻辑
+      const spawnParticles = Fn(() => {
+        const idx = spawnIndex.add(instanceIndex).mod(nbParticles).toInt();
+        posBuf.element(idx).xyz.assign(spawnPos);
+        posBuf.element(idx).w.assign(1.0);
+      })().compute(spawnCount.value);
+
+      function animate() {
+        // 射线投影到平面，更新 spawnPos
+        ray.setFromCamera(pointer, camera);
+        ray.ray.intersectPlane(rayPlane, worldPt);
+        spawnPos.value.lerp(worldPt, 0.1);
+
+        renderer.compute(updateParticles);
+        renderer.compute(spawnParticles);
+        renderer.render(scene, camera);
+      }
+    }
+
+    window.addEventListener('resize', () => {
+      camera.aspect = innerWidth/innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(innerWidth, innerHeight);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Lithium & Global Resources Map — d3 + GitHub CSV</title>
+
+
+ <!-- Mapbox GL JS -->
+ <link href="https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.css" rel="stylesheet" />
+ <script src="https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.js" defer></script>
+
+
+ <!-- 你的全局 style.css（保留）-->
+ <link rel="stylesheet" href="style.css" />
+
+
+ <!-- d3 -->
+ <script src="https://cdn.jsdelivr.net/npm/d3@7" defer></script>
+
+
+ <!-- 仅放与本页面相关的小段样式 -->
+ <style>
+   html, body { height: 100%; margin: 0; background: #1a1a1a; }
+   #map       { position: absolute; top: 0; bottom: 0; width: 100%; }
+   .mapboxgl-marker { cursor: pointer; }
+
+
+   .deposit-popup .mapboxgl-popup-content {
+     background:#262626; color:#fff; border-radius:6px;
+     padding:6px 12px; font:14px/1.35 "Helvetica Neue",Arial,sans-serif;
+   }
+   .deposit-popup .mapboxgl-popup-tip { border-top-color:#262626; }
+
+
+   #buttons { margin:10px 0; text-align:center; }
+   #buttons button{
+     margin:0 6px; padding:6px 12px; background:#3b3b3b;
+     color:#fff; border:none; border-radius:4px; cursor:pointer;
+   }
+   #buttons button.active { background:#F0715E; }
+
+
+   /* —— 折叠段落效果 —— */
+   .sidebar-paragraph.collapsed{
+     max-height:160px;              /* 初始可见高度，可调整 */
+     overflow:hidden;
+     position:relative;
+   }
+   .sidebar-paragraph.collapsed::after{
+     content:''; position:absolute; left:0; right:0; bottom:0; height:2rem;
+     background:linear-gradient(to bottom, rgba(0,0,0,0) 0%, #1a1a1a 100%);
+   }
+   .toggle-paragraph-btn{
+     background:none; border:none; cursor:pointer;
+     color:#76b7ff; font-size:0.85rem; margin-top:0.5rem;
+   }
+   .toggle-paragraph-btn:hover{ text-decoration:underline; }
+ </style>
+</head>
+<body>
+
+
+ <div id="sidebar">
+   <h1>Lithium & Global Resources Distribution</h1>
+
+
+   <div id="buttons">
+     <button id="lithium-btn" class="active">Lithium Deposits</button>
+     <button id="global-btn">Critical Mineral Deposits</button>
+   </div>
+
+
+   <div class="info-box">
+     Lithium only exists in hard rock deposits or salt flats (salares).
+     Currently, about 90% of the world's lithium production is concentrated in four countries: Australia, Chile, China, and Argentina.
+     Among them, Australia directly mines spodumene from hard rock deposits and is currently the largest lithium producer, with its lithium output accounting for over 40% of the global total in 2023.
+     On the other hand, vast salt flats in Latin America, particularly in Argentina, Bolivia, and Chile
+   </div>
+
+
+   <h2 class="sidebar-h2">The Lithium Triangle:</h2>
+   <!-- ★ 关键：加 id="longText" ★ -->
+   <p id="longText" class="sidebar-paragraph collapsed">
+     Latin America is the region with the largest lithium resource reserves in the world.
+     The famous Lithium Triangle is a lithium-rich area located at the southwestern corner of the Andes Mountains in South America, spanning the borders of Argentina, Bolivia, and Chile, forming a geographical triangle of lithium resources beneath its salt flats.
+     According to the 2021 US Geological Survey's "Mineral Commodity Summaries," about 58% of the world's lithium resources are distributed in these three countries.
+     Among the globally identified 86 million tons of lithium resource reserves,
+     However, the extraction of lithium has also brought severe ecological destruction and social injustice.
+     In Latin America, lithium mining projects dominated by foreign capital often come at the expense of indigenous lands, water resources, and livelihoods, turning the hope for green energy into another form of resource plunder.
+     Although lithium is considered a key material in the fight against the climate crisis, under the current system, wealth flows to multinational companies, while local communities struggle to share in the benefits, resulting in a new form of oppression and exploitation.
+   </p>
+   <button id="toggleParagraph" class="toggle-paragraph-btn">Read more ⌄</button>
+ </div>
+
+
+ <div id="map"></div>
+
+
+ <div id="legend" class="legend"></div>
+
+
+  <script defer>
+   window.addEventListener('DOMContentLoaded', () => {
+     if (typeof mapboxgl === 'undefined') {
+       alert('❌ Mapbox GL JS failed to load.'); return;
+     }
+  
+     mapboxgl.accessToken =
+       'pk.eyJ1IjoiaGFuZ3VvMDIiLCJhIjoiY203dWdpZmVuMDBjdDJ2cXNkOWQ5NmI1bSJ9.9sz-VQqIqo6Dw1kSer5FZA';
+  
+     const CSV_URL        = 'https://raw.githubusercontent.com/hanguo02/CASA0003_Groupwork/8f630d09842e8b9739e209e9a575a06064a31535/data/Lithium_Worldwide_Deposit.csv';
+     const GLOBAL_CSV_URL = 'https://raw.githubusercontent.com/cladyles/CASA0003_Groupwork/refs/heads/main/data/global_critical_mineral_locations.csv';
+  
+     /* ------- 固定矿物配色表（只显示这些） ------- */
+     const mineralColors = {
+       Lithium : '#F0715E',
+       Cobalt  : '#FF2553',
+       Nickel  : '#63FD88',
+       Copper  : '#3262FF',
+       'Rare Earth' : '#A86CFF',
+       Graphite: '#3EFFD4',
+       Manganese: '#FC5252'
+     };
+     const stringToColor = str => {
+       let h=0; for(let i=0;i<str.length;i++) h=(h<<5)-h+str.charCodeAt(i);
+       return `hsl(${Math.abs(h)%360},70%,55%)`;
+     };
+     const getColor = m => mineralColors[m] || stringToColor(m);
+  
+     /* ---------- 图例：只遍历 mineralColors ---------- */
+     const legend = document.getElementById('legend');
+     function buildLegend(){
+       legend.innerHTML='';
+       legend.insertAdjacentHTML('afterbegin', '<div>Most Critical Mineral Deposits</div>');
+       Object.entries(mineralColors).forEach(([mineral,color])=>{
+         const row   = document.createElement('div'); row.className='legend-item';
+         const sw    = document.createElement('span'); sw.className='legend-color';
+         sw.style.background = color;
+         const label = document.createElement('span'); label.textContent = mineral;
+         row.appendChild(sw); row.appendChild(label); legend.appendChild(row);
+       });
+     }
+     buildLegend();   // 初次渲染
+  
+     /* ---------- Map ---------- */
+     const map = new mapboxgl.Map({
+       container:'map', projection:'naturalEarth',
+       style:'mapbox://styles/hanguo02/cma9ff7fw00if01qy8ukfdypl',
+       center:[10,12], zoom:1.8
+     });
+  
+     let markers=[];
+     function loadData(csvUrl,lithiumColor){
+       markers.forEach(({marker})=>marker.remove()); markers=[];
+  
+       d3.csv(csvUrl,d3.autoType).then(rows=>{
+         rows.forEach(row=>{
+           const lat=row.LATITUDE, lon=row.LONGITUDE;
+           if(typeof lat!=='number'||typeof lon!=='number') return;
+  
+           const mineral=row.CRITICAL_MINERAL||'Lithium';
+           const name=row.DEPOSIT_NAME||row.RESOURCE_NAME||mineral;
+  
+           const popup=new mapboxgl.Popup({
+             offset:20, closeButton:false, closeOnClick:false,
+             className:'deposit-popup'
+           }).setHTML(`<strong>${name}</strong><br>${mineral}`);
+  
+           let marker, el;
+           if(csvUrl===GLOBAL_CSV_URL){
+             el=document.createElement('div');
+             el.className='global-marker fade-marker';
+             el.style.background=getColor(mineral);
+             marker=new mapboxgl.Marker({element:el}).setLngLat([lon,lat]).addTo(map);
+           }else{
+             marker=new mapboxgl.Marker({color:lithiumColor})
+                     .setLngLat([lon,lat]).addTo(map);
+             el=marker.getElement();
+             el.classList.add('fade-marker');
+           }
+           requestAnimationFrame(()=>el.classList.add('show'));
+           el.addEventListener('mouseenter',()=>popup.addTo(map).setLngLat([lon,lat]));
+           el.addEventListener('mouseleave',()=>popup.remove());
+           markers.push({marker,popup});
+         });
+         /* 图例始终保持固定，不再更新额外矿物 */
+       }).catch(err=>console.error('❌ CSV load failed:',err));
+     }
+  
+     map.on('load',()=>loadData(CSV_URL,'#F0715E'));
+     document.getElementById('lithium-btn').addEventListener('click',()=>{
+       document.getElementById('lithium-btn').classList.add('active');
+       document.getElementById('global-btn').classList.remove('active');
+       loadData(CSV_URL,'#F0715E');
+     });
+     document.getElementById('global-btn').addEventListener('click',()=>{
+       document.getElementById('global-btn').classList.add('active');
+       document.getElementById('lithium-btn').classList.remove('active');
+       loadData(GLOBAL_CSV_URL,'#4E91FF');
+     });
+  
+     /* ---------- 折叠 / 展开段落 ---------- */
+     const longText = document.getElementById('longText');
+     const toggleBtn = document.getElementById('toggleParagraph');
+     toggleBtn.addEventListener('click',()=>{
+       const collapsed=longText.classList.toggle('collapsed');
+       toggleBtn.textContent = collapsed ? 'Read more ⌄' : 'Show less ⌃';
+     });
+   });
+   </script>
+      
+
+
+</body>
+</html>

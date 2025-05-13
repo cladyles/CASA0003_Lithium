@@ -1,0 +1,1246 @@
+Year,Country,EV_Sales
+2010,China,1100.0
+2010,China,120.0
+2010,China,970.0
+2010,China,340.0
+2011,China,320.0
+2011,China,160.0
+2011,China,440.0
+2011,China,150.0
+2011,China,4800.0
+2012,China,9600.0
+2012,China,670.0
+2012,China,1400.0
+2012,China,510.0
+2012,China,260.0
+2013,China,730.0
+2013,China,1800.0
+2013,China,2000.0
+2013,China,750.0
+2013,China,15000.0
+2014,China,49000.0
+2014,China,6000.0
+2014,China,480.0
+2014,China,4000.0
+2014,China,24000.0
+2015,China,17000.0
+2015,China,61000.0
+2015,China,43000.0
+2015,China,15000.0
+2015,China,13000.0
+2015,China,150000.0
+2016,China,260000.0
+2016,China,7600.0
+2016,China,11000.0
+2016,China,76000.0
+2016,China,79000.0
+2016,China,46000.0
+2017,China,71000.0
+2017,China,110000.0
+2017,China,470000.0
+2017,China,380.0
+2017,China,88000.0
+2017,China,68000.0
+2017,China,240.0
+2018,China,1200.0
+2018,China,54000.0
+2018,China,83000.0
+2018,China,890.0
+2018,China,820000.0
+2018,China,270000.0
+2018,China,36000.0
+2018,China,400.0
+2019,China,2000.0
+2019,China,31.0
+2019,China,24000.0
+2019,China,230000.0
+2019,China,830000.0
+2019,China,1100.0
+2019,China,68000.0
+2019,China,27000.0
+2019,China,1300.0
+2019,China,27.0
+2020,China,17000.0
+2020,China,1300.0
+2020,China,27.0
+2020,China,1.0
+2020,China,1800.0
+2020,China,26000.0
+2020,China,55000.0
+2020,China,1200.0
+2020,China,920000.0
+2020,China,220000.0
+2020,China,17000.0
+2020,China,27.0
+2020,China,1300.0
+2020,China,55000.0
+2020,China,1200.0
+2020,China,1800.0
+2020,China,26000.0
+2020,China,920000.0
+2020,China,1.0
+2020,China,220000.0
+2020,China,55000.0
+2020,China,1200.0
+2020,China,1800.0
+2020,China,26000.0
+2020,China,920000.0
+2020,China,1.0
+2020,China,220000.0
+2020,China,17000.0
+2020,China,1300.0
+2020,China,27.0
+2021,China,520.0
+2021,China,1200.0
+2021,China,18000.0
+2021,China,550000.0
+2021,China,160.0
+2021,China,19.0
+2021,China,2700000.0
+2021,China,3.0
+2021,China,71000.0
+2021,China,860.0
+2021,China,900.0
+2021,China,42000.0
+2021,China,160.0
+2021,China,19.0
+2021,China,2700000.0
+2021,China,3.0
+2021,China,71000.0
+2021,China,860.0
+2021,China,900.0
+2021,China,42000.0
+2021,China,19.0
+2021,China,520.0
+2021,China,1200.0
+2021,China,18000.0
+2021,China,550000.0
+2021,China,2700000.0
+2021,China,900.0
+2021,China,42000.0
+2021,China,71000.0
+2021,China,860.0
+2021,China,160.0
+2021,China,3.0
+2021,China,520.0
+2021,China,1200.0
+2021,China,18000.0
+2021,China,550000.0
+2022,China,1500000.0
+2022,China,34000.0
+2022,China,2700.0
+2022,China,260.0
+2022,China,810.0
+2022,China,1500.0
+2022,China,1100.0
+2022,China,170000.0
+2022,China,44000.0
+2022,China,1300.0
+2022,China,4400000.0
+2022,China,1500000.0
+2022,China,34000.0
+2022,China,2700.0
+2022,China,260.0
+2022,China,240.0
+2022,China,44000.0
+2022,China,1300.0
+2022,China,1100.0
+2022,China,170000.0
+2022,China,810.0
+2022,China,4400000.0
+2022,China,240.0
+2022,China,1500.0
+2022,China,44000.0
+2022,China,1300.0
+2022,China,1100.0
+2022,China,170000.0
+2022,China,810.0
+2022,China,4400000.0
+2022,China,240.0
+2022,China,1500.0
+2022,China,1500000.0
+2022,China,34000.0
+2022,China,2700.0
+2022,China,260.0
+2023,China,320.0
+2023,China,3400.0
+2023,China,38000.0
+2023,China,2700000.0
+2023,China,520.0
+2023,China,5400000.0
+2023,China,1900.0
+2023,China,240000.0
+2023,China,1300.0
+2023,China,1200.0
+2023,China,29000.0
+2023,China,520.0
+2023,China,5400000.0
+2023,China,1900.0
+2023,China,240000.0
+2023,China,1300.0
+2023,China,1200.0
+2023,China,29000.0
+2023,China,520.0
+2023,China,320.0
+2023,China,3400.0
+2023,China,38000.0
+2023,China,2700000.0
+2023,China,5400000.0
+2023,China,1200.0
+2023,China,29000.0
+2023,China,240000.0
+2023,China,1300.0
+2023,China,1900.0
+2023,China,320.0
+2023,China,3400.0
+2023,China,38000.0
+2023,China,2700000.0
+2010,EU27,1100.0
+2010,EU27,16.0
+2010,EU27,91.0
+2010,EU27,130.0
+2010,EU27,1300.0
+2010,EU27,2.0
+2010,EU27,26.0
+2011,EU27,11.0
+2011,EU27,2200.0
+2011,EU27,36.0
+2011,EU27,360.0
+2011,EU27,38.0
+2011,EU27,7100.0
+2012,EU27,12000.0
+2012,EU27,29.0
+2012,EU27,7500.0
+2012,EU27,47.0
+2012,EU27,6500.0
+2012,EU27,11.0
+2012,EU27,10.0
+2013,EU27,16.0
+2013,EU27,5.0
+2013,EU27,1.0
+2013,EU27,6600.0
+2013,EU27,68.0
+2013,EU27,24000.0
+2013,EU27,42.0
+2013,EU27,21000.0
+2014,EU27,33000.0
+2014,EU27,28.0
+2014,EU27,24000.0
+2014,EU27,220.0
+2014,EU27,6900.0
+2014,EU27,4.0
+2014,EU27,2.0
+2014,EU27,1.0
+2014,EU27,2.0
+2014,EU27,32.0
+2015,EU27,18.0
+2015,EU27,5.0
+2015,EU27,110.0
+2015,EU27,53.0
+2015,EU27,8000.0
+2015,EU27,140.0
+2015,EU27,70000.0
+2015,EU27,160.0
+2015,EU27,49000.0
+2016,EU27,54000.0
+2016,EU27,130.0
+2016,EU27,65000.0
+2016,EU27,470.0
+2016,EU27,10000.0
+2016,EU27,99.0
+2016,EU27,81.0
+2016,EU27,27.0
+2016,EU27,150.0
+2016,EU27,54.0
+2017,EU27,43.0
+2017,EU27,34.0
+2017,EU27,11.0
+2017,EU27,27.0
+2017,EU27,26.0
+2017,EU27,14000.0
+2017,EU27,340.0
+2017,EU27,89000.0
+2017,EU27,270.0
+2017,EU27,85000.0
+2017,EU27,2.0
+2018,EU27,1.0
+2018,EU27,140000.0
+2018,EU27,160.0
+2018,EU27,110000.0
+2018,EU27,620.0
+2018,EU27,20000.0
+2018,EU27,94.0
+2018,EU27,42.0
+2018,EU27,54.0
+2018,EU27,380.0
+2019,EU27,800.0
+2019,EU27,1.0
+2019,EU27,41.0
+2019,EU27,23000.0
+2019,EU27,51.0
+2019,EU27,1600.0
+2019,EU27,140000.0
+2019,EU27,480.0
+2019,EU27,250000.0
+2019,EU27,1.0
+2019,EU27,1.0
+2020,EU27,3.0
+2020,EU27,3.0
+2020,EU27,540000.0
+2020,EU27,660.0
+2020,EU27,1800.0
+2020,EU27,67.0
+2020,EU27,29000.0
+2020,EU27,530.0
+2020,EU27,51.0
+2020,EU27,1000.0
+2020,EU27,510000.0
+2021,EU27,880000.0
+2021,EU27,1400.0
+2021,EU27,75.0
+2021,EU27,2100.0
+2021,EU27,27.0
+2021,EU27,45000.0
+2021,EU27,140.0
+2021,EU27,3100.0
+2021,EU27,860.0
+2021,EU27,890000.0
+2021,EU27,26.0
+2021,EU27,9.0
+2022,EU27,14.0
+2022,EU27,24.0
+2022,EU27,1200000.0
+2022,EU27,1200.0
+2022,EU27,3600.0
+2022,EU27,72.0
+2022,EU27,64000.0
+2022,EU27,2600.0
+2022,EU27,54.0
+2022,EU27,2500.0
+2022,EU27,900000.0
+2023,EU27,850000.0
+2023,EU27,8200.0
+2023,EU27,150.0
+2023,EU27,2200.0
+2023,EU27,58.0
+2023,EU27,110000.0
+2023,EU27,160.0
+2023,EU27,5200.0
+2023,EU27,770.0
+2023,EU27,1600000.0
+2023,EU27,38.0
+2023,EU27,19.0
+2010,Europe,130.0
+2010,Europe,1500.0
+2010,Europe,2.0
+2010,Europe,1700.0
+2010,Europe,27.0
+2010,Europe,110.0
+2010,Europe,36.0
+2011,Europe,18.0
+2011,Europe,410.0
+2011,Europe,38.0
+2011,Europe,11000.0
+2011,Europe,2500.0
+2011,Europe,38.0
+2012,Europe,68.0
+2012,Europe,7100.0
+2012,Europe,11.0
+2012,Europe,19000.0
+2012,Europe,29.0
+2012,Europe,9200.0
+2012,Europe,19.0
+2013,Europe,24.0
+2013,Europe,26000.0
+2013,Europe,42.0
+2013,Europe,33000.0
+2013,Europe,5.0
+2013,Europe,1.0
+2013,Europe,7300.0
+2013,Europe,120.0
+2014,Europe,310.0
+2014,Europe,1.0
+2014,Europe,8400.0
+2014,Europe,2.0
+2014,Europe,4.0
+2014,Europe,6.0
+2014,Europe,62000.0
+2014,Europe,32.0
+2014,Europe,34000.0
+2014,Europe,46.0
+2015,Europe,30.0
+2015,Europe,100000.0
+2015,Europe,190.0
+2015,Europe,89000.0
+2015,Europe,200.0
+2015,Europe,53.0
+2015,Europe,5.0
+2015,Europe,9800.0
+2015,Europe,190.0
+2016,Europe,570.0
+2016,Europe,52.0
+2016,Europe,12000.0
+2016,Europe,280.0
+2016,Europe,99.0
+2016,Europe,160.0
+2016,Europe,93000.0
+2016,Europe,180.0
+2016,Europe,120000.0
+2016,Europe,62.0
+2017,Europe,2.0
+2017,Europe,49.0
+2017,Europe,160000.0
+2017,Europe,340.0
+2017,Europe,140000.0
+2017,Europe,120.0
+2017,Europe,26.0
+2017,Europe,52.0
+2017,Europe,16000.0
+2017,Europe,16.0
+2017,Europe,480.0
+2018,Europe,780.0
+2018,Europe,20.0
+2018,Europe,24000.0
+2018,Europe,140.0
+2018,Europe,94.0
+2018,Europe,190.0
+2018,Europe,210000.0
+2018,Europe,280.0
+2018,Europe,190000.0
+2018,Europe,390.0
+2018,Europe,1.0
+2019,Europe,1.0
+2019,Europe,1.0
+2019,Europe,860.0
+2019,Europe,210000.0
+2019,Europe,610.0
+2019,Europe,370000.0
+2019,Europe,260.0
+2019,Europe,94.0
+2019,Europe,29000.0
+2019,Europe,1.0
+2019,Europe,1900.0
+2020,Europe,2400.0
+2020,Europe,69.0
+2020,Europe,38000.0
+2020,Europe,130.0
+2020,Europe,1100.0
+2020,Europe,760000.0
+2020,Europe,740.0
+2020,Europe,640000.0
+2020,Europe,1100.0
+2020,Europe,26.0
+2020,Europe,4.0
+2020,Europe,38000.0
+2020,Europe,1100.0
+2020,Europe,760000.0
+2020,Europe,2400.0
+2020,Europe,69.0
+2020,Europe,130.0
+2020,Europe,740.0
+2020,Europe,640000.0
+2020,Europe,1100.0
+2020,Europe,26.0
+2020,Europe,4.0
+2020,Europe,760000.0
+2020,Europe,740.0
+2020,Europe,640000.0
+2020,Europe,1100.0
+2020,Europe,26.0
+2020,Europe,4.0
+2020,Europe,2400.0
+2020,Europe,69.0
+2020,Europe,130.0
+2020,Europe,38000.0
+2020,Europe,1100.0
+2021,Europe,3500.0
+2021,Europe,60000.0
+2021,Europe,140.0
+2021,Europe,90.0
+2021,Europe,3900.0
+2021,Europe,26.0
+2021,Europe,69.0
+2021,Europe,1700.0
+2021,Europe,1100000.0
+2021,Europe,960.0
+2021,Europe,1200000.0
+2021,Europe,27.0
+2021,Europe,26.0
+2021,Europe,69.0
+2021,Europe,1700.0
+2021,Europe,1100000.0
+2021,Europe,960.0
+2021,Europe,140.0
+2021,Europe,90.0
+2021,Europe,3900.0
+2021,Europe,1200000.0
+2021,Europe,3500.0
+2021,Europe,60000.0
+2021,Europe,27.0
+2021,Europe,26.0
+2021,Europe,69.0
+2021,Europe,1700.0
+2021,Europe,1100000.0
+2021,Europe,960.0
+2021,Europe,1200000.0
+2021,Europe,3500.0
+2021,Europe,27.0
+2021,Europe,140.0
+2021,Europe,60000.0
+2021,Europe,90.0
+2021,Europe,3900.0
+2022,Europe,5000.0
+2022,Europe,120.0
+2022,Europe,90000.0
+2022,Europe,73.0
+2022,Europe,3300.0
+2022,Europe,1600000.0
+2022,Europe,1300.0
+2022,Europe,1100000.0
+2022,Europe,3700.0
+2022,Europe,16.0
+2022,Europe,24.0
+2022,Europe,90000.0
+2022,Europe,3300.0
+2022,Europe,1600000.0
+2022,Europe,5000.0
+2022,Europe,120.0
+2022,Europe,73.0
+2022,Europe,1300.0
+2022,Europe,1100000.0
+2022,Europe,3700.0
+2022,Europe,16.0
+2022,Europe,24.0
+2022,Europe,1600000.0
+2022,Europe,1300.0
+2022,Europe,1100000.0
+2022,Europe,3700.0
+2022,Europe,16.0
+2022,Europe,24.0
+2022,Europe,5000.0
+2022,Europe,120.0
+2022,Europe,73.0
+2022,Europe,90000.0
+2022,Europe,3300.0
+2023,Europe,2400.0
+2023,Europe,150000.0
+2023,Europe,160.0
+2023,Europe,210.0
+2023,Europe,8300.0
+2023,Europe,38.0
+2023,Europe,19.0
+2023,Europe,11000.0
+2023,Europe,1100000.0
+2023,Europe,820.0
+2023,Europe,2200000.0
+2023,Europe,58.0
+2023,Europe,38.0
+2023,Europe,19.0
+2023,Europe,11000.0
+2023,Europe,1100000.0
+2023,Europe,820.0
+2023,Europe,160.0
+2023,Europe,210.0
+2023,Europe,8300.0
+2023,Europe,2200000.0
+2023,Europe,2400.0
+2023,Europe,150000.0
+2023,Europe,58.0
+2023,Europe,38.0
+2023,Europe,19.0
+2023,Europe,11000.0
+2023,Europe,1100000.0
+2023,Europe,820.0
+2023,Europe,2200000.0
+2023,Europe,2400.0
+2023,Europe,58.0
+2023,Europe,160.0
+2023,Europe,150000.0
+2023,Europe,210.0
+2023,Europe,8300.0
+2010,France,16.0
+2010,France,21.0
+2010,France,190.0
+2010,France,82.0
+2010,France,800.0
+2011,France,1700.0
+2011,France,56.0
+2011,France,2600.0
+2011,France,8.0
+2011,France,21.0
+2012,France,25.0
+2012,France,6.0
+2012,France,5700.0
+2012,France,660.0
+2012,France,3600.0
+2013,France,5100.0
+2013,France,1.0
+2013,France,850.0
+2013,France,8900.0
+2013,France,1.0
+2013,France,7.0
+2013,France,24.0
+2014,France,40.0
+2014,France,12.0
+2014,France,1.0
+2014,France,11000.0
+2014,France,2100.0
+2014,France,4.0
+2014,France,4500.0
+2015,France,4900.0
+2015,France,53.0
+2015,France,18000.0
+2015,France,10.0
+2015,France,10.0
+2015,France,1.0
+2015,France,5800.0
+2015,France,51.0
+2016,France,74.0
+2016,France,7600.0
+2016,France,6.0
+2016,France,34.0
+2016,France,23000.0
+2016,France,99.0
+2016,France,1.0
+2016,France,5500.0
+2017,France,6000.0
+2017,France,25.0
+2017,France,26000.0
+2017,France,46.0
+2017,France,16.0
+2017,France,12000.0
+2017,France,17.0
+2018,France,95.0
+2018,France,15000.0
+2018,France,26.0
+2018,France,10.0
+2018,France,33000.0
+2018,France,92.0
+2018,France,8200.0
+2019,France,8100.0
+2019,France,45000.0
+2019,France,60.0
+2019,France,4.0
+2019,France,21.0
+2019,France,19000.0
+2019,France,280.0
+2020,France,180.0
+2020,France,75000.0
+2020,France,15.0
+2020,France,210.0
+2020,France,110000.0
+2020,France,9200.0
+2021,France,1.0
+2021,France,12000.0
+2021,France,20.0
+2021,France,10.0
+2021,France,170000.0
+2021,France,14.0
+2021,France,800.0
+2021,France,29.0
+2021,France,140000.0
+2021,France,620.0
+2022,France,800.0
+2022,France,130000.0
+2022,France,380.0
+2022,France,520.0
+2022,France,200.0
+2022,France,210000.0
+2022,France,2.0
+2022,France,16000.0
+2023,France,22.0
+2023,France,30000.0
+2023,France,310000.0
+2023,France,310.0
+2023,France,220.0
+2023,France,1.0
+2023,France,3200.0
+2023,France,160000.0
+2023,France,740.0
+2010,Germany,2.0
+2010,Germany,170.0
+2010,Germany,140.0
+2010,Germany,16.0
+2011,Germany,38.0
+2011,Germany,1400.0
+2011,Germany,240.0
+2011,Germany,280.0
+2012,Germany,950.0
+2012,Germany,1200.0
+2012,Germany,2200.0
+2012,Germany,29.0
+2013,Germany,23.0
+2013,Germany,5200.0
+2013,Germany,1600.0
+2013,Germany,600.0
+2013,Germany,2.0
+2014,Germany,720.0
+2014,Germany,4400.0
+2014,Germany,9100.0
+2014,Germany,8.0
+2015,Germany,63.0
+2015,Germany,12000.0
+2015,Germany,11000.0
+2015,Germany,1000.0
+2015,Germany,2.0
+2016,Germany,2400.0
+2016,Germany,120.0
+2016,Germany,110.0
+2016,Germany,16.0
+2016,Germany,13000.0
+2016,Germany,11000.0
+2017,Germany,82.0
+2017,Germany,25000.0
+2017,Germany,29000.0
+2017,Germany,29.0
+2017,Germany,8.0
+2017,Germany,4500.0
+2018,Germany,6000.0
+2018,Germany,43.0
+2018,Germany,31000.0
+2018,Germany,36000.0
+2018,Germany,110.0
+2018,Germany,280.0
+2019,Germany,620.0
+2019,Germany,200.0
+2019,Germany,63000.0
+2019,Germany,45000.0
+2019,Germany,190.0
+2019,Germany,6700.0
+2020,Germany,38.0
+2020,Germany,8800.0
+2020,Germany,180.0
+2020,Germany,390.0
+2020,Germany,200000.0
+2020,Germany,190000.0
+2020,Germany,200.0
+2020,Germany,860.0
+2021,Germany,1000.0
+2021,Germany,460.0
+2021,Germany,360000.0
+2021,Germany,330000.0
+2021,Germany,610.0
+2021,Germany,310.0
+2021,Germany,5.0
+2021,Germany,13000.0
+2021,Germany,33.0
+2021,Germany,5.0
+2022,Germany,15.0
+2022,Germany,21.0
+2022,Germany,18000.0
+2022,Germany,770.0
+2022,Germany,630.0
+2022,Germany,360000.0
+2022,Germany,470000.0
+2022,Germany,840.0
+2022,Germany,1100.0
+2023,Germany,2200.0
+2023,Germany,8.0
+2023,Germany,4.0
+2023,Germany,260.0
+2023,Germany,520000.0
+2023,Germany,180000.0
+2023,Germany,840.0
+2023,Germany,360.0
+2023,Germany,48.0
+2023,Germany,25000.0
+2023,Germany,43.0
+2023,Germany,5.0
+2010,Netherlands,120.0
+2010,Netherlands,39.0
+2011,Netherlands,72.0
+2011,Netherlands,860.0
+2011,Netherlands,17.0
+2012,Netherlands,4300.0
+2012,Netherlands,790.0
+2012,Netherlands,340.0
+2013,Netherlands,180.0
+2013,Netherlands,5.0
+2013,Netherlands,2600.0
+2013,Netherlands,20000.0
+2014,Netherlands,12000.0
+2014,Netherlands,2700.0
+2014,Netherlands,2.20000004768372
+2014,Netherlands,7.0
+2014,Netherlands,590.0
+2015,Netherlands,260.0
+2015,Netherlands,12.0
+2015,Netherlands,19.0
+2015,Netherlands,3400.0
+2015,Netherlands,4.0
+2015,Netherlands,39000.0
+2016,Netherlands,18000.0
+2016,Netherlands,26.0
+2016,Netherlands,4000.0
+2016,Netherlands,7.0
+2016,Netherlands,80.0
+2016,Netherlands,290.0
+2016,Netherlands,1.0
+2017,Netherlands,3.0
+2017,Netherlands,650.0
+2017,Netherlands,150.0
+2017,Netherlands,7.0
+2017,Netherlands,8700.0
+2017,Netherlands,1.0
+2017,Netherlands,18.0
+2017,Netherlands,2500.0
+2017,Netherlands,2.0
+2018,Netherlands,1.0
+2018,Netherlands,5100.0
+2018,Netherlands,30.0
+2018,Netherlands,2.0
+2018,Netherlands,25000.0
+2018,Netherlands,13.0
+2018,Netherlands,110.0
+2018,Netherlands,1000.0
+2019,Netherlands,1.0
+2019,Netherlands,1400.0
+2019,Netherlands,380.0
+2019,Netherlands,160.0
+2019,Netherlands,63000.0
+2019,Netherlands,130.0
+2019,Netherlands,6700.0
+2019,Netherlands,1.0
+2020,Netherlands,3.0
+2020,Netherlands,18000.0
+2020,Netherlands,50.0
+2020,Netherlands,2.0
+2020,Netherlands,76000.0
+2020,Netherlands,170.0
+2020,Netherlands,33.0
+2020,Netherlands,450.0
+2020,Netherlands,1700.0
+2021,Netherlands,37.0
+2021,Netherlands,3300.0
+2021,Netherlands,150.0
+2021,Netherlands,46.0
+2021,Netherlands,140.0
+2021,Netherlands,70000.0
+2021,Netherlands,8.0
+2021,Netherlands,71.0
+2021,Netherlands,40000.0
+2021,Netherlands,16.0
+2022,Netherlands,17.0
+2022,Netherlands,50000.0
+2022,Netherlands,120.0
+2022,Netherlands,14.0
+2022,Netherlands,87000.0
+2022,Netherlands,87.0
+2022,Netherlands,35.0
+2022,Netherlands,99.0
+2022,Netherlands,5000.0
+2022,Netherlands,14.0
+2023,Netherlands,9.0
+2023,Netherlands,10000.0
+2023,Netherlands,180.0
+2023,Netherlands,90.0
+2023,Netherlands,65.0
+2023,Netherlands,130000.0
+2023,Netherlands,8.0
+2023,Netherlands,1200.0
+2023,Netherlands,80000.0
+2023,Netherlands,26.0
+2010,Norway,360.0
+2010,Norway,1.0
+2011,Norway,42.0
+2011,Norway,2000.0
+2012,Norway,320.0
+2012,Norway,3900.0
+2012,Norway,61.0
+2013,Norway,340.0
+2013,Norway,7900.0
+2013,Norway,340.0
+2014,Norway,1700.0
+2014,Norway,20000.0
+2014,Norway,4.0
+2014,Norway,560.0
+2015,Norway,710.0
+2015,Norway,9.0
+2015,Norway,26000.0
+2015,Norway,7900.0
+2016,Norway,21000.0
+2016,Norway,24000.0
+2016,Norway,20.0
+2016,Norway,640.0
+2016,Norway,13.0
+2017,Norway,2.0
+2017,Norway,18.0
+2017,Norway,770.0
+2017,Norway,30.0
+2017,Norway,33000.0
+2017,Norway,29000.0
+2018,Norway,27000.0
+2018,Norway,45.0
+2018,Norway,46000.0
+2018,Norway,1800.0
+2018,Norway,12.0
+2019,Norway,3.0
+2019,Norway,160.0
+2019,Norway,2000.0
+2019,Norway,60000.0
+2019,Norway,29.0
+2019,Norway,19000.0
+2020,Norway,29000.0
+2020,Norway,16.0
+2020,Norway,77000.0
+2020,Norway,11.0
+2020,Norway,2600.0
+2020,Norway,63.0
+2020,Norway,230.0
+2020,Norway,26.0
+2020,Norway,3.0
+2020,Norway,1.0
+2021,Norway,110.0
+2021,Norway,99.0
+2021,Norway,5.0
+2021,Norway,1600.0
+2021,Norway,58.0
+2021,Norway,110000.0
+2021,Norway,39.0
+2021,Norway,38000.0
+2022,Norway,16000.0
+2022,Norway,27.0
+2022,Norway,140000.0
+2022,Norway,220.0
+2022,Norway,7000.0
+2022,Norway,310.0
+2022,Norway,530.0
+2023,Norway,700.0
+2023,Norway,540.0
+2023,Norway,8800.0
+2023,Norway,130.0
+2023,Norway,100000.0
+2023,Norway,6.0
+2023,Norway,10000.0
+2011,Rest of the world,42.0
+2012,Rest of the world,380.0
+2012,Rest of the world,68.0
+2013,Rest of the world,21.0
+2013,Rest of the world,190.0
+2014,Rest of the world,150.0
+2014,Rest of the world,400.0
+2015,Rest of the world,900.0
+2015,Rest of the world,3400.0
+2015,Rest of the world,21.0
+2016,Rest of the world,18.0
+2016,Rest of the world,880.0
+2016,Rest of the world,700.0
+2017,Rest of the world,570.0
+2017,Rest of the world,1900.0
+2017,Rest of the world,33.0
+2017,Rest of the world,45.0
+2018,Rest of the world,220.0
+2018,Rest of the world,40.0
+2018,Rest of the world,60.0
+2018,Rest of the world,1700.0
+2018,Rest of the world,2300.0
+2018,Rest of the world,27.0
+2019,Rest of the world,2800.0
+2019,Rest of the world,5200.0
+2019,Rest of the world,180.0
+2019,Rest of the world,340.0
+2020,Rest of the world,1200.0
+2020,Rest of the world,4.0
+2020,Rest of the world,190.0
+2020,Rest of the world,12000.0
+2020,Rest of the world,2400.0
+2020,Rest of the world,4.0
+2020,Rest of the world,140.0
+2020,Rest of the world,5500.0
+2020,Rest of the world,57000.0
+2020,Rest of the world,98.0
+2020,Rest of the world,7.0
+2020,Rest of the world,2400.0
+2020,Rest of the world,140.0
+2020,Rest of the world,18000.0
+2020,Rest of the world,4.0
+2020,Rest of the world,60.0
+2020,Rest of the world,1400.0
+2020,Rest of the world,110000.0
+2020,Rest of the world,18000.0
+2020,Rest of the world,60.0
+2020,Rest of the world,1400.0
+2020,Rest of the world,110000.0
+2020,Rest of the world,5500.0
+2020,Rest of the world,57000.0
+2020,Rest of the world,98.0
+2020,Rest of the world,7.0
+2020,Rest of the world,3200.0
+2020,Rest of the world,33.0
+2020,Rest of the world,4.0
+2021,Rest of the world,32.0
+2021,Rest of the world,5900.0
+2021,Rest of the world,33.0
+2021,Rest of the world,13.0
+2021,Rest of the world,420.0
+2021,Rest of the world,110000.0
+2021,Rest of the world,12000.0
+2021,Rest of the world,210000.0
+2021,Rest of the world,2700.0
+2021,Rest of the world,54.0
+2021,Rest of the world,34000.0
+2021,Rest of the world,210000.0
+2021,Rest of the world,2700.0
+2021,Rest of the world,54.0
+2021,Rest of the world,2.0
+2021,Rest of the world,34000.0
+2021,Rest of the world,80.0
+2021,Rest of the world,2100.0
+2021,Rest of the world,33.0
+2021,Rest of the world,420.0
+2021,Rest of the world,110000.0
+2021,Rest of the world,12000.0
+2021,Rest of the world,13.0
+2021,Rest of the world,80.0
+2021,Rest of the world,2.0
+2021,Rest of the world,2100.0
+2021,Rest of the world,21000.0
+2021,Rest of the world,530.0
+2021,Rest of the world,1.0
+2021,Rest of the world,920.0
+2021,Rest of the world,3.0
+2022,Rest of the world,2300.0
+2022,Rest of the world,5.0
+2022,Rest of the world,770.0
+2022,Rest of the world,48000.0
+2022,Rest of the world,5200.0
+2022,Rest of the world,160.0
+2022,Rest of the world,7.0
+2022,Rest of the world,11000.0
+2022,Rest of the world,120000.0
+2022,Rest of the world,1800.0
+2022,Rest of the world,18.0
+2022,Rest of the world,5200.0
+2022,Rest of the world,160.0
+2022,Rest of the world,47000.0
+2022,Rest of the world,7.0
+2022,Rest of the world,3200.0
+2022,Rest of the world,410000.0
+2022,Rest of the world,47000.0
+2022,Rest of the world,3200.0
+2022,Rest of the world,410000.0
+2022,Rest of the world,11000.0
+2022,Rest of the world,120000.0
+2022,Rest of the world,1800.0
+2022,Rest of the world,18.0
+2022,Rest of the world,7900.0
+2022,Rest of the world,18.0
+2022,Rest of the world,1.0
+2023,Rest of the world,1.0
+2023,Rest of the world,110.0
+2023,Rest of the world,26000.0
+2023,Rest of the world,41.0
+2023,Rest of the world,3300.0
+2023,Rest of the world,200000.0
+2023,Rest of the world,4600.0
+2023,Rest of the world,690000.0
+2023,Rest of the world,4100.0
+2023,Rest of the world,1.0
+2023,Rest of the world,57000.0
+2023,Rest of the world,690000.0
+2023,Rest of the world,4100.0
+2023,Rest of the world,1.0
+2023,Rest of the world,57000.0
+2023,Rest of the world,370.0
+2023,Rest of the world,7600.0
+2023,Rest of the world,41.0
+2023,Rest of the world,3300.0
+2023,Rest of the world,200000.0
+2023,Rest of the world,4600.0
+2023,Rest of the world,370.0
+2023,Rest of the world,7600.0
+2023,Rest of the world,100000.0
+2023,Rest of the world,1100.0
+2023,Rest of the world,1.0
+2023,Rest of the world,1000.0
+2023,Rest of the world,1.0
+2010,USA,1200.0
+2011,USA,9800.0
+2011,USA,8000.0
+2011,USA,190.0
+2012,USA,6.5
+2012,USA,39000.0
+2012,USA,15000.0
+2013,USA,48000.0
+2013,USA,49000.0
+2013,USA,8.69999980926514
+2014,USA,26.0
+2014,USA,55000.0
+2014,USA,55.0
+2014,USA,63000.0
+2015,USA,550.0
+2015,USA,71000.0
+2015,USA,100.0
+2015,USA,43000.0
+2015,USA,81.0
+2016,USA,500.0
+2016,USA,73000.0
+2016,USA,1100.0
+2016,USA,87000.0
+2017,USA,100000.0
+2017,USA,2300.0
+2017,USA,94000.0
+2017,USA,190.0
+2018,USA,620.0
+2018,USA,120000.0
+2018,USA,2700.0
+2018,USA,240000.0
+2019,USA,240000.0
+2019,USA,2000.0
+2019,USA,85000.0
+2019,USA,560.0
+2020,USA,520.0
+2020,USA,64000.0
+2020,USA,1200.0
+2020,USA,230000.0
+2020,USA,22.0
+2020,USA,520.0
+2020,USA,230000.0
+2020,USA,1200.0
+2020,USA,64000.0
+2020,USA,22.0
+2020,USA,230000.0
+2020,USA,520.0
+2020,USA,1200.0
+2020,USA,64000.0
+2020,USA,22.0
+2021,USA,15.0
+2021,USA,160000.0
+2021,USA,3100.0
+2021,USA,1100.0
+2021,USA,470000.0
+2021,USA,15.0
+2021,USA,160000.0
+2021,USA,3100.0
+2021,USA,470000.0
+2021,USA,1100.0
+2021,USA,15.0
+2021,USA,470000.0
+2021,USA,3100.0
+2021,USA,160000.0
+2021,USA,1100.0
+2022,USA,2400.0
+2022,USA,190000.0
+2022,USA,2700.0
+2022,USA,800000.0
+2022,USA,140.0
+2022,USA,2400.0
+2022,USA,800000.0
+2022,USA,2700.0
+2022,USA,190000.0
+2022,USA,140.0
+2022,USA,800000.0
+2022,USA,2400.0
+2022,USA,2700.0
+2022,USA,190000.0
+2022,USA,140.0
+2023,USA,290000.0
+2023,USA,3000.0
+2023,USA,750.0
+2023,USA,1100000.0
+2023,USA,290000.0
+2023,USA,3000.0
+2023,USA,1100000.0
+2023,USA,750.0
+2023,USA,1100000.0
+2023,USA,3000.0
+2023,USA,290000.0
+2023,USA,750.0
+2010,United Kingdom,230.0
+2010,United Kingdom,9.0
+2010,United Kingdom,240.0
+2010,United Kingdom,21.0
+2010,United Kingdom,4.0
+2011,United Kingdom,2.0
+2011,United Kingdom,7.0
+2011,United Kingdom,1200.0
+2011,United Kingdom,5.0
+2011,United Kingdom,220.0
+2012,United Kingdom,410.0
+2012,United Kingdom,6.0
+2012,United Kingdom,1600.0
+2012,United Kingdom,970.0
+2012,United Kingdom,14.0
+2013,United Kingdom,23.0
+2013,United Kingdom,1100.0
+2013,United Kingdom,2600.0
+2013,United Kingdom,290.0
+2014,United Kingdom,790.0
+2014,United Kingdom,8.0
+2014,United Kingdom,4.0
+2014,United Kingdom,6700.0
+2014,United Kingdom,7800.0
+2014,United Kingdom,47.0
+2015,United Kingdom,24.0
+2015,United Kingdom,19000.0
+2015,United Kingdom,11.0
+2015,United Kingdom,10000.0
+2015,United Kingdom,98.0
+2015,United Kingdom,3.0
+2015,United Kingdom,960.0
+2016,United Kingdom,1000.0
+2016,United Kingdom,140.0
+2016,United Kingdom,8.0
+2016,United Kingdom,78.0
+2016,United Kingdom,10000.0
+2016,United Kingdom,10.0
+2016,United Kingdom,29000.0
+2016,United Kingdom,59.0
+2016,United Kingdom,20.0
+2017,United Kingdom,5.0
+2017,United Kingdom,39.0
+2017,United Kingdom,35000.0
+2017,United Kingdom,34.0
+2017,United Kingdom,14000.0
+2017,United Kingdom,94.0
+2017,United Kingdom,4.0
+2017,United Kingdom,18.0
+2017,United Kingdom,1300.0
+2018,United Kingdom,1500.0
+2018,United Kingdom,65.0
+2018,United Kingdom,12.0
+2018,United Kingdom,150.0
+2018,United Kingdom,16000.0
+2018,United Kingdom,36.0
+2018,United Kingdom,46000.0
+2018,United Kingdom,89.0
+2018,United Kingdom,10.0
+2019,United Kingdom,120.0
+2019,United Kingdom,37000.0
+2019,United Kingdom,68.0
+2019,United Kingdom,38000.0
+2019,United Kingdom,210.0
+2019,United Kingdom,20.0
+2019,United Kingdom,3500.0
+2020,United Kingdom,5700.0
+2020,United Kingdom,16.0
+2020,United Kingdom,560.0
+2020,United Kingdom,110000.0
+2020,United Kingdom,57.0
+2020,United Kingdom,68000.0
+2020,United Kingdom,300.0
+2020,United Kingdom,18.0
+2021,United Kingdom,15.0
+2021,United Kingdom,540.0
+2021,United Kingdom,120000.0
+2021,United Kingdom,12.0
+2021,United Kingdom,190000.0
+2021,United Kingdom,1200.0
+2021,United Kingdom,140.0
+2021,United Kingdom,12000.0
+2022,United Kingdom,17000.0
+2022,United Kingdom,65.0
+2022,United Kingdom,510.0
+2022,United Kingdom,410.0
+2022,United Kingdom,270000.0
+2022,United Kingdom,7.0
+2022,United Kingdom,100000.0
+2022,United Kingdom,440.0
+2023,United Kingdom,1300.0
+2023,United Kingdom,140000.0
+2023,United Kingdom,25.0
+2023,United Kingdom,310000.0
+2023,United Kingdom,110.0
+2023,United Kingdom,1400.0
+2023,United Kingdom,43.0
+2023,United Kingdom,22000.0
