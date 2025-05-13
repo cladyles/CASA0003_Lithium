@@ -1,4 +1,4 @@
-/* 全局色板+后续备注其用途 */
+/* ——— 全局色板 ——— */
 :root {
   --clr1: #ec6242;
   --clr2: #61d4ea;
@@ -10,10 +10,10 @@
   --clr8: #f0715e;
   --clr9: #5462f8;
   --clr10: #47454e;
-  --bg: #000000;
+  --bg: #000; 
 }
 
-/* 全局设置 */
+/* ——— 全局设置 ——— */
 * {
   margin: 0;
   padding: 0;
@@ -23,7 +23,7 @@ html,
 body {
   width: 100%;
   height: 100%;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Gill Sans';
   background: var(--bg);
   color: #fff;
   scroll-behavior: smooth;
@@ -41,401 +41,697 @@ body {
   overflow: hidden;
 }
 
-/* ——— Section1 ——— */
-.bg-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.overlay {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-.overlay h1 {
-  /* 白色标题，15% 处 */
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 4rem;
-  color: #fff;
-}
-#enterBtn {
-  /* 白色按钮，正中 */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  background: transparent;
-  border: 2px solid #fff;
-  color: #fff;
-  cursor: pointer;
-}
-#enterBtn:hover {
-  background: #fff;
-  color: var(--bg);
-}
-
-/* ——— Section2 四等分选择页 ——— */
-.grid-4 {
-  display: grid;
-  width: 100vw;
-  height: 100vh;
-  grid-template: 1fr / repeat(4, 1fr);
-}
-.grid-4 .grid-item {
-  position: relative;              /* 为 ::before 做定位基准 */
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  padding-bottom: 2rem;
-  cursor: pointer;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-/* 四张背景图 */
-.grid-4 .grid-item:nth-child(1) { background-image: url('../images/section2_1.jpg'); }
-.grid-4 .grid-item:nth-child(2) { background-image: url('../images/section2_2.jpg'); }
-.grid-4 .grid-item:nth-child(3) { background-image: url('../images/section2_3.jpg'); }
-.grid-4 .grid-item:nth-child(4) { background-image: url('../images/section2_4.jpg'); }
-
-/* 半透明黑色叠层，默认隐藏 */
-.grid-4 .grid-item::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-/* 文字置顶 */
-.grid-4 .grid-item .item-title {
-  position: relative;
-  z-index: 1;
-}
-
-/* 悬停效果：放大、阴影、叠层变浅 */
-.grid-4 .grid-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-}
-.grid-4 .grid-item:hover::before {
-  opacity: 1;
-  background: rgba(0,0,0,0.2);
-}
-
-/* ——— 第三页到第十二页内容页公共设置 ——— */
-.content-section .page-title {
-  position: absolute;
-  top: 65px;    /* 导航（40px）+下间距（25px） */
-  left: 20px;
-  font-size: 1.5rem;
-  color: var(#fff);
-}
-.map-container {
+.map-container { /* ——— Fullmap容器 ——— */
   position: absolute;
   top: 80px;
   bottom: 20px;
   left: 20px;
   right: 20px;
 }
-.page-footer {
-  position: absolute;
-  bottom: 20px;
-  width: 100%;
-  text-align: center;
-  font-size: 0.9rem;
-  color: var(--clr10);
-}
-.back-home {
-  cursor: pointer;
-  text-decoration: underline;
-}
 
-/* ——— 第三页开始的顶部导航 ——— */
+/* ——— 顶部导航栏设定 ——— */
 nav#globalNav {
+  display: flex;           
+  align-items: flex-end;     /* 子元素垂直方向贴在底部 */
+  justify-content: space-between;
+  padding: 0 4rem; /* 左右页边距3rem */
+
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 40px;
-  background: rgba(0, 0, 0, 0.7);
+  height: 64px; /* 导航栏，宽度4rem*/
+  background: rgba(0,0,0,0); 
   z-index: 100;
-  /* 去掉内部 flex 对 nav-center 的影响 */
-  display: block;
 }
 
-/* ——— 选项 ——— */
-nav#globalNav .nav-main {
-  position: absolute;
-  top: 50%;
-  left: 1.5rem;
-  transform: translateY(-50%);
+nav#globalNav .nav-brand {
+  font-size: 1.5rem; /* 导航栏左侧大标题，字1.5rem*/
+  font-weight: bold;
+  color: #fff;
+  white-space: nowrap;
+}
+
+nav#globalNav .nav-main {  /* ——— 右侧选项目录——— */
   display: flex;
-  gap: 1.5rem;
+  gap: 5rem;  /* 选项之间的间距 */
   list-style: none;
   margin: 0;
   padding: 0;
 }
-nav#globalNav .nav-main > li {
+
+nav#globalNav .nav-main > li { /* ——— 选项目录字体——— */
   position: relative;
   cursor: pointer;
   color: #fff;
-  font-size: 1rem;
+  font-size: 1rem; /* 选项字号16px */
 }
-nav#globalNav .nav-main > li:hover .sub-menu {
+nav#globalNav .nav-main > li:hover .sub-menu { 
   display: block;
 }
+
+.nav-brand {
+  transition: opacity 0.4s ease;
+}
+
+.nav-brand.transparent {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* 二级菜单 */
 nav#globalNav .sub-menu {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  background: #000000;
+  background:  rgba(0,0,0,0); 
   list-style: none;
   margin: 0;
-  padding: 0.8rem 0;
+  padding: 0.8rem 0; /* 上下内边距 0.8rem，左右 0 */
 }
+
 nav#globalNav .sub-menu li {
-  padding: 0.8rem 1rem;
-  white-space: nowrap;
+  padding: 0.8rem 0; /* 上下 0.8rem、左右 1rem 的可点击区域 */
+  white-space: nowrap; 
   color: var(#fff);
-  cursor: pointer;
+  cursor: pointer; 
 }
 
-/* ——— 居中项目名 ——— */
-nav#globalNav .nav-center {
+/* ——— 第一页 ——— */
+#lithium-cover {
+  position: relative;
+}
+
+/* 确保画布在文字上方 */
+#lithium-cover canvas,
+#lithium-cover > *:not(.scatter-texts) {
+  position: relative;
+  z-index: 1;
+}
+
+/* 1. 散点文字层，铺满整个图层 */
+.scatter-texts {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  inset: 0;               /* top/right/bottom/left = 0 */
+  z-index: 0;
+  pointer-events: none;   /* 不阻挡下层交互 */
+}
+
+/* 2. 单个文字样式 */
+.scatter-text1 {
+  position: absolute;
+  transform: translate(-50%, -50%); /* 让 top/left 定点居中对齐 */
+  white-space: nowrap;
+  color: #fff;
+  font-size: clamp(6.5rem, 2vw, 1.5rem);
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+}
+
+.scatter-text2 {
+  position: absolute;
+  transform: translate(-50%, -50%); /* 让 top/left 定点居中对齐 */
+  white-space: nowrap;
+  color: #fff;
+  font-size: clamp(2rem, 2vw, 1.5rem);
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+}
+
+.scatter-text3 {
+  position: absolute;
+  transform: translate(-50%, -50%); /* 让 top/left 定点居中对齐 */
+  white-space: nowrap;
+  line-height: 2;
+  color: #fff;
+  font-size: clamp(0.8rem, 2vw, 1.5rem);
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+}
+
+#enterBtn {
+  /* 白色按钮，正中 */
+  position: absolute;
+  top: 70%;
+  left: 30%;
   transform: translate(-50%, -50%);
-  font-size: 1.5rem;
-  color: var(#fff);
-  white-space: nowrap;
-}
-
-/* ——— 右侧 Home 图标 ——— */
-nav#globalNav .nav-home {
-  position: absolute;
-  top: 50%;
-  right: 1rem;
-  transform: translateY(-50%);
-  font-size: 1rem;
-  color: var(#fff);
+  padding: 1rem 4rem;
+  font-size: 20px;
+  font-family: 'Gill Sans', sans-serif;
+  font-weight: bold;
+  background: #61d3eaa5;
+  border: 0px dashed #fff;
+  border-radius: 10px;
+  color: #fff;
   cursor: pointer;
-}
-
-/* ——— 隐藏状态 ——— */
-nav#globalNav.hidden {
-  display: none;
-}
-
-/* ——— 从这里开始根据分工各自设置各自页面的额外样式 ——— */
-/* ——— 第三页 ——— */
-.history-layout {
-  display: flex;
-  gap: 30px;
-  padding: 120px 20px 10px;
-  height: calc(140vh - 120px); /* 留出标题+导航空间 */
-}
-
-.history-text {
-  flex: 2;
-  overflow-y: auto;
-  padding-right: 10px;
-}
-
-/* 摘要引用块 */
-.history-abstract {
-  margin: 0 0 20px;
-  padding: 16px 24px;
-  background: rgba(255, 255, 255, 0.1);
-  border-left: 4px solid var(#fff);
-  color: #fff;
-  line-height: 1.6;
-  text-indent: 2em;
-  border-radius: 4px;
-}
-
-/* 普通段落 */
-.history-text p {
-  margin-bottom: 16px;
-  color: #fff;
-  line-height: 1.6;
-}
-
-/* 列表样式 */
-.history-list {
-  margin-left: 1.5em;
-  color: #fff;
-  line-height: 1.6;
-}
-.history-list li {
-  margin-bottom: 8px;
-}
-
-/* 右侧地图区域 */
-.history-map {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.history-map .history-subtitle {
-  margin: 0 0 8px;
-  color: var(#fff);
-  font-size: 1rem;
-}
-
-.distribution-map {
-  flex: 1;
-  background: #111;
-  border: 1px solid #444;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-/* ——— 第四页 ——— */
-/* ——— 第五页 ——— */
-/* ——— 第六页 ——— */
-.ev-diagram-container {
-  position: absolute;
-  top: 120px;   
-  left: 75%;
-  transform: translateX(-50%);
-  width: 800px;
-  max-width: 90vw;
-}
-
-.ev-diagram-container img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* 蓝色发光圆点（热点）通用样式 */
-.ev-hotspot {
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  border-radius: 40%;
-  background: radial-gradient(circle, #f2e475 40%, transparent 70%);
-  box-shadow: 0 0 15px #f2e375;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-.ev-hotspot:hover {
-  transform: scale(1.2);
-}
-
-/* 各热点的精确定位（根据图片微调） */
-.ev-hotspot.battery {
-  top: 300px;  /* 电池中间 */
-  left: 260px;
-}
-
-.ev-hotspot.motor {
-  top: 340px;  /* 发电机位置 */
-  left: 140px;
-}
-
-.ev-hotspot.charger {
-  top: 310px;  /* 充电桩位置 */
-  left: 700px;
-}
-
-/* 信息面板 */
-.ev-info-box {
-  position: fixed;
-  top: 50%;
-  right: 40px;
-  transform: translateY(-50%);
-  width: 300px;
-  background: rgba(27,29,34,0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid #00bfff;
-  box-shadow: 0 0 30px #00bfff;
-  border-radius: 3px;
-  padding: 20px;
-  display: none;
-  color: #e0e6f3;
   z-index: 100;
 }
 
-.ev-info-box h3 {
-  margin-top: 0;
-  color: #00d0ff;
+#enterBtn:hover {
+  background: #61d4ea;
+  color: var(--bg);
 }
 
-.ev-info-box p {
-  line-height: 1.4;
-  font-size: 0.95rem;
+/* 字幕 */
+.overlay-screen{
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  background:#000; color:#fff;
+  font-size:1.5rem; line-height:1.4;
+  opacity:0; transition:opacity .8s ease;
+  pointer-events:none; z-index:50;   /* 盖在粒子上方 */
 }
 
-/* 关闭按钮 */
-.ev-info-box .close-btn {
+.overlay-text {
+  text-align: center;
+}
+
+#overlay.show{ opacity:1; }          /* Intro.js 在字幕时间段会加 .show */
+
+/* ——— 第三页到第十页公共设置 ——— */
+.page-footer {
   position: absolute;
-  top: 8px;
-  right: 12px;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(#fff);
+}
+
+/* —— 全屏 iframe 通用样式 —— */
+.full-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 0px);
+  border: none;
+  outline: none;
+}
+
+/* ——— 第二页 选择页 ——— */
+#section2 .page-title {
+  position: absolute;  /* 相对于 #section2 */
+  top: 0px;          /* 距离 section2 顶端 120px */
+  left: 0px;          /* 距离 section2 左侧 64px */
+  margin: 0;
+  font-weight: 0;
+  font-size: 0px;
+  line-height: 1.2;
+  color: #fff;
+  z-index: 10;
+}
+
+/* ────────────────────────────────────────────
+   Section-2：Panel和Research Questions
+──────────────────────────────────────────── */
+/* 1. 让 section2 成为定位上下文（只对第二屏生效） */
+#section2 {
+  position: relative;  /* 新增 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  height: 100vh;
+  padding: 0 2vw 8vh 2vw;
+  box-sizing: border-box;
+}
+
+/* 2. Panel 相对于 #section2 绝对定位 */
+#section2 .panel {
+  position: absolute;  /* 从 fixed 改成 absolute */
+  top: 100px;          /* 保持与 section2 顶端的距离 */
+  left: 64px;          /* 与 section2 左侧的距离 */
+
+  background: #ffffff00;
+  width: calc(100% - 64px);
+  border-radius: 18px;
+  padding: 1rem clamp(1rem,4vw,4rem) 1rem clamp(1rem,4vw,4rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-sizing: border-box;
+  z-index: 50;
+}
+
+/* 固定副标题 */
+#section2 .tagline {
+  font-size: clamp(0rem,1.7vw,1.3rem);
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+/* Research Question 行 */
+#section2 .rq {
+  font-size: clamp(32px,1.7vw,1.3rem);
+  line-height: 1.35;
+  margin: 0 0 1rem 0px;       
+  color: #fff;
+  min-height: 3.5rem;          /* 预留空间防止跳动 */
+}
+
+/* ==============================
+   四等分卡片区
+   ============================== */
+#section2 .grid-4 {
+  display: grid;
+  /* 每列最少 240px，最多平分剩余空间；屏幕太窄时会自动折行 */
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-top: auto;
+  width: 100%;
+  padding: 0 clamp(2rem, 5vw, 4rem); /* 让左右各留一点安全空隙 */
+  box-sizing: border-box;
+}
+
+
+/* 单张卡片 */
+#section2 .grid-item{
+  aspect-ratio: 7/15;                 /* 更接近截图里的竖向卡片比例 */
+  border-radius:12px;                 /* 卡片自身圆角 */
+  overflow:hidden;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  padding:0 0 2vh 2vw;      /* 下 / 左 留一点安全边距，按需调 */
+  cursor:pointer;
+  background-size:cover;
+  background-position:center;
+  transition:transform .35s cubic-bezier(.4,0,.2,1),
+             box-shadow .35s cubic-bezier(.4,0,.2,1);
+}
+
+/* 文字 */
+#section2 .item-title{
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  z-index:1;
+  font-size:clamp(1.5rem,1.1vw,1.5rem);
+  transform: translate(-50%, -50%);
+  font-weight:600;
+  text-align:center;
+  line-height:1.35;
+  pointer-events:none;
+}
+
+/* 半透明叠层 */
+#section2 .grid-item::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  opacity:0;
+  transition:opacity .35s cubic-bezier(.4,0,.2,1);
+  pointer-events:none; 
+}
+
+/* 悬停：原地轻微放大 + 遮罩变浅 */
+#section2 .grid-item:hover {
+  transform: scale(1.02);                /* 只缩放，不位移 */
+  box-shadow: 0 15px 30px rgba(0,0,0,0.30);
+}
+#section2 .grid-item:hover::before {
+  opacity: 1;                            /* 显示半透明遮罩 */
+  background: rgba(0, 0, 0, 0.1);        /* 叠层变浅 */
+}
+
+/* 按下：再多一点缩放 */
+#section2 .grid-item:active {
+  transform: scale(1.02);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.35);
+}
+
+/* 四张封面图（路径保持不变） */
+#section2 .grid-item:nth-child(1){background-image:url('../images/section2_1.jpg');}
+#section2 .grid-item:nth-child(2){background-image:url('../images/section2_2.jpg');}
+#section2 .grid-item:nth-child(3){background-image:url('../images/section2_3.jpg');}
+#section2 .grid-item:nth-child(4){background-image:url('../images/section2_4.jpg');}
+/* ——— 从这里开始根据分工各自设置各自页面的额外样式 ——— */
+/* ——— 第三页 ——— */
+/* ===== 基础 reset ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Gill Sans",sans-serif;
+  color:#fff;
+  background:#0b0b0b;
+}
+
+/* ===== 整页容器：把 hero-box 居视窗正中央 ===== */
+.hero{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:104px 64px;
+}
+
+/* ===== 2️⃣ Hero Box ===== */
+.hero-box{
+  position:relative;
+  width:70vw;
+  max-width:1200px;
+  aspect-ratio:16/9;
+  overflow:visible;
+}
+
+/* 图片 */
+.hero-img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  z-index:1;
+}
+
+/* ===== 3️⃣ 文字叠层 ===== */
+.hero-text{
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+
+  /* ★ 新增：真正启用 Flex 并垂直居中组内文字 */
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+  padding:40px;
+  width:100%;
+  min-width:280px;
+  z-index:2;
+  pointer-events:none;
+}
+
+/* === 字体样式 === */
+.graph-title{
+  font-size:80px;
+  font-family:'Gill Sans',sans-serif;
+  font-weight:700;
+  line-height:1.05;
+}
+
+.graph-subtitle{
+  margin-top:18px;
+  font-size:30px;
+  font-family: 'Gill Sans',  sans-serif;
+  font-weight:lighter;
+  line-height: 1.1;
+  color:#ffffffaa;
+}
+
+
+#section3 .graph-descript{
+  font-size: 30px;
+  z-index: 1;
+  font-weight: lighter;
+  line-height: 1.1;
+}
+
+/* ── Read-More 按钮 —— */
+.readmore-btn{
+  position:absolute;
+  left:50%;
+  top:100%;
+  transform:translateX(-50%);
+  margin-top:100px;
+  z-index:3;
+  display:inline-block;
+  padding:14px 32px;
+  font-size:25px;
+  font-weight:600;
+  background:#ffffff;
+  color:#000000;
+  text-decoration:none;
+  border-radius:8px;
+  cursor:pointer;
+  pointer-events:auto;
+}
+
+.readmore-btn:hover,
+.readmore-btn:focus{
+  background:#000000;
+  color:#ffffff;
+}
+
+/* ① 渐隐效果 */
+.graph-title,
+.graph-subtitle,
+.graph-description,
+.readmore-btn{
+  transition:opacity .4s ease;
+}
+
+/* ② 短描述 —— 叠在同一中心点，默认隐藏 */
+.short-description{
+  position:absolute;          /* 绝对定位以便完全重叠 */
+  inset:0;                    /* 占满 hero-text */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .4s ease;
+  font-size:30px;
+  font-family:'Gill Sans',sans-serif;
+  font-weight:lighter;
+  margin:0;
+  z-index: 3;                   /* 移除外边距，确保精确居中 */
+}
+
+/* ③ 切换时互斥显示 */
+.hero-text.show-short .graph-title,
+.hero-text.show-short .graph-subtitle,
+.hero-text.show-short .graph-descript{
+  opacity:0;
+  visibility:hidden;
+}
+
+.hero-text.show-short .short-description{
+  opacity:1;
+  visibility:visible;
+}
+/* ——— 第四页 Lithium Distibution & Trade——— */
+/* ——— 第五页 Lithium Trade Flow——— */
+/* ——— 第六页 Batteries EV ——— */
+/* 视图切换容器 */
+.view-switch {
+  display: inline-flex;
+  gap: 0.5rem;                 /* 按钮间距 */
+  margin-bottom: 1rem;         /* 根据需要调整与下方内容的间距 */
+}
+
+/* 通用按钮基础样式 */
+.view-btn {
+  padding: 0.5rem 1.5rem;      /* 上下 0.5rem，左右 1.5rem */
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 2px solid #000;      /* 默认黑色边框 */
+  border-radius: 9999px;       /* 完全圆角 pill 形 */
+  background: #fff;            /* 默认白底 */
+  color: #000;                 /* 默认黑字 */
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+/* 激活态（选中） */
+.view-btn.active {
+  background: #FF6B5C;         /* 橙色背景 */
+  color: #000000;                 /* 白字 */
+  border-color: #FF6B5C;       /* 边框同色 */
+}
+
+/* Hover 效果 */
+.view-btn:not(.active):hover {
+  background: #f5f5f5;         /* 浅灰底，突出未激活按钮 */
+}
+
+.graph-section{
+  height:100vh;                 /* 含 padding 后刚好一屏 */
+  padding:150px 64px;           /* 上下 104 / 左右 64 */
+  display:flex;                 /* 关键：左右并排 */
+  gap:40px;                     /* 两块之间的空隙 */
+  align-items:flex-start;       /* 顶端对齐 */
+}
+
+/* 只作用在第一个视图：让图片按容器高度撑满 */
+#view2 .graph-image {
+  display: block;      /* 去掉 img 的 inline 特性 */
+  height: 100%;        /* 撑满其父 .ev-view 的高度 */
+  width: auto;         /* 等比缩放宽度 */
+  object-fit: contain; /* 保持图像完整，不裁剪 */
+}
+
+/* 确保 #view1 本身已有确定的高度 */
+#view2 {
+  height: 100%;        /* 继承 .ev-view 的高度（已由父 flex 拉伸） */
+  left: 30%;
+  box-sizing: border-box;
+  display: flex;          /* 或 display: grid; place-items:center; */
+  justify-content: center;/* 水平居中 */
+  align-items: center;
+}
+
+/* 确保 #view1 本身已有确定的高度 */
+#view1 {
+  height: 100%;        /* 继承 .ev-view 的高度（已由父 flex 拉伸） */
+  left: 30%;
+  box-sizing: border-box;
+  display: flex;          /* 或 display: grid; place-items:center; */
+  justify-content: center;/* 水平居中 */
+  align-items: center;
+}
+
+/* ===== 左：标题panel ===== */
+.title-pane{
+  width:35%;                    /* 你希望的文字区宽度，可用 px 或 % */
+  min-width:280px;              /* 防止过窄 */
+  background:#ffffff00;
+  padding-top:0;             /* 文字整体下移 80px */
+}
+
+.graph-title{
+  font-size:80px;
+  font-weight:700;
+}
+.graph-subtitle{
+  margin-top:18px;
+  font-size:50px;
+  font-family: 'Gill Sans', sans-serif;
+  font-weight:600;
+  color:#ffffff8a;
+}
+#section6 .graph-description{
+  margin-top:60px;
+  max-width: 500px;
+  text-align: justify;
+  font-size:20px;
+  font-weight: lighter;
+  line-height:1.1;
+}
+
+/* ===== 右：图片panel ===== */
+.graph-pane{
+  flex:1;                       /* 占据剩余所有宽度 */
+  height:100%;                  /* 与父级同高 */
+  overflow:hidden;              /* 避免图片外溢 */
+}
+.graph-image{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;             /* 始终填满并裁切 */
+}
+
+/* ===== 信息面板 ===== */
+.info-panel {
+  position: absolute;
+  width: 200px;
+  background: rgba(0,0,0,0.85);
+  border: 2px solid #fff;
+  box-shadow: 0 0 10px rgba(255,255,255,0.6);
+  border-radius: 6px;
+  padding: 12px;
+  color: #fff;
+  display: none; /* 隐藏 */
+  z-index: 200;
+}
+.info-panel .close-btn {
+  position: absolute;
+  top: 4px; right: 6px;
   background: transparent;
   border: none;
-  font-size: 1.2rem;
-  color: #00bfff;
-  cursor: pointer;
-  text-shadow: 0 0 4px #00bfff;
-}
-
-/* ——— 第七页 ——— */
-#section7 .future-container {
-  position: absolute;
-  top: 120px;             /* 导航（40px）＋标题下边距（20px） */
-  bottom: 10px;          /* 底部留白 */
-  left: 20px;
-  right: 20px;
-  padding: 20px;
-  overflow-y: auto;
-  background: rgba(0, 0, 0, 0.6);  /* 半透明底色，可选 */
-  border-radius: 8px;
-}
-/* ——— 第八页 ——— */
-#fullmap2-container {
-  position: absolute;
-  top: 80px;    /* 导航高度(60px) + 标题下边距(20px) */
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
-}
-/* ——— 第九页 ——— */
-#section9 .future-content {
-  position: absolute;
-  top: 120px;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
-  padding: 20px;
-  overflow-y: auto;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 8px;
-}
-
-/* ——— Section 10: About & Contact ——— */
-#section10 .page-footer {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
-  padding: 10px 0;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 4px;
-  font-size: 0.9rem;
   color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
+
+/* 点击时显示 */
+.info-panel.active {
+  display: block;
+}
+
+/* —— 热点（Spotlight）样式 —— */
+.ev-diagram-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.ev-hotspot {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #ec6242;               /* 白线边框 */
+  border-radius: 50%;                   /* 圆形 */
+  background: transparent;              /* 透明底 */
+  box-shadow: 0 0 8px #ec6242; /* 微弱光晕 */
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 悬停时轻微放大并加强光晕 */
+.ev-hotspot:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 12px rgba(255,255,255,0.8);
+}
+
+/* 视图切换条，水平居中在图上方 */
+.view-switch {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 300;
+}
+
+
+/* —— 导航箭头 —— */
+.ev-switch-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  padding: 0 12px;
+  cursor: pointer;
+  z-index: 400;
+  user-select: none;
+}
+
+.left-arrow {
+  left: 10px;
+}
+
+.right-arrow {
+  right: 10px;
+}
+
+.nav-arrow:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+
+
+/* ——— 第七页 Li-ion Batteries Industry 这里不动——— */
+
+/* ——— 第八页 EV Trade 这里不动——— */
+
+/* ——— 第九页 这里不动——— */
+
+/* ——— 第十页 Future——— */
+/* ——— 第十一页: About & Contact ——— */
+

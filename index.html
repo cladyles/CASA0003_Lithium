@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Global Lithium Flow</title>
+  <title>The Lithium Flow</title>
 
   <!-- Mapbox GL CSS -->
   <link
@@ -13,257 +13,325 @@
 
   <!-- 全局样式 -->
   <link rel="stylesheet" href="css/styles.css" />
+  <canvas id="bgParticles"></canvas>
+  <link rel="stylesheet" href="css/bgParticles.css" />
+
 
   <!-- 主逻辑脚本：defer 确保在上面库都加载完后执行 -->
   <script src="js/main.js" defer></script>
+  <script src="js/bgParticles.js"></script>
 </head>
 <body>
 
-  <!-- 顶部导航（从第三屏开始出现） -->
-  <nav id="globalNav" class="hidden">
+  <!-- 顶部导航 -->
+  <nav id="globalNav">
+    <div class="nav-brand">Lithium Chain And Flow</div>
     <ul class="nav-main">
       <li>
-        Overview
+        Home
         <ul class="sub-menu">
           <li data-target="section2">Overview</li>
         </ul>
       </li>
       <li>
-        Section 1
+        Lithium
         <ul class="sub-menu">
-          <li data-target="section3">Lithium</li>
-          <li data-target="section4">Lithium Distribution</li>
-          <li data-target="section5">Lithium Trade Map</li>
+          <li data-target="section3">Li</li>
+          <li data-target="section4">Li Distribution Map</li>
+          <li data-target="section5">Li Trade Flow</li>
         </ul>
       </li>
       <li>
-        Section 2
+        Li-ion Batteries
         <ul class="sub-menu">
-          <li data-target="section6">Lithium Usage in EVs</li>
-          <li data-target="section7">EV Advanced Industry Distribution</li>
+          <li data-target="section6">Li-ion Batteries</li>
+          <li data-target="section7">Li-ion Batteries Trade Map</li>
+          <li data-target="section8">EVs Industry</li>
         </ul>
       </li>
       <li>
-        Section 3
+        Supply Chain
         <ul class="sub-menu">
-          <li data-target="section8">Global Supply Chains</li>
+          <li data-target="section9">Global Supply Chains</li>
         </ul>
       </li>
       <li>
-        Section 4
+        What's next
         <ul class="sub-menu">
-          <li data-target="section9">Lithium and Its Future</li>
-          <li data-target="section10">About</li>
+          <li data-target="section10">Future</li>
+          <li data-target="section11">About & Contact</li>
         </ul>
       </li>
     </ul>
-    <div class="nav-center">The Global Lithium Flow</div>
-    <div class="nav-home" data-target="section1">Home</div>
-  </nav>
+  </nav>  
 
-  <div class="sections-container">
-    <!-- Section 1：背景视频 + ENTER -->
-    <section id="section1" class="section">
-      <video
-        class="bg-video"
-        src="videos/background1.mp4"
-        autoplay
-        muted
-        loop
-      ></video>
-      <div class="overlay">
-        <h1>The Global Lithium Flow</h1>
-        <button id="enterBtn">ENTER</button>
+<!-- Section-1：Three.js 粒子封面 -->
+<section id="section1" class="section">
+  <div id="lithium-cover">
+    <canvas id="lithiumCanvas"></canvas>
+
+      <!-- 文字散点层 -->
+  <div class="scatter-texts">
+    <!-- 下面这些 span 都可以随意复制/增删/改内容 -->
+    <span class="scatter-text1" style="top:28%; left:34%;">LITHIUM</span>
+    <span class="scatter-text1" style="top:43%; left:24%;">ORE-BATTERIES</span>
+    <span class="scatter-text1" style="top:58%; left:75%;">FLOW</span>
+    <span class="scatter-text2" style="top:58%; left:30%;">A journey from South America to the world.</span>
+    <span class="scatter-text3" style="top:28%; left:78%;">Explore the global trade flows</br> powering electric vehicles</br>via the lithium-battery supply chain.
+</span>
+  </div>
+</div>
+    <button id="enterBtn" disabled>Enter</button>
+
+    <!-- 黑幕字幕 -->
+    <div id="overlay" class="overlay-screen">
+    <div class="overlay-text">
+    <p>Presented by Group 1</p>
+    <p>The Bartlett Centre for Advanced Spatial Analysis CASA</p>
+    <p>University College London</p>
       </div>
-    </section>
-
-    <!-- Section 2：竖向四等分的选择页 -->
-    <section id="section2" class="section">
-      <div class="grid-4">
-        <div class="grid-item" data-target="section3">
-          <div class="item-title">Explore<br />Lithium</div>
-        </div>
-        <div class="grid-item" data-target="section6">
-          <div class="item-title">Discover<br />Lithium in EVs</div>
-        </div>
-        <div class="grid-item" data-target="section8">
-          <div class="item-title">Visualize<br />Global Supply Chain</div>
-        </div>
-        <div class="grid-item" data-target="section9">
-          <div class="item-title">See<br />Bright Future</div>
-        </div>
-      </div>
-    </section>
-
-   <!-- 第三页：Lithium -->
-<section id="section3" class="section content-section">
-  <h2 class="page-title">Lithium</h2>
-
-  <div class="history-layout">
-    <!-- 左侧文字区域 -->
-    <div class="history-text">
-      <!-- 摘要 -->
-      <blockquote class="history-abstract">
-        As the world accelerates its transition to green energy, lithium has emerged as a critical mineral driving this transformation. Work as the cornerstone of rechargeable battery technology, it powers innovations in energy storage and electric vehicles, making lithium an indispensable component in the global journey toward a more sustainable, decarbonized future.
-      </blockquote>
-
-      <!-- 现代科普 & 历史简介：普通段落 -->
-      <p>
-        Fundamental research on lithium-ion batteries began in the 1970s and has made remarkable strides since the 1980s. The first commercial lithium-ion cell appeared in 1991, marking a rapid transition from laboratory research to industrial production, upending our way of life and immediately being hailed as a revolutionary technology.
-      </p>
-      <p>
-        Today, lithium-ion batteries power the vast majority of our tools, electronic devices, smartphones, tablets, personal computers, watches, bicycles, scooters, automobiles, industrial vehicles, and machinery across virtually every sector—most everyday items we rely on draw their energy from lithium cells.
-      </p>
-      <p>
-        Overall, whether viewed through the lens of scientific research or commercial market development, the lithium-ion ecosystem is poised to grow at an annual rate exceeding 30% between 2022 and 2030. By then its value will surpass USD 400 billion and its cumulative market capacity will reach 4.7 TWh.
-      </p>
-      <p>
-        In electric vehicles, the two principal lithium compounds in use are:
-      </p>
-      <ul class="history-list">
-        <li><strong>Lithium hydroxide (LiOH)</strong> for high-end NCM battery series</li>
-        <li><strong>Lithium carbonate (Li₂CO₃)</strong> for the most widespread lithium-ion batteries</li>
-      </ul>
     </div>
 
-    <!-- 右侧时间轴占位 -->
-    <div class="history-map">
-      <h3 class="history-subtitle">Timeline</h3>
-      <div id="map-distribution" class="distribution-map">
-        <!-- Small Map2加载后渲染到这里 -->
+    <!-- 如需保留菜单淡入，可加这块 -->
+    <div id="menu" class="overlay-screen" style="display:none;font-size:3rem">
+      SECOND PAGE / MENU
+  </div>          <!-- ← 关闭 #lithium-cover -->
+</section>        <!-- ← 关闭 #section1 -->
+
+<!-- Three.js importmap（放在 Intro.js 之前一次即可） -->
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js" } }
+</script>
+
+<!-- 独立脚本 -->
+<script type="module" src="js/Intro.js"></script>
+
+  <!-- Section-2：选择页 -->
+<section id="section2" class="section">
+  <h1 class="page-title">
+      See Lithium and a Grand Trade Journey<br>
+    </h1>
+  <div class="panel">                <!-- 黑色圆角面板 -->
+    <p class="rq"></p>
+   <p class="tagline"></p>
+    <div class="grid-4">
+  <div class="grid-item"
+       data-target="section3"
+       data-question="A Question: What are the contemporary global lithium trade flows?">
+       <div class="item-title">Explore<br>Lithium</div>
+  </div>
+
+  <div class="grid-item"
+       data-target="section6"
+       data-question="A Question: How do lithium-ion batteries facilitate the global trade of electric vehicles?">
+       <div class="item-title">Discover<br>Li-ion Batteries in EVs</div>
+  </div>
+
+  <div class="grid-item"
+       data-target="section9"
+       data-question="A Question: How does a global lithium supply-chain operate?">
+       <div class="item-title">Visualize<br>Global Supply Chain</div>
+  </div>
+
+  <div class="grid-item"
+       data-target="section10"
+       data-question="A Question: What future pathways might lithium enable in energy transitions?">
+       <div class="item-title">See<br>Bright Future</div>
+  </div>
+</div>
+</section>
+
+   <!-- 第三页：Lithium -->    
+   <section id="section3" class="section content-section hero">
+  <div class="hero">
+  <div class="hero-box">
+    <img src="images/Lithium.png" alt="graph" class="hero-img">
+
+    <div class="hero-text">
+      <div class="long-group">
+        <h1 class="graph-title">Lithium</h1>
+        <!-- <h2 class="graph-subtitle">Introduction the importance of Lithium</h2> -->
+        <p class="graph-descript">
+          As the world accelerates its transition to green energy, lithium has become a key mineral driving this transformation. 
+          Lithium is at the core of the development of rechargeable batteries, spurring innovation in the fields of energy storage and electric vehicles, 
+          making it an important component in the global move towards a more sustainable and decarbonized future.
+        </p>
       </div>
+      <a class="readmore-btn" href="javascript:void(0);">Read&nbsp;More</a>
+      <p class="short-description">
+        The first commercial lithium-ion battery was introduced in 1991, with only a short period between laboratory research and industrial production.
+        But it completely revolutionized our way of life in a very short time and was immediately regarded as a truly revolutionary technology and key energy transition mineral.
+        Today, lithium batteries power most tools, electronic devices, smartphones, Laptops, and watches, as well as bicycles, scooters, cars, and machinery across various industries.
+        In other words, most of the items we use daily rely on the energy provided by lithium-ion batteries to operate. Overall, whether from a research or commercial market development perspective, the lithium battery chain is exciting.
+        According to a forecast, the Li-ion batteries chain, from mining to recycling, could see an annual growth rate exceeding 30% from 2022 to 2030, with its value surpassing $400 billion and the market size reaching 4.7 TWh.
+      </p>
     </div>
   </div>
 </section>
 
-    <!-- Section 4：Lithium Trade -->
-    <section id="section4" class="section content-section">
-      <h2 class="page-title">Lithium Trade Flow </h2>
+   <!-- 第四页：Lithium Distibution -->
+   <section id="section4" class="section content-section" style="position: relative;">
+      <h2 class="page-title"></h2>
+         <iframe
+            id="fullmap4-frame"
+            class="full-iframe"
+            src="fullmap1.2.html"
+          allowfullscreen
+        ></iframe>
     </section>
 
-    <!-- Section 5：Lithium Trade Map -->
-    <section id="section5" class="section content-section">
-      <h2 class="page-title">Global Trade Map</h2>
-      <div id="fullmap-container"></div>
+    <!-- 第五页：Lithium Trade Flow 这里不要动-->
+  <section id="section5" class="section content-section" style="position: relative;">
+      <h2 class="page-title"></h2>
+         <iframe
+            id="fullmap5-frame"
+            class="full-iframe"
+            src="section5.html"
+          allowfullscreen
+        ></iframe>
     </section>
 
-    <!-- Section 6：EV Usage -->
+     <!-- 第六页：Li-ion Battery & EV Usage -->
     <section id="section6" class="section content-section">
-      <h2 class="page-title">Lithium in EVs</h2>
-      <div class="ev-diagram-container">
-        <img src="images/ev.png" alt="EV Car Diagram" />
-        <div class="ev-hotspot battery" onclick="showInfo('battery')"></div>
-        <div class="ev-hotspot motor" onclick="showInfo('motor')"></div>
-        <div class="ev-hotspot charger" onclick="showInfo('charger')"></div>
+    <div class="graph-section">
+    <!-- 左：文字区 -->
+    <div class="title-pane">
+      <h1 class="graph-title">Li-ion Batteries & EV Industry</h1>
+      <h2 class="graph-subtitle">Backbone of the modern EV revolution</h2>
+      <p class="graph-description">
+        Today’s lithium‐ion cells consist of two electrodes: </br> a cathode and an anode. </br>
+      </br>
+    The cathode is the most complex component, with its mix of lithium, cobalt, manganese, iron, and other minerals determining overall performance. </br>
+    </br>In a single EV battery cell, the cathode (positive) and anode (negative) are separated by a porous membrane and immersed in an electrolyte through which lithium ions migrate. During discharge, lithium ions flow from cathode to anode to produce electrical power; charging reverses this reaction, driving ions back to the cathode for storage.
+      </p>
+    </div>
+
+    <!-- 右：图片区 -->
+    <div class="graph-pane">
+    <div class="ev-switch-container">
+    <!-- 左箭头 -->
+    <button class="nav-arrow left-arrow" data-direction="prev">‹</button>
+      <!-- 加上 id=ev-diagram 并让它 position:relative -->
+      <div class="ev-diagram-container" id="ev-diagram">
+    <!-- ▽ 视图切换条 ▽ -->
+       <div class="view-switch">
+       <button type="button" class="view-btn active" data-view="1">EV</button>
+       <button type="button" class="view-btn"        data-view="2">Li-ion Batteries</button>
+       </div>
+
+    <!-- 视图1 -->
+    <div id="view1" class="ev-view">
+      <img src="images/ev.png" class="graph-image" alt="EV">
+      <!-- 热点 -->
+      <div class="ev-hotspot battery" data-key="battery" style="top:60%; left:35%;"></div>
+      <div class="ev-hotspot motor"   data-key="motor"   style="top:60%; left:18%;"></div>
+      <div class="ev-hotspot charger" data-key="charger" style="top:35%; left:86%;"></div>
+      <!-- 信息面板 1 系列 -->
+      <div class="info-panel" id="panel-battery" style="top:70%; left:40%;">Battery Pack: 
+      Stores and manages energy flow for propulsion and accessories.
+      <button class="close-btn" aria-label="Close">×</button>
       </div>
-      <div id="ev-info" class="ev-info-box">
-        <button class="close-btn" onclick="hideInfo()">×</button>
-        <h3 id="info-title"></h3>
-        <p id="info-text"></p>
+      <div class="info-panel" id="panel-motor" style="top:20%; left:10%;">Electric Motor: 
+      Converts stored electrical energy into mechanical drive force.
+      <button class="close-btn" aria-label="Close">×</button>
       </div>
+      <div class="info-panel" id="panel-charger" style="top:45%; left:60%;">Charging Port
+      Provides the interface for external power to recharge the battery pack.
+      <button class="close-btn" aria-label="Close">×</button>
+      </div>
+     </div>
+
+    <!-- 视图2（隐藏） -->
+    <div id="view2" class="ev-view" style="display:none;">
+      <img src="images/Lithium_batteries.png" class="graph-image" alt="Alternate EV">
+    <!-- 热点2 -->
+     <div class="ev-hotspot battery" data-key="anode" style="top:70%; left:28%;"></div>
+     <div class="ev-hotspot motor"   data-key="electrolyte"   style="top:35%; left:42%;"></div>
+     <div class="ev-hotspot charger" data-key="cathode" style="top:70%; left:64%;"></div>
+    <!-- 信息面板 2 系列 -->
+      <div class="info-panel" id="panel-anode" style="top:45%; left:5%;">Anode: Releases Li⁺ and electrons during discharge; re-absorbs Li⁺ during charging.
+      <button class="close-btn" aria-label="Close">×</button>
+      </div>
+      <div class="info-panel" id="panel-electrolyte" style="top:20%; left:30%;">Electrolyte: Conducts Li⁺ between electrodes while preventing electron flow; ensures stable ion transport.
+      <button class="close-btn" aria-label="Close">×</button>
+      </div>
+      <div class="info-panel" id="panel-cathode" style="top:45%; left:70%;">Cathode: Conducts Li⁺ between electrodes while preventing electron flow; ensures stable ion transport. Charging Port
+      Provides the interface for external power to recharge the battery pack.
+      <button class="close-btn" aria-label="Close">×</button>
+     </div>
+       </div>
+    </div>
+    <button class="nav-arrow right-arrow" data-direction="next">›</button>
+    </div>
+        </div> <!-- .ev-diagram-container -->
+      </div>   <!-- .graph-pane -->
+    </div>     <!-- .graph-section -->
+  </section>  <!-- #section6 -->
+
+
+   <!-- 第七页：Li-ion Batteries Industry 这里不要改-->
+ <section id="section7" class="section content-section" style="position: relative;">
+      <h2 class="page-title"></h2>
+         <iframe
+            id="fullmap7-frame"
+            class="full-iframe"
+            src="fullmap2.4.html"
+          allowfullscreen
+        ></iframe>
     </section>
 
-   <!-- Section 7：EV Industry -->
-    <section id="section7" class="section content-section">
-      <h2 class="page-title">Global EV Industry</h2>
-      <div class="future-container" style="padding: 20px; overflow-y: auto; height: calc(100vh - 120px);">
-        
-        <!-- 1. Demand Surge -->
-        <article class="future-item">
-          <h3>1. Exploding EV Capacity Drives Lithium Demand</h3>
-          <p>Global automakers have announced massive EV production targets by 2030：</p>
-          <ul>
-            <li><strong>Tesla</strong>: 20 million vehicles; $400 billion investment in batteries</li>
-            <li><strong>Volkswagen</strong>: 5 million vehicles; $57 billion investment</li>
-            <li><strong>Toyota</strong>: 3.5 million vehicles; $13.6 billion investment</li>
-          </ul>
-          <p>This unprecedented ramp-up in battery installations will drive lithium demand into exponential growth, spurring a global race for new lithium mining, processing and refining.</p>
-          <figure class="chart" id="chart9-1"> <!-- 图一占位 -->
-            <figcaption>Fig. 1 – EV capacity plans and associated battery investments</figcaption>
-          </figure>
-        </article>
-        
-        <!-- 2. Vertical Integration -->
-        <article class="future-item">
-          <h3>2. Automakers Become Lithium-Supply Architects</h3>
-          <p>To secure raw materials, OEMs are moving upstream：</p>
-          <ul>
-            <li>Tesla signs long-term lithium supply agreements and invests directly in mines</li>
-            <li>Volkswagen forges partnerships to build a local European lithium chain</li>
-            <li>Many brands adopt a “mine-to-battery” vertical integration strategy</li>
-          </ul>
-          <p>By taking control of mining and refining, car companies shift from passive buyers to active builders of the lithium supply chain.</p>
-        </article>
-        
-        <!-- 3. Geopolitical Reshuffle -->
-        <article class="future-item">
-          <h3>3. Geographies Realign Around EV Demand</h3>
-          <p>Key lithium regions and their evolving roles：</p>
-          <ul>
-            <li><strong>Australia</strong>: world’s largest lithium producer, largely exporting to China</li>
-            <li><strong>Lithium Triangle</strong> (Chile, Argentina, Bolivia): richest reserve base</li>
-            <li><strong>China</strong>: only modest mining, but 80 % of global refining capacity</li>
-          </ul>
-          <p>Accelerated investments are reshaping national strategies—from mine expansions in South America to new refining hubs in China, the U.S. and Europe.</p>
-          <figure class="chart" id="chart9-2">
-            <figcaption>Fig. 2 – Global lithium resource distribution and refining capacity</figcaption>
-          </figure>
-        </article>
-        
-      </div>
-    </section>    
-
-    <!-- Section 8：Global & Regional Supply Chain -->
-    <section id="section8" class="section content-section" style="position:relative;">
-      <h2 class="page-title">Global & Regional Supply Chain</h2>
-      <iframe
-        id="fullmap2-frame"
-        src="fullmap2.html"
-        style="
-          position: absolute;
-          top: 60px;    /* 导航60 + 标题20 */
-          left: 20px;
-          width: calc(100% - 40px);
-          height: calc(100% - 80px);
-          border: none;
-        "
-      ></iframe>
+    <!-- 第八页：EV Industries  这里不要改-->
+ <section id="section8" class="section content-section" style="position: relative;">
+      <h2 class="page-title"></h2>
+         <iframe
+            id="fullmap8-frame"
+            class="full-iframe"
+            src="section8.html"
+          allowfullscreen
+        ></iframe>
     </section>
-    
-    <!-- Section 9：Future of Lithium -->
+
+    <!-- 第九页：Global & Regional Supply Chain 这里不要改-->
     <section id="section9" class="section content-section">
-      <h2 class="page-title">Future Development</h2>
-      <div class="future-content" style="padding: 20px; max-width: 800px; margin: auto; line-height: 1.6;">
-        <p><strong>Lithium as the “white petroleum” of the EV era</strong> will remain at the heart of the global energy transition. With national carbon-neutrality targets tightening and EV adoption climbing, lithium demand is set to double over the next decade.</p>
-        <h3>Resource Diversification</h3>
-        <ul>
-          <li>Exploration of new sources: salt lakes, shale deposits, even seawater extraction.</li>
-          <li>Investment in more efficient, lower-impact extraction technologies.</li>
-        </ul>
-        <h3>Closed-Loop & Recycling</h3>
-        <ul>
-          <li>Advanced recycling processes to recover lithium from spent batteries.</li>
-          <li>Development of a circular supply chain that reduces reliance on virgin ore.</li>
-        </ul>
-        <h3>Strategic Implications</h3>
-        <p>As lithium’s value chain becomes greener and more sophisticated, it will also turn into a geopolitical and technological battleground. Countries and companies that secure both resources and cutting-edge extraction or recycling technologies will gain decisive influence in the new energy era.</p>
-      </div>
+      <h2 class="page-title"></h2>
+         <iframe
+           id="fullmap9-frame"
+           class="full-iframe"
+           src="fullmap3.3.html"
+        ></iframe>
     </section>
     
-
-    <!-- Section 10：About & Contact -->
-    <section id="section10" class="section content-section">
-      <h2 class="page-title">About & Contact</h2>
-      <footer class="page-footer">
-        © 2025 CASA0003 ·
-        <span class="back-home" data-target="section1">Back to Top</span>
-      </footer>
+    <!-- 第十页：Future -->
+ <section id="section10" class="section content-section" style="position: relative;">
+      <h2 class="page-title"></h2>
+         <iframe
+            id="fullmap10-frame"
+            class="full-iframe"
+            src="section10.html"
+          allowfullscreen
+        ></iframe>
     </section>
-  </div>
+    
+    <!-- 第十一页：About & Contact -->
+    <section id="section11" class="section content-section" style="position: relative;">
+      <h2 class="page-title"></h2>
+         <iframe
+            id="fullmap11-frame"
+            class="full-iframe"
+            src="section11.html"
+          allowfullscreen
+        ></iframe>
+    
+    <footer class="page-footer">
+    © 2025 CASA0003 Group 1·
+    <span class="back-home" data-target="section1">Back to Top</span>
+    </footer>
+
+    </section>
+    
 
   <!-- 脚本依赖 -->
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
-  <script src="js/main.js"></script>
 </body>
 </html>
