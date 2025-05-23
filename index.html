@@ -11,19 +11,19 @@
     rel="stylesheet"
   />
 
-  <!-- 全局样式 -->
+  <!-- Global styles: styles.css & canvas -->
   <link rel="stylesheet" href="css/styles.css" />
   <canvas id="bgParticles"></canvas>
   <link rel="stylesheet" href="css/bgParticles.css" />
 
 
-  <!-- 主逻辑脚本：defer 确保在上面库都加载完后执行 -->
+  <!-- Main logic script: ensures it runs after the above libraries have loaded -->
   <script src="js/main.js" defer></script>
   <script src="js/bgParticles.js"></script>
 </head>
 <body>
 
-  <!-- 顶部导航 -->
+  <!-- Top navigation bar -->
   <nav id="globalNav">
     <div class="nav-brand">Lithium Chain And Flow</div>
     <ul class="nav-main">
@@ -65,40 +65,43 @@
     </ul>
   </nav>  
 
-<!-- Section-1：Three.js 粒子封面 -->
+<!-- Section-1：Particle-cover introduction, Three.js  -->
 <section id="section1" class="section">
   <div id="lithium-cover">
+  <!-- Canvas element where the Three.js particle animation will render -->
     <canvas id="lithiumCanvas"></canvas>
 
-      <!-- 文字散点层 -->
+  <!-- Overlay text scattered across the cover for visual effect -->
   <div class="scatter-texts">
-    <!-- 下面这些 span 都可以随意复制/增删/改内容 -->
+    <!--Floating text -->
     <span class="scatter-text1" style="top:28%; left:34%;">LITHIUM</span>
     <span class="scatter-text1" style="top:43%; left:24%;">ORE-BATTERIES</span>
     <span class="scatter-text1" style="top:58%; left:75%;">FLOW</span>
     <span class="scatter-text2" style="top:58%; left:30%;">A journey from South America to the world.</span>
     <span class="scatter-text3" style="top:28%; left:78%;">Explore the global trade flows</br> powering electric vehicles</br>via the lithium-battery supply chain.
-</span>
+    </span>
   </div>
 </div>
+
+    <!-- Enter button: remains disabled until the intro animation completes -->
     <button id="enterBtn" disabled>Enter</button>
 
-    <!-- 黑幕字幕 -->
-    <div id="overlay" class="overlay-screen">
+    <!-- Full-screen overlay that displays introductory -->
+  <div id="overlay" class="overlay-screen">
     <div class="overlay-text">
-    <p>Presented by Group 1</p>
-    <p>The Bartlett Centre for Advanced Spatial Analysis CASA</p>
-    <p>University College London</p>
-      </div>
+      <p>Presented by Group 1</p>
+      <p>The Bartlett Centre for Advanced Spatial Analysis (CASA)</p>
+      <p>University College London (UCL)</p>
     </div>
+  </div>
 
-    <!-- 如需保留菜单淡入，可加这块 -->
+    <!-- Module script -->
     <div id="menu" class="overlay-screen" style="display:none;font-size:3rem">
       SECOND PAGE / MENU
-  </div>          <!-- ← 关闭 #lithium-cover -->
-</section>        <!-- ← 关闭 #section1 -->
+  </div>         
+</section>      
 
-<!-- Three.js importmap（放在 Intro.js 之前一次即可） -->
+<!-- Three.js importmap -->
 <script type="importmap">
 { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js" } }
 </script>
