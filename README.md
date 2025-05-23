@@ -12,12 +12,12 @@ See the demo video: *https://liveuclac-my.sharepoint.com/personal/ucfnacb_ucl_ac
 
 **Lithium Chain and Flow** is a fully client-side, scroll-narrative website revealing the global lithium→EV supply chain and its spatial dynamics.
 
-| Tech stack           | Role / feature                            |
-| -------------------- | ----------------------------------------- |
-| **Three.js**         | Cinematic particle intro                  |
-| **Mapbox GL JS**     | Multi-layer maps and animated trade flows |
-| **D3 + Chart.js**    | Timelines and comparative plots           |
-| **Vanilla HTML/CSS** | Modular section layouts                   |
+| Tech stack           | 
+| -------------------- | 
+| **Three.js**         | 
+| **Mapbox GL JS**     | 
+| **D3 + Chart.js**    | 
+| **Vanilla HTML/CSS** | 
 
 *No build tools or server are required—just open `index.html` in your browser.*
 
