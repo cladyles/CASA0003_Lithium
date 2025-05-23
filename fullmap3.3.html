@@ -5,35 +5,35 @@
   <title>South America – China – Developed Countries Lithium Element Automotive Industry Chain</title>
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
 
-  <!-- Mapbox 样式 -->
+  <!-- Mapbox styles -->
   <link
     href="https://api.mapbox.com/mapbox-gl-js/v3.11.1/mapbox-gl.css"
     rel="stylesheet"
   />
 
-  <!-- 自定义样式 -->
+  <!-- Customize style -->
   <link rel="stylesheet" href="css/fullmap3.3.css" />
 </head>
 <body>
 
-  <!-- 地图容器 -->
+  <!-- Map container -->
   <div id="map"></div>
 
-  <!-- 页面主标题 -->
+  <!-- Page main title -->
   <h1 id="mainTitle">
   South America to China to the World:<br>
   Spatial Flows in the Lithium-EV Supply Chain
   </h1>
 
-  <!-- 场景标签 -->
+  <!-- Scene label -->
   <div id="sceneLabel" class="scene-label"></div>
 
-  <!-- 信息面板（右侧文本框） -->
+  <!-- Information panel (the text box on the right) -->
   <div id="infoPanel" class="info-panel">
     <h2 id="infoTitle">Welcome</h2>
     <p id="infoText">Click “Next →” to start the journey.</p>
 
-    <!-- —— 在正文下方放所有可视化 —— -->
+    <!-- —— Place all visualizations below the main text —— -->
     <div id="vizContainer">
       <div id="line-chart" class="viz"></div>
       <canvas id="panelChart" class="viz"></canvas>
@@ -46,7 +46,7 @@
       <div id="globalViz" class="viz"></div>
     </div>
 
-    <!-- 可选：步骤图片 -->
+    <!-- Optional: Step pictures -->
     <img
       id="stepImage"
       src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
@@ -55,21 +55,21 @@
     />
   </div>
 
-  <!-- 辅助说明面板 -->
+  <!-- Auxiliary instruction panel -->
   <div id="secondaryPanel">Secondary explanation will appear here.</div>
 
-  <!-- 操作按钮 -->
+  <!-- operation button -->
   <button id="prevBtn" class="glow-btn">← Previous</button>
   <button id="nextBtn" class="glow-btn">Next →</button>
 
-  <!-- JS 脚本库 -->
+  <!-- JS script library -->
   <script src="https://api.mapbox.com/mapbox-gl-js/v3.11.1/mapbox-gl.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
   <script src="https://d3js.org/d3.v6.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-2.26.1.min.js"></script>
 
-  <!-- 主脚本 -->
+  <!-- Main script -->
   <script src="js/fullmap3.3.js" defer></script>
 </body>
 </html>

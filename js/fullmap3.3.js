@@ -1,8 +1,8 @@
 // main.js
-// — Mapbox 初始化
+// — Mapbox initialization
 mapboxgl.accessToken = 'pk.eyJ1IjoieXVoYW53YW5nIiwiYSI6ImNtYTk3a3l3eDFjNzYya3F1cjI4OTFpZ2EifQ.cg-Y0F7OyaTc_gHfyHDKVQ';
 
-// ── 全局电池企业数据 ──
+// ── Global battery enterprise data ──
 const data = [
   { company: "CATL",     EV_2023: 308, ESS_2023:  74, TTL_2023: 382, EV_2024: 491, ESS_2024: 110, TTL_2024: 601, YoY:  57 },
   { company: "BYD",      EV_2023: 135, ESS_2023:  22, TTL_2023: 157, EV_2024: 192, ESS_2024:  27, TTL_2024: 219, YoY:  39 },
@@ -27,7 +27,7 @@ const map = new mapboxgl.Map({
   antialias: true
 });
 
-// 发光按钮点击动画
+// Glowing button click animation
 document.querySelectorAll('.glow-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     if (btn.classList.contains('active')) return;
@@ -36,7 +36,7 @@ document.querySelectorAll('.glow-btn').forEach(btn => {
   });
 });
 
-// —— STEP 信息
+// —— STEP information
 const stepInfo = [
   { title:'Lithium Triangle', text:`According to the 2021 USGS Mineral Commodity Summary, the Lithium Triangle holds about 58% of global lithium resources. Among the world's 86 - million - ton proven lithium reserves, Bolivia has 21 million tons, Argentina has 19.3 million tons, and Chile has 9.6 million tons.` },
   { title:'China Overview', text:`China serves as a pivotal link in the global lithium-battery supply chain: on one hand, it imports raw ore from the world’s leading lithium-producing countries; on the other, it conducts advanced chemical processing and battery manufacturing domestically, and ultimately exports battery cells and complete vehicles to developed markets such as Europe and North America.` },
@@ -57,9 +57,8 @@ const secondaryExplanations = [
   "Global Overview:Top 10 High-Tech Automotive Companies."
 ];
 
-// —— Extraction Viz 初始化（只做一次）
+
 // —— Extraction Viz initialization (only once)
-// —— Extraction Viz 初始化（只做一次）
 // main.js
 
 
@@ -102,7 +101,7 @@ function initExtractionViz() {
     const temp  = +document.getElementById('temp').value;
     const time  = +document.getElementById('time').value;
     const ratio = +document.getElementById('ratio').value;
-    // 你的新模型，最大不超过 99.64
+    // Your new model, with a maximum not exceeding 99.64
     const rate = Math.min(99.64,
       70 + acid * 0.5 + (ratio - 1) * 10 - Math.abs(temp - 180) * 0.2
     );
@@ -163,12 +162,12 @@ function initExtractionViz() {
   });
 }
 
-// —— Plotly 折线图：年度出口值（前五大贸易伙伴）
-// —— 可视化函数 ——
-// Plotly 折线图 (step0)
+// —— Plotly Line Chart: Annual Export Value (Top Five Trading Partners)
+// —— Visualization function ——
+// Plotly Line Chart (step0)
 d3.csv('https://raw.githubusercontent.com/cladyles/CASA0003_Groupwork/main/data/Lithium_Trade_Value_2007-2024.csv')
   .then(data => {
-    // 1) 数据处理
+    // 1) Data processing
     const exportsOnly = data.filter(d =>
       d.flowDesc === 'Export' &&
       +d.refYear <= 2023
@@ -187,13 +186,13 @@ d3.csv('https://raw.githubusercontent.com/cladyles/CASA0003_Groupwork/main/data/
       .sort((a,b)=>b.total-a.total)
       .slice(0,5)
       .map(x=>x.p);
-    // 新配色
+    // New color scheme
 const palette = [
-  '#4b89bf', // 蓝
-  '#a3bfd9', // 浅蓝
-  '#fee39b', // 米黄
-  '#f28157', // 珊瑚橙
-  '#d73027'  // 深红
+  '#4b89bf', // blue
+  '#a3bfd9', // light blue
+  '#fee39b', // cream-colored; beige
+  '#f28157', // Coral Orange
+  '#d73027'  // deep red
 ];
     lineTraces = top5.map((p,i)=>({
       x: years,
@@ -204,8 +203,8 @@ const palette = [
       marker: { size: 6, color: palette[i] }
     }));
 
-    // 2) 布局配置
-// 2) 布局配置
+    // 2) Layout configuration
+// 2) Layout configuration
 lineLayout = {
   title: {
     text: 'Annual Export Value by Top 5 Partners (07–23)',
@@ -216,21 +215,21 @@ lineLayout = {
     x: 0.5,
     xanchor: 'center'
   },
-  paper_bgcolor: '#111',      // 整体背景
-  plot_bgcolor: '#111',       // 绘图区背景
+  paper_bgcolor: '#111',      // Overall background
+  plot_bgcolor: '#111',       // The background of the drawing area
   hovermode: 'x unified',
   font: { color: '#eee' },
 
   xaxis: {
-    title: {                 // X 轴标题
+    title: {                 // X-axis title
       text: '',
       font: { color: '#ccc' }
     },
-    showline: true,          // 显示轴线
-    linecolor: '#555',       // 轴线颜色
-    tickfont: { color: '#ccc' },  // 刻度颜色
-    color: '#ccc',           // 主轴标签颜色
-    automargin: true         // 自动挤出边距
+    showline: true,          // Display axes
+    linecolor: '#555',       // Axis color
+    tickfont: { color: '#ccc' },  // Scale color
+    color: '#ccc',           // Spindle label color
+    automargin: true         // Automatically extrude margins
   },
 
   yaxis: {
@@ -249,27 +248,27 @@ lineLayout = {
     orientation: 'h',
     x: 0.5,
     xanchor: 'center',
-    y: -0.2,                 // 图例再下移一点
+    y: -0.2,                 // Move the legend down a little more.
     yanchor: 'top',
     font: { size: 10 }
   },
 
   margin: {
-    t: 40,                   // 顶部留白
-    b: 120,                  // 底部留白，保证 Year + 图例下方都有空间
-    l: 80,                   // 左侧留白，加宽 Y 轴标题
-    r: 20                    // 右侧留白
+    t: 40,                   // Leave blank at the top
+    b: 120,                  // Leave blank space at the bottom to ensure there is space below both Year + the legend.
+    l: 80,                   // Leave blank on the left side and widen the Y-axis title.
+    r: 20                    // Leave blank on the right side
   }
 };
 
-    // 3) 数据准备完毕后，自动渲染第一步折线图
+    // 3) After the data is prepared, automatically render the line chart in the first step.
     renderLineChart();
-    // （如果你希望同时触发地图飞到第 0 步，可以取消下面这一行的注释）
+    // （If you want to trigger the map to fly to step 0 at the same time, you can uncomment the following line.）
     // if (typeof steps !== 'undefined') steps[0]();
   })
   .catch(err => console.error('Failed to load trade data:', err));
 
-// —— 绘制 Plotly 折线图（只在容器可见时调用）——
+// —— Draw a Plotly line chart (call only when the container is visible)——
 function renderLineChart() {
   const gd = document.getElementById('line-chart');
   gd.style.width  = '100%';
@@ -279,13 +278,13 @@ function renderLineChart() {
     responsive: true,
     useResizeHandler: true
   }).then(() => {
-    // 强制一次 resize，保证在隐藏/显示切换后依然能正确渲染
+    // Force a resize to ensure correct rendering after hiding/showing switching.
     Plotly.Plots.resize(gd);
   });
 }
 
 
-// —— Chart.js 配置 (除第0,2,9步外)
+// —— Chart.js Configuration (except steps 0, 2, and 9)
 const stepCharts = [
   null,
   {
@@ -375,7 +374,7 @@ let panelChart;
 
 
 
-// 发散条形图 (step1)
+// Diverging bar chart (step1)
 function renderDivergingChart() {
   const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"].reverse();
   const exports = [35574241636,26372704409,31767217968,30556948607,32919169701,36328355705,38102630453,41340896306,37780136245,39507339670,41223287234,43445582610].reverse();
@@ -413,7 +412,7 @@ function renderDivergingChart() {
   });
 }
 
-// 三省进出口柱状图 (step2)
+// Bar Chart of Import and Export in Three Provinces (step2)
 function renderProvinceImportExportCharts() {
   const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   const provinces = ["Fujian","Jiangsu","Zhejiang"];
@@ -421,7 +420,7 @@ function renderProvinceImportExportCharts() {
   const importURL = "https://raw.githubusercontent.com/cladyles/CASA0003_Groupwork/0d1747888ee320ffd7133255cdf32a7812e41e3c/data/Three%20provinces_Imports_2024.csv";
   const exportURL = "https://raw.githubusercontent.com/cladyles/CASA0003_Groupwork/0d1747888ee320ffd7133255cdf32a7812e41e3c/data/Three%20provinces_Emports_2024.csv";
 
-  // 进口
+  // import
   Papa.parse(importURL, {
     download: true, header: true,
     complete(results) {
@@ -447,7 +446,7 @@ function renderProvinceImportExportCharts() {
     }
   });
 
-  // 出口
+  // export
   Papa.parse(exportURL, {
     download: true, header: true,
     complete(results) {
@@ -474,7 +473,7 @@ function renderProvinceImportExportCharts() {
   });
 }
 
-// ▶ 1) 在这之后添加 Changzhou Viz 的初始化
+// ▶ 1) Add the initialization of Changzhou Viz after this.
 let changzhouInitialized = false;
 function initChangzhouViz() {
   if (changzhouInitialized) return;
@@ -484,7 +483,7 @@ function initChangzhouViz() {
   container.innerHTML = `
     <div id="cz-sunburst" style="width:100%;height:300px;"></div>
 
-    <!-- 手写图例 -->
+    <!-- Legend -->
     <div class="cz-legend" style="
       display:flex;
       justify-content:center;
@@ -509,7 +508,7 @@ function initChangzhouViz() {
     </div>
   `;
 
-  // Sunburst — 正极/Cobalt/Lithium Salt 占比
+  // Sunburst — Proportion of Cathode/Cobalt/Lithium Salt
   Plotly.newPlot('cz-sunburst', [{
     type: 'sunburst',
     labels:  ['Total','Cathode','Cobalt','Lithium Salt'],
@@ -530,7 +529,7 @@ function initChangzhouViz() {
   });
 }
     
-// ——— 全局：Ningde (Fujian) 桑基图初始化 ———
+// ——— Global: Initialization of Sankey Diagram in Ningde (Fujian) ———
 let fujianInitialized = false;
 function initFujianViz() {
   if (fujianInitialized) return;
@@ -556,7 +555,7 @@ function initFujianViz() {
     <div id="fujian-sankey" style="width:100%; height:400px;"></div>
   `;
 
-  // ----- 配色、标签、link 生成器 -----
+  // ----- Color scheme, label, link generator -----
   const labels = [
     'CATL','BYD','LGES','CALB','EVE','Gotion','Panasonic','SDI','SK on','Sunwoda','Others',
     'EV','ESS',
@@ -581,7 +580,7 @@ function initFujianViz() {
       source.push(i);      target.push(ESS_idx); value.push(d[`ESS_${year}`]);
     });
 
-    // EV / ESS 分配到各大区
+    // EV/ESS is allocated to each major region
     const evTotal  = data.reduce((s,d) => s + d[`EV_${year}`], 0);
     const essTotal = data.reduce((s,d) => s + d[`ESS_${year}`], 0);
     const frac     = [0.6,0.3,0.08,0.02];
@@ -595,7 +594,7 @@ function initFujianViz() {
 
   function drawSankey(year) {
     const link = makeLink(year);
-    // 全部流都用深灰 60% 透明
+    // All streams use dark gray with 60% transparency
     const greyFlows = link.source.map(()=>'rgba(169,169,169,0.6)');
 
     Plotly.newPlot('fujian-sankey', [{
@@ -630,23 +629,23 @@ function initFujianViz() {
     });
   }
 
-  // 初始绘制 + 监听下拉
+  // Initial drawing + listen to the dropdown
   drawSankey('2024');
   document.getElementById('fujianYear')
     .addEventListener('change', e => drawSankey(e.target.value));
 }
 
-// —— 第6步：全局 EV 交互式图表 —— 
+// —— Step 6: Global EV Interactive Chart —— 
 let globalVizInitialized = false;
 function initGlobalViz() {
   if (globalVizInitialized) return;
   globalVizInitialized = true;
 
-  // 1. 插入容器
+  // 1. Insert into the container
   const container = document.getElementById('globalViz');
   container.innerHTML = `<div id="globalChart" style="width:100%;height:800px;"></div>`;
 
-  // 2. 原始数据
+  // 2. original data
   const globalData = [
     { rank:1, company:"BYD",   hq:"CHINA",             capacity:4.0, share:0.22, price:35.09 },
     { rank:2, company:"Tesla", hq:"USA",               capacity:3.8, share:0.21, price:175.20 },
@@ -660,10 +659,10 @@ function initGlobalViz() {
     { rank:10,company:"Great Wall", hq:"CHINA",         capacity:0.6, share:0.03, price:3.55  }
   ];
 
-  // 3. 按 “总部所在地” 分组
+  // 3. Group by "Headquarters Location"
   const categories = Array.from(new Set(globalData.map(d => d.hq)));
 
-  // 4. 为每个总部，生成一个 trace
+  // 4. Generate a trace for each headquarters.
   const traces = categories.map(hq => {
     const pts = globalData.filter(d => d.hq === hq);
     return {
@@ -687,7 +686,7 @@ function initGlobalViz() {
     };
   });
 
-  // 5. 构造下拉按钮（All + 各 category）
+  // 5. Construct a drop - down button (All + each category)
   const allVisible = categories.map(() => true);
   const buttons = [
     {
@@ -708,7 +707,7 @@ function initGlobalViz() {
     }))
   ];
 
-  // 6. 布局：标题、下拉菜单、坐标轴、配色
+  // 6. Layout: Title, Drop - down Menu, Coordinate Axis, Color Scheme
   const layout = {
     title: {
       text: 'EV Analysis: Filter = All',
@@ -727,10 +726,10 @@ xaxis: {
   title: {
     text: '2024 Annual Capacity (Mil)',
     font: { color: '#50E3C2', family: 'Space Mono, monospace' },
-    standoff: 20,        // 标题和轴线的距离
-    align: 'center'      // 标题居中
+    standoff: 20,        // The distance between the title and the axis
+    align: 'center'      // Center the title
   },
-  automargin: true,      // 自动给左右留点空间
+  automargin: true,      // Automatically leave some space on both sides
   gridcolor: '#444',
   zerolinecolor: '#666',
   tickcolor: '#50E3C2'
@@ -746,7 +745,7 @@ xaxis: {
     font: { color: '#50E3C2', family: 'Space Mono, monospace' }
   };
 
-  // 7. 渲染
+  // 7. render
   Plotly.newPlot('globalChart', traces, layout, {
     responsive: true,
     displayModeBar: false
@@ -754,9 +753,9 @@ xaxis: {
 }
 
 
-// —— map.on('load')：画地图图层、弹窗、步骤
+// —— map.on('load')：Draw map layers, pop-ups, steps
 map.on('load', () => {
-  // —— 省级填色 & 弹窗
+  // —— Provincial coloring & pop-up window
   let importLookup = {};
   Papa.parse('https://raw.githubusercontent.com/cladyles/CASA0003_Groupwork/.../China%20Li-Ion%20Battery%20Commodity%20Imports%202024.csv', {
     download: true, header: true,
@@ -802,7 +801,7 @@ map.on('load', () => {
   });
 
   
-  // —— 3D 建筑
+  // —— 3D architecture
   const layers = map.getStyle().layers; let labelLayer;
   for (let l of layers) {
     if (l.type==='symbol' && l.layout['text-field']) { labelLayer = l.id; break; }
@@ -818,7 +817,7 @@ map.on('load', () => {
     }
   }, labelLayer);
 
-  // —— GeoJSON 源 & 图层
+  // —— GeoJSON Source & Layers
   const geojsons = {
     triangle: 'https://raw.githubusercontent.com/WYH-0324/CASA0003/.../lithium_triangle.geojson',
     provinces:'https://raw.githubusercontent.com/WYH-0324/CASA0003/.../china_provinces.geojson',
@@ -846,7 +845,7 @@ map.on('load', () => {
     map.addLayer(cfg);
   }
 
-  // —— 航线
+  // —— flight route
   map.addSource('flows',{ type:'geojson', data:{ type:'FeatureCollection', features:[] } });
   map.addLayer({
     id:'flows-layer', type:'line', source:'flows',
@@ -854,7 +853,7 @@ map.on('load', () => {
     paint:{ 'line-color':'#f5c142','line-width':['interpolate',['linear'],['get','volume'],0,1,25,8],'line-opacity':0.75 }
   });
 
-  // —— globalTop10 弹窗
+  // —— globalTop10 pop-up window
   map.on('click','globalTop10', e => {
     const p = e.features[0].properties;
     new mapboxgl.Popup({ offset:[0,-10] })
@@ -863,8 +862,8 @@ map.on('load', () => {
       .addTo(map);
   });
 
-  // —— 步骤定义
-  // —— 步骤定义
+  
+  // —— Step definition
   const steps = [
     // 0: Lithium Triangle
     () => flyTo([-65.169034, -24.968367], 5.67, 40.65, ['triangle'], 0),
@@ -894,21 +893,21 @@ map.on('load', () => {
     if (e.key === 'ArrowLeft')  document.getElementById('prevBtn').click();
   });
 
-  // 启动第一步
+  // Start the first step
   steps[0]();
 });
 
-// —— flyTo + 面板/可视化切换
+// —— flyTo + Panel/Visualization Switch
 function flyTo(center, zoom, pitch, visibleIds, stepIdx) {
-  // 地图飞航
+  // Map Flight
   map.flyTo({ center, zoom, pitch, bearing: 0, essential: true });
 
-  // 更新信息面板
+  // Update the information panel
   document.getElementById('infoTitle').textContent      = stepInfo[stepIdx].title;
   document.getElementById('infoText').textContent       = stepInfo[stepIdx].text;
   document.getElementById('secondaryPanel').textContent = secondaryExplanations[stepIdx];
 
-  // 隐藏所有可视化容器
+  // Hide all visual containers
   [
     'line-chart','panelChart','provinceImportChart','provinceExportChart',
     'extractionViz','changzhouViz','fujianViz','globalViz'
@@ -917,7 +916,7 @@ function flyTo(center, zoom, pitch, visibleIds, stepIdx) {
     if (el) el.style.display = 'none';
   });
 
-  // 按 stepIdx 显示对应可视化
+  // Display the corresponding visualization according to stepIdx
   switch(stepIdx) {
     case 0:
       document.getElementById('line-chart').style.display = 'block';
